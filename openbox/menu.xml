@@ -4,7 +4,7 @@
 <!--	<separator label="Main Menu"/>  -->
 		<item label="Terminal Emulator">
 			<action name="Execute">
-				<command>termite</command>
+				<command>alacritty</command>
 			</action>
 		</item>
 		<item label="Web Browser">
@@ -25,9 +25,9 @@
 		<separator/>
 		<menu execute="obmenu-generator" id="app-menu" label="Applications"/>
 		<menu id="root-menu-8397" label="Apps As Root">
-			<item label="Terminal (termite)">
+			<item label="Terminal (alacritty)">
 				<action name="Execute">
-					<execute>apps_as_root.sh termite</execute>
+					<execute>apps_as_root.sh alacritty</execute>
 				</action>
 			</item>
 			<item label="File Manager (thunar)">
@@ -47,12 +47,12 @@
 			</item>
 			<item label="File Manager CLI (ranger)">
 				<action name="Execute">
-					<execute>apps_as_root.sh 'termite -e ranger'</execute>
+					<execute>apps_as_root.sh 'alacritty -e ranger'</execute>
 				</action>
 			</item>
 			<item label="Text Editor CLI (vim)">
 				<action name="Execute">
-					<execute>apps_as_root.sh 'termite -e vim'</execute>
+					<execute>apps_as_root.sh 'alacritty -e vim'</execute>
 				</action>
 			</item>
 		</menu>
@@ -67,19 +67,19 @@
 					<execute>tasks</execute>
 				</action>
 			</item>
-			<item label="Comfy Terminal">
+			<item label="Furminal">
 				<action name="Execute">
-					<execute>termite -c ~/.config/termite/config_easy</execute>
+					<execute>alacritty --config-file ~/.config/alacritty/fullscreen.yml</execute>
 				</action>
 			</item>
 			<item label="Music Player">
 				<action name="Execute">
-					<execute>termite -e ncmpcpp</execute>
+					<execute>alacritty -e ncmpcpp</execute>
 				</action>
 			</item>
 			<item label="Visualizer">
 				<action name="Execute">
-					<execute>termite -e 'ncmpcpp -s visualizer'</execute>
+					<execute>alacritty --config-file ~/.config/alacritty/fullscreen.yml -e visualizer</execute>
 				</action>
 			</item>
 		</menu>
@@ -131,33 +131,7 @@
 				</action>
 			</item>
 		</menu>
-		<menu id="root-menu-8365" label="Screenshot">
-			<item label="Screenshot Now">
-				<action name="Execute">
-					<execute>shotnow</execute>
-				</action>
-			</item>
-			<item label="Screenshot In 5s">
-				<action name="Execute">
-					<execute>shotin5</execute>
-				</action>
-			</item>
-			<item label="Screenshot In 10s">
-				<action name="Execute">
-					<execute>shotin10</execute>
-				</action>
-			</item>
-			<item label="Screenshot Area">
-				<action name="Execute">
-					<execute>shotArea</execute>
-				</action>
-			</item>
-			<item label="Screenshot Window">
-				<action name="Execute">
-					<execute>shotWindow</execute>
-				</action>
-			</item>
-		</menu>
+		<menu execute="ob-shots" id="ShotsPipeMenu" label="Screenshot"/>
 		<separator/>
 		<menu execute="ob-places-pipemenu --recent ~/" id="pipe-placesmenu" label="Places"/>
 		<menu execute="ob-recent-files-pipemenu" id="pipe-164328" label="Recent Files"/>
@@ -198,6 +172,7 @@
 			<menu execute="change_font.sh" id="FontPipeMenu" label="Change Font"/>
 			<menu execute="change_launcher.sh" id="LauncherPipeMenu" label="Change Launcher"/>
 			<menu execute="change_powermenu.sh" id="PmenuPipeMenu" label="Change Powermenu"/>
+			<menu execute="change_scheme.sh" id="SchemePipeMenu" label="Terminal Color Scheme"/>
 			<separator/>
 			<menu execute="canvas_ob" id="CanvasPipeMenu" label="Generate Wallpaper"/>
 			<item label="Change Wallpaper">
@@ -232,7 +207,6 @@
 					<execute>about.sh</execute>
 				</action>
 			</item>
-			<menu execute="fix_os_name.sh" id="SysNamePipeMenu" label="System Status"/>
 		</menu>
 		<menu execute="ob-kb-pipemenu" id="keybinds" label="Keybinds"/>
 		<separator/>

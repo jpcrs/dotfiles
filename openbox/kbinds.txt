@@ -3,21 +3,32 @@ o W-2             	GoToDesktop
 o W-3             	GoToDesktop
 o W-4             	GoToDesktop
 o W-5             	GoToDesktop
+o W-6             	GoToDesktop
+o W-7             	GoToDesktop
+o W-8             	GoToDesktop
+o W-9             	GoToDesktop
+o W-0             	GoToDesktop
 o S-W-1           	SendToDesktop
 o S-W-2           	SendToDesktop
 o S-W-3           	SendToDesktop
 o S-W-4           	SendToDesktop
 o S-W-5           	SendToDesktop
+o S-W-6           	SendToDesktop
+o S-W-7           	SendToDesktop
+o S-W-8           	SendToDesktop
+o S-W-9           	SendToDesktop
+o S-W-0           	SendToDesktop
 o A-Tab           	NextWindow
 o W-Tab           	NextWindow
 o W-Left          	UnmaximizeFull
 o W-Right         	UnmaximizeFull
 o W-Up            	MaximizeFull
 o W-Down          	UnmaximizeFull
-o W-k             	Unmaximize
-o W-h             	Unmaximize
-o W-j             	Unmaximize
-o W-l             	Unmaximize
+o W-l             	If
+o W-h             	If
+o W-j             	DirectionalTargetWindow
+o W-k             	DirectionalTargetWindow
+o W-backslash     	If
 o A-z             	Unmaximize
 o A-x             	Unmaximize
 o A-c             	Unmaximize
@@ -43,11 +54,12 @@ x XF86MonBrightnessDown	backlight-down
 x Print           	scrot 'Screenshot_%Y-%m-%d-%I-%M-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
 x A-Print         	scrot -d 5 'Screenshot_%Y-%m-%d-%I-%M-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
 x C-Print         	scrot -u -b 'Screenshot_%Y-%m-%d-%I-%M-%S_$wx$h.png' -e 'mv $f $$(xdg-user-dir PICTURES) ; viewnior $$(xdg-user-dir PICTURES)/$f'
+x W-S-s           	flameshot gui
 x W-e             	geany
 x W-f             	thunar
-x W-t             	termite
-x W-Return        	termite
-x W-w             	midori
+x W-t             	alacritty
+x W-Return        	alacritty
+x W-S-Return      	firefox
 x W-n             	networkmanager_dmenu
 x A-F1            	~/.config/rofi/bin/launcher
 x W-m             	~/.config/rofi/bin/mpd
@@ -56,17 +68,16 @@ x W-s             	~/.config/rofi/bin/screenshot
 x W-i             	~/.config/rofi/bin/network
 x W-p             	color_picker
 x W-v             	tasks
-x C-A-t           	termite -c ~/.config/termite/config_easy
-x C-A-v           	termite -e vim
-x C-A-r           	termite -e ranger
-x C-A-h           	termite -e htop
+x C-A-t           	alacritty --config-file ~/.config/alacritty/fullscreen.yml
+x C-A-v           	alacritty -e vim
+x C-A-r           	alacritty -e ranger
+x C-A-h           	alacritty -e htop
 x C-A-l           	betterlockscreen --lock
 o C-S-Escape      	Exit
 o C-S-BackSpace   	Restart
 o C-S-R           	Reconfigure
 x W-Escape        	xkill
-o W-c             	Close
-o W-q             	Close
+o W-S-q           	Close
 o A-F5            	Iconify
 o A-F6            	ToggleMaximize
 o A-F7            	ToggleDecorations

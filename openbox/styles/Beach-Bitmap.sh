@@ -36,9 +36,9 @@ change_rofi() {
 	/* Color-Scheme */
 
 	* {
-	    BG:    #212B30ff;
-	    FG:    #C4C7C5ff;
-	    BDR:   #EC407Aff;
+        BG:    #141c21ff;
+        FG:    #93a1a1ff;
+        BDR:   #2587ccff;
 	}
 	_EOF_
 }
@@ -58,29 +58,29 @@ change_term() {
 		colors:
 		  # Default colors
 		  primary:
-		    background: '0x222d32'
-		    foreground: '0xc4c7c5'
+		    background: '0x141c21'
+		    foreground: '0x93a1a1'
 
 		  # Normal colors
 		  normal:
 		    black:   '0x263640'
-		    red:     '0xec7875'
-		    green:   '0x61c766'
-		    yellow:  '0xfdd835'
-		    blue:    '0x42a5f5'
-		    magenta: '0xba68c8'
-		    cyan:    '0x4dd0e1'
+		    red:     '0xd12f2c'
+		    green:   '0x819400'
+		    yellow:  '0xb08500'
+		    blue:    '0x2587cc'
+		    magenta: '0x696ebf'
+		    cyan:    '0x289c93'
 		    white:   '0xbfbaac'
 
 		  # Bright colors
 		  bright:
 		    black:   '0x4a697d'
-		    red:     '0xfb8784'
-		    green:   '0x70d675'
-		    yellow:  '0xffe744'
-		    blue:    '0x51b4ff'
-		    magenta: '0xc979d7'
-		    cyan:    '0x5cdff0'
+		    red:     '0xfa3935'
+		    green:   '0xa4bd00'
+		    yellow:  '0xd9a400'
+		    blue:    '0x2ca2f5'
+		    magenta: '0x8086e8'
+		    cyan:    '0x33c5ba'
 		    white:   '0xfdf6e3'
 	_EOF_
 }
@@ -146,10 +146,10 @@ obconfig () {
 	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:theme/a:font[@place="InactiveOnScreenDisplay"]/a:slant' -v Normal "$config"
 
 	# Margins
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:top' -v 0 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:bottom' -v 10 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:left' -v 10 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:right' -v 10 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:top' -v 20 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:bottom' -v 0 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:left' -v 20 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:right' -v 20 "$config"
 }
 
 # dunst ---------------------------------
@@ -166,21 +166,21 @@ change_dunst() {
 	cat >> "$dunst_path"/dunstrc <<- _EOF_
 		[urgency_low]
 		timeout = 2
-		background = "#212B30"
-		foreground = "#C4C7C5"
-		frame_color = "#4DD0E1"
+		background = "#141c21"
+		foreground = "#93a1a1"
+		frame_color = "#141c21"
 
 		[urgency_normal]
 		timeout = 5
-		background = "#212B30"
-		foreground = "#C4C7C5"
-		frame_color = "#4DD0E1"
+		background = "#141c21"
+		foreground = "#93a1a1"
+		frame_color = "#141c21"
 
 		[urgency_critical]
 		timeout = 0
-		background = "#212B30"
-		foreground = "#EC407A"
-		frame_color = "#EC407A"
+		background = "#141c21"
+		foreground = "#d42434"
+		frame_color = "#141c21"
 	_EOF_
 
 	pkill dunst && dunst &
@@ -200,7 +200,7 @@ change_dock() {
 		items-alignment='center'
 		lock-items=false
 		monitor=''
-		offset=95
+		offset=80
 		pinned-only=false
 		position='right'
 		pressure-reveal=false
@@ -227,27 +227,27 @@ notify_user () {
 ## Execute Script -----------------------
 notify_user
 
-set_wall 'bg_1.jpg'																		# WALLPAPER
+set_wall 'bg_3.jpg'																# WALLPAPER
 
-change_bar 'forest' 'Iosevka Nerd Font:size=10;3' && "$polybar_path"/launch.sh			# STYLE | FONT
+change_bar 'beach-bitmap' 'Terminus:size=8;3' && "$polybar_path"/launch.sh		# STYLE | FONT
 
 ## Change colors in funct (ROFI)
-change_rofi 'forest' 'Iosevka 10' '0px' 'Papirus-Apps'									# STYLE/DIR | FONT | BORDER | ICON
+change_rofi 'beach-bitmap' 'Terminus 9' '0px' 'Numix-Apps'						# STYLE/DIR | FONT | BORDER | ICON
 
-change_nm 'forest'																		# CONFIG FILE DIR
+change_nm 'beach-bitmap'														# CONFIG FILE DIR
 
 ## Change colors in funct (TERMINAL)
-change_term 'Iosevka Custom' '9'														# FONT | SIZE
+change_term 'Terminus' '9'														# FONT | SIZE
 
-change_geany 'forest' 'Iosevka Custom 10'												# SCHEME | FONT
+change_geany 'github' 'Terminus 9'												# SCHEME | FONT
 
-change_gtk 'Adapta-Nokto' 'Archcraft-Dark' 'Arc-Cursor-Cyan' 'Noto Sans 9'				# THEME | ICON | CURSOR | FONT
+change_gtk 'Arc' 'Arc-Circle' 'Arc-Cursor-Dark' 'Terminus 9'					# THEME | ICON | CURSOR | FONT
 
 ## Change margin in funct (OPENBOX)
-obconfig 'Adapta-Nokto' 'CLM' 'Noto Sans' '9' && openbox --reconfigure					# THEME | LAYOUT | FONT |SIZE
+obconfig 'Arc' 'CLM' 'Terminus' '9' && openbox --reconfigure					# THEME | LAYOUT | FONT |SIZE
 
 ## Change colors in funct (DUNST)
-change_dunst '250x50-10+40' 'Iosevka Custom 9' '0'										# GEOMETRY | FONT | BORDER
+change_dunst '300x60-20-50' 'Terminus 9' '0'									# GEOMETRY | FONT | BORDER
 
 ## Paste settings in funct (PLANK)
 change_dock && cat "$HOME"/.cache/plank.conf | dconf load /net/launchpad/plank/docks/

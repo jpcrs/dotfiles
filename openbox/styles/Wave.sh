@@ -3,97 +3,110 @@
 ## Dirs #############################################
 polybar_path="$HOME/.config/polybar"
 rofi_path="$HOME/.config/rofi"
-termite_path="$HOME/.config/termite"
+terminal_path="$HOME/.config/alacritty"
 geany_path="$HOME/.config/geany"
 openbox_path="$HOME/.config/openbox"
 dunst_path="$HOME/.config/dunst"
 
 # wallpaper ---------------------------------
-nitrogen --save --set-zoom-fill /usr/share/backgrounds/bg_7.jpg
+set_wall() {
+	nitrogen --save --set-zoom-fill /usr/share/backgrounds/"$1"
+}
 
 # polybar ---------------------------------
-sed -i -e 's/STYLE=.*/STYLE="wave"/g' $polybar_path/launch.sh
-sed -i -e 's/font-0 = .*/font-0 = "Iosevka Nerd Font:size=10;3"/g' $polybar_path/wave/config.ini
-
-# relaunch polybar
-$polybar_path/launch.sh
+change_bar() {
+	sed -i -e "s/STYLE=.*/STYLE=\"$1\"/g" "$polybar_path"/launch.sh
+	sed -i -e "s/font-0 = .*/font-0 = \"$2\"/g" "$polybar_path"/"$1"/config.ini
+}
 
 # rofi ---------------------------------
-sed -i -e 's/STYLE=.*/STYLE="wave"/g' "$rofi_path/bin/mpd" "$rofi_path/bin/network" "$rofi_path/bin/screenshot"
-sed -i -e 's/DIR=.*/DIR="wave"/g' "$rofi_path/bin/launcher" "$rofi_path/bin/powermenu"
-sed -i -e 's/STYLE=.*/STYLE="launcher"/g' "$rofi_path/bin/launcher"
-sed -i -e 's/STYLE=.*/STYLE="powermenu"/g' "$rofi_path/bin/powermenu"
-sed -i -e 's/font:.*/font:				 	"Iosevka 10";/g' "$rofi_path/wave/font.rasi"
+change_rofi() {
+	sed -i -e "s/STYLE=.*/STYLE=\"$1\"/g" "$rofi_path"/bin/mpd "$rofi_path"/bin/network "$rofi_path"/bin/screenshot
+	sed -i -e "s/DIR=.*/DIR=\"$1\"/g" "$rofi_path"/bin/launcher "$rofi_path"/bin/powermenu
+	sed -i -e 's/STYLE=.*/STYLE="launcher"/g' "$rofi_path"/bin/launcher
+	sed -i -e 's/STYLE=.*/STYLE="powermenu"/g' "$rofi_path"/bin/powermenu
+	sed -i -e "s/font:.*/font:				 	\"$2\";/g" "$rofi_path"/"$1"/font.rasi
 
-sed -i -e 's/font:.*/font:				 	"Iosevka 10";/g' "$rofi_path/dialogs/askpass.rasi" "$rofi_path/dialogs/confirm.rasi"
-sed -i -e 's/border:.*/border:					0px;/g' "$rofi_path/dialogs/askpass.rasi" "$rofi_path/dialogs/confirm.rasi"
-cat > $rofi_path/dialogs/colors.rasi << _EOF_
-/* Color-Scheme */
+	sed -i -e "s/font:.*/font:				 	\"$2\";/g" "$rofi_path"/dialogs/askpass.rasi "$rofi_path"/dialogs/confirm.rasi
+	sed -i -e "s/border:.*/border:					$3;/g" "$rofi_path"/dialogs/askpass.rasi "$rofi_path"/dialogs/confirm.rasi
 
-* {
-    BG:    #3D4C5Fff;
-    FG:    #F8F8F2ff;
-    BDR:   #F48FB1ff;
+	sed -i -e "s/icon-theme:.*/icon-theme:         \"$4\";/g" "$rofi_path"/config.rasi
+
+	cat > "$rofi_path"/dialogs/colors.rasi <<- _EOF_
+	/* Color-Scheme */
+
+	* {
+	    BG:    #3D4C5Fff;
+	    FG:    #F8F8F2ff;
+	    BDR:   #F48FB1ff;
+	}
+	_EOF_
 }
-_EOF_
 
-# Network Manager ---------------------------------
-sed -i -e 's#dmenu_command = .*#dmenu_command = rofi -dmenu -theme wave/networkmenu.rasi#g' "$HOME"/.config/networkmanager-dmenu/config.ini
+# network manager ---------------------------------
+change_nm() {
+	sed -i -e "s#dmenu_command = .*#dmenu_command = rofi -dmenu -theme $1/networkmenu.rasi#g" "$HOME"/.config/networkmanager-dmenu/config.ini
+}
 
-# termite ---------------------------------
-sed -i -e 's/font = .*/font = Iosevka Custom 9/g' $termite_path/config
-sed -i '/colors/Q' $termite_path/config
+# terminal ---------------------------------
+change_term() {
+	sed -i "s/family: .*/family: \"$1\"/g" "$terminal_path"/fonts.yml
+	sed -i "s/size: .*/size: $2/g" "$terminal_path"/fonts.yml
 
-cat >> $termite_path/config << _EOF_
-[colors]
+	cat > "$terminal_path"/colors.yml <<- _EOF_
+		## Colors configuration
+		colors:
+		  # Default colors
+		  primary:
+		    background: '0x323f4e'
+		    foreground: '0xf8f8f2'
 
-background = #323F4E
-foreground = #F8F8F2
-cursor = #F8F8F2
+		  # Normal colors
+		  normal:
+		    black:   '0x3d4c5f'
+		    red:     '0xf48fb1'
+		    green:   '0xa1efd3'
+		    yellow:  '0xf1fa8c'
+		    blue:    '0x92b6f4'
+		    magenta: '0xbd99ff'
+		    cyan:    '0x87dfeb'
+		    white:   '0xf8f8f2'
 
-color0 = #3D4C5F
-color1 = #F48FB1
-color2 = #A1EFD3
-color3 = #F1FA8C
-color4 = #92B6F4
-color5 = #BD99FF
-color6 = #87DFEB
-color7 = #F8F8F2
-color8 = #56687E
-color9 = #EE4F84
-color10 = #53E2AE
-color11 = #F1FF52
-color12 = #6498EF
-color13 = #985EFF
-color14 = #24D1E7
-color15 = #E5E5E5
-_EOF_
-
-# alt config
-cp "$termite_path"/config "$termite_path"/config_easy
-sed -i -e 's/font = .*/font = Noto Sans Mono 10/g' $termite_path/config_easy
-
-# reload settings
-killall -USR1 termite
+		  # Bright colors
+		  bright:
+		    black:   '0x56687e'
+		    red:     '0xee4f84'
+		    green:   '0x53e2ae'
+		    yellow:  '0xf1ff52'
+		    blue:    '0x6498ef'
+		    magenta: '0x985eff'
+		    cyan:    '0x24d1e7'
+		    white:   '0xe5e5e5'
+	_EOF_
+}
 
 # geany ---------------------------------
-sed -i -e 's/color_scheme=.*/color_scheme=wave.conf/g' "$geany_path"/geany.conf
-sed -i -e 's/editor_font=.*/editor_font=Iosevka Custom 10/g' "$geany_path"/geany.conf
+change_geany() {
+	sed -i -e "s/color_scheme=.*/color_scheme=$1.conf/g" "$geany_path"/geany.conf
+	sed -i -e "s/editor_font=.*/editor_font=$2/g" "$geany_path"/geany.conf
+}
 
 # gtk theme, icons and fonts ---------------------------------
-xfconf-query -c xsettings -p /Net/ThemeName -s "wave"
-xfconf-query -c xsettings -p /Net/IconThemeName -s "Hybrid"
-xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "Hybrid"
-xfconf-query -c xsettings -p /Gtk/FontName -s "Noto Sans 9"
+change_gtk() {
+	xfconf-query -c xsettings -p /Net/ThemeName -s "$1"
+	xfconf-query -c xsettings -p /Net/IconThemeName -s "$2"
+	xfconf-query -c xsettings -p /Gtk/CursorThemeName -s "$3"
+	xfconf-query -c xsettings -p /Gtk/FontName -s "$4"
+}
 
 # openbox ---------------------------------
 obconfig () {
 	namespace="http://openbox.org/3.4/rc"
 	config="$openbox_path/rc.xml"
-	theme="wave"
-	layout="LIMC"
-	font="Noto Sans"
-	fontsize="9"
+	theme="$1"
+	layout="$2"
+	font="$3"
+	fontsize="$4"
 
 	# Theme
 	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:theme/a:name' -v "$theme" "$config"
@@ -139,69 +152,105 @@ obconfig () {
 	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:right' -v 10 "$config"
 }
 
-obconfig && openbox --reconfigure
-
 # dunst ---------------------------------
-sed -i -e 's/geometry = .*/geometry = "280x50-20-58"/g' $dunst_path/dunstrc
-sed -i -e 's/font = .*/font = Iosevka Custom 9/g' $dunst_path/dunstrc
-sed -i -e 's/frame_width = .*/frame_width = 0/g' $dunst_path/dunstrc
+change_dunst() {
+	sed -i -e "s/geometry = .*/geometry = \"$1\"/g" "$dunst_path"/dunstrc
+	sed -i -e "s/font = .*/font = $2/g" "$dunst_path"/dunstrc
+	sed -i -e "s/frame_width = .*/frame_width = $3/g" "$dunst_path"/dunstrc
 
-cat > $dunst_path/sid << _EOF_
-Dark
-_EOF_
+	cat > "$dunst_path"/sid <<- _EOF_
+		Dark
+	_EOF_
 
-sed -i '/urgency_low/Q' $dunst_path/dunstrc
-cat >> $dunst_path/dunstrc << _EOF_
-[urgency_low]
-timeout = 4
-background = "#3D4C5F"
-foreground = "#F8F8F2"
-frame_color = "#3D4C5F"
+	sed -i '/urgency_low/Q' "$dunst_path"/dunstrc
+	cat >> "$dunst_path"/dunstrc <<- _EOF_
+		[urgency_low]
+		timeout = 2
+		background = "#3D4C5F"
+		foreground = "#F8F8F2"
+		frame_color = "#3D4C5F"
 
-[urgency_normal]
-timeout = 8
-background = "#3D4C5F"
-foreground = "#F8F8F2"
-frame_color = "#3D4C5F"
+		[urgency_normal]
+		timeout = 5
+		background = "#3D4C5F"
+		foreground = "#F8F8F2"
+		frame_color = "#3D4C5F"
 
-[urgency_critical]
-timeout = 0
-background = "#3D4C5F"
-foreground = "#F48FB1"
-frame_color = "#3D4C5F"
-_EOF_
+		[urgency_critical]
+		timeout = 0
+		background = "#3D4C5F"
+		foreground = "#F48FB1"
+		frame_color = "#3D4C5F"
+	_EOF_
 
-pkill dunst && dunst &
+	pkill dunst && dunst &
+}
 
 # Plank ---------------------------------
-cat > $HOME/.cache/plank.conf << _EOF_
-[dock1]
-alignment='center'
-auto-pinning=true
-current-workspace-only=false
-dock-items=['xfce-settings-manager.dockitem', 'exo-file-manager.dockitem', 'termite.dockitem']
-hide-delay=0
-hide-mode='auto'
-icon-size=32
-items-alignment='center'
-lock-items=false
-monitor=''
-offset=80
-pinned-only=false
-position='right'
-pressure-reveal=false
-show-dock-item=false
-theme='Transparent'
-tooltips-enabled=true
-unhide-delay=0
-zoom-enabled=true
-zoom-percent=120
-_EOF_
-
-# reload settings
-cat $HOME/.cache/plank.conf | dconf load /net/launchpad/plank/docks/
+change_dock() {
+	cat > "$HOME"/.cache/plank.conf <<- _EOF_
+		[dock1]
+		alignment='center'
+		auto-pinning=true
+		current-workspace-only=false
+		dock-items=['xfce-settings-manager.dockitem', 'exo-file-manager.dockitem', 'alacritty.dockitem']
+		hide-delay=0
+		hide-mode='auto'
+		icon-size=32
+		items-alignment='center'
+		lock-items=false
+		monitor=''
+		offset=80
+		pinned-only=false
+		position='right'
+		pressure-reveal=false
+		show-dock-item=false
+		theme='Transparent'
+		tooltips-enabled=true
+		unhide-delay=0
+		zoom-enabled=true
+		zoom-percent=120
+	_EOF_
+}
 
 # Other ---------------------------------
-sed -i -e 's/progressbar_color = .*/progressbar_color = "black"/g' $HOME/.ncmpcpp/config
+other_stuff() {
+	sed -i -e "s/progressbar_color = .*/progressbar_color = \"$1\"/g" "$HOME"/.ncmpcpp/config
+}
 
-## EOF #############################################
+# notify ---------------------------------
+notify_user () {
+	local style=`basename $0` 
+	dunstify -u normal --replace=699 -i /usr/share/icons/Archcraft/actions/24/channelmixer.svg "Applying Style : ${style%.*}"
+}
+
+## Execute Script -----------------------
+notify_user
+
+set_wall 'bg_7.jpg'																	# WALLPAPER
+
+change_bar 'wave' 'Iosevka Nerd Font:size=10;3' && "$polybar_path"/launch.sh		# STYLE | FONT
+
+## Change colors in funct (ROFI)
+change_rofi 'wave' 'Iosevka 10' '0px' 'Papirus-Apps'								# STYLE/DIR | FONT | BORDER | ICON
+
+change_nm 'wave'																	# CONFIG FILE DIR
+
+## Change colors in funct (TERMINAL)
+change_term 'Iosevka Custom' '9'													# FONT | SIZE
+
+change_geany 'wave' 'Iosevka Custom 10'												# SCHEME | FONT
+
+change_gtk 'Wave' 'Luv-Folders-Dark' 'Archcraft-Cursor-Dark' 'Noto Sans 9'			# THEME | ICON | CURSOR | FONT
+
+## Change margin in funct (OPENBOX)
+obconfig 'Wave' 'LIMC' 'Noto Sans' '9' && openbox --reconfigure						# THEME | LAYOUT | FONT |SIZE
+
+## Change colors in funct (DUNST)
+change_dunst '280x50-20-58' 'Iosevka Custom 9' '0'									# GEOMETRY | FONT | BORDER
+
+## Paste settings in funct (PLANK)
+change_dock && cat "$HOME"/.cache/plank.conf | dconf load /net/launchpad/plank/docks/
+
+## Other stuff
+other_stuff 'black'

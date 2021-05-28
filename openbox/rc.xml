@@ -19,9 +19,9 @@
     <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
-    <name>forest</name>
+    <name>Adapta-Nokto</name>
     <titleLayout>CLM</titleLayout>
-    <keepBorder>no</keepBorder>
+    <keepBorder>yes</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
       <name>Terminus</name>
@@ -61,7 +61,7 @@
     </font>
   </theme>
   <desktops>
-    <number>10</number>
+    <number>9</number>
     <firstdesk>0</firstdesk>
     <names>
       <name>1</name>
@@ -88,7 +88,7 @@
   </resize>
   <margins>
     <top>0</top>
-    <bottom>1</bottom>
+    <bottom>0</bottom>
     <left>0</left>
     <right>0</right>
   </margins>
@@ -533,12 +533,12 @@
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>termite</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>termite</command>
+        <command>alacritty</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">
@@ -551,7 +551,7 @@
         <command>networkmanager_dmenu</command>
       </action>
     </keybind>
-    <keybind key="A-F1">
+    <keybind key="W-space">
       <action name="Execute">
         <command>~/.config/rofi/bin/launcher</command>
       </action>
@@ -588,22 +588,22 @@
     </keybind>
     <keybind key="C-A-t">
       <action name="Execute">
-        <command>termite -c ~/.config/termite/config_easy</command>
+        <command>alacritty --config-file ~/.config/alacritty/fullscreen.yml</command>
       </action>
     </keybind>
     <keybind key="C-A-v">
       <action name="Execute">
-        <command>termite -e vim</command>
+        <command>alacritty -e vim</command>
       </action>
     </keybind>
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>termite -e ranger</command>
+        <command>alacritty -e ranger</command>
       </action>
     </keybind>
     <keybind key="C-A-h">
       <action name="Execute">
-        <command>termite -e htop</command>
+        <command>alacritty -e htop</command>
       </action>
     </keybind>
     <keybind key="C-A-l">
@@ -629,9 +629,6 @@
     <keybind key="W-S-q">
       <action name="Close"/>
     </keybind>
-    <keybind key="W-q">
-      <action name="Close"/>
-    </keybind>
     <keybind key="A-F5">
       <action name="Iconify"/>
     </keybind>
@@ -652,7 +649,7 @@
       <action name="Move"/>
     </keybind>
     <!-- Launch Openbox Menu -->
-    <keybind key="W-space">
+    <keybind key="A-F1">
       <action name="ShowMenu">
         <menu>root-menu</menu>
       </action>
@@ -1034,6 +1031,9 @@
         <x>center</x>
         <y>center</y>
       </position>
+    </application>
+    <application class="*">
+      <decor>no</decor>
     </application>
     <application title="Getting Started">
       <decor>yes</decor>

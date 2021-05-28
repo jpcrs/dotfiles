@@ -147,9 +147,9 @@ obconfig () {
 
 	# Margins
 	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:top' -v 0 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:bottom' -v 10 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:left' -v 10 "$config"
-	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:right' -v 10 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:bottom' -v 0 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:left' -v 0 "$config"
+	xmlstarlet ed -L -N a="$namespace" -u '/a:openbox_config/a:margins/a:right' -v 0 "$config"
 }
 
 # dunst ---------------------------------
@@ -229,25 +229,25 @@ notify_user
 
 set_wall 'bg_1.jpg'																		# WALLPAPER
 
-change_bar 'forest' 'Iosevka Nerd Font:size=10;3' && "$polybar_path"/launch.sh			# STYLE | FONT
+change_bar 'forest-bitmap' 'Terminus:Medium:size=9;2' && "$polybar_path"/launch.sh		# STYLE | FONT
 
 ## Change colors in funct (ROFI)
-change_rofi 'forest' 'Iosevka 10' '0px' 'Papirus-Apps'									# STYLE/DIR | FONT | BORDER | ICON
+change_rofi 'forest-bitmap' 'Terminus Medium 9' '0px' 'Papirus-Apps'					# STYLE/DIR | FONT | BORDER | ICON
 
-change_nm 'forest'																		# CONFIG FILE DIR
+change_nm 'forest-bitmap'																# CONFIG FILE DIR
 
 ## Change colors in funct (TERMINAL)
-change_term 'Iosevka Custom' '9'														# FONT | SIZE
+change_term 'Terminus' '9'																# FONT | SIZE
 
-change_geany 'forest' 'Iosevka Custom 10'												# SCHEME | FONT
+change_geany 'forest' 'Terminus Medium 9'												# SCHEME | FONT
 
-change_gtk 'Adapta-Nokto' 'Archcraft-Dark' 'Arc-Cursor-Cyan' 'Noto Sans 9'				# THEME | ICON | CURSOR | FONT
+change_gtk 'Adapta-Nokto-Eta' 'Archcraft-Dark' 'Archcraft-Cursor-Dark' 'Terminus Medium 9'	# THEME | ICON | CURSOR | FONT
 
-## Change margin in funct (OPENBOX)
-obconfig 'Adapta-Nokto' 'CLM' 'Noto Sans' '9' && openbox --reconfigure					# THEME | LAYOUT | FONT |SIZE
+# Change margin in funct (OPENBOX)
+obconfig 'Adapta-Nokto' 'CLM' 'Terminus' '9' && openbox --reconfigure					# THEME | LAYOUT | FONT |SIZE
 
 ## Change colors in funct (DUNST)
-change_dunst '250x50-10+40' 'Iosevka Custom 9' '0'										# GEOMETRY | FONT | BORDER
+change_dunst '250x50-10+38' 'Terminus Medium 9' '0'										# GEOMETRY | FONT | BORDER
 
 ## Paste settings in funct (PLANK)
 change_dock && cat "$HOME"/.cache/plank.conf | dconf load /net/launchpad/plank/docks/

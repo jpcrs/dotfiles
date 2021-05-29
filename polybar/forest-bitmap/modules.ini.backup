@@ -72,7 +72,7 @@ label-volume = %percentage%%
 format-muted-prefix = 
 format-muted-prefix-foreground = ${color.PINK}
 label-muted = " Muted"
-label-muted-foreground = ${color.FOREGROUND}
+label-muted-foreground = ${color.BGA}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
@@ -199,7 +199,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-foreground = ${color.RED}
+ramp-capacity-foreground = ${color.AMBER}
 
 ; Only applies if <bar-capacity> is used
 ;bar-capacity-width = 10
@@ -232,17 +232,36 @@ animation-charging-framerate = 750
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/bspwm]
-type = internal/bspwm
+;;[module/bspwm]
+;;type = internal/bspwm
 
-pin-workspaces = true
-inline-mode = false
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+;;pin-workspaces = true
 
-enable-click = true
-enable-scroll = true
-reverse-scroll = true
+; Output mode flags after focused state label
+; Default: false
+;;inline-mode = false
 
-fuzzy-match = true
+; Create click handler used to focus workspace
+; Default: true
+;;enable-click = false
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+;;enable-scroll = false
+
+; Set the scroll cycle direction 
+; Default: true
+;;reverse-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+;;fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
 ; Note that the label needs to correspond with the bspwm workspace name
@@ -253,9 +272,17 @@ fuzzy-match = true
 ;;ws-icon-4 = web;♞
 ;;ws-icon-default = ♟
 
-format = <label-state>
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+;;format = <label-state> <label-mode>
 
-label-monitor = %name%
+; Available tokens:
+;   %name%
+; Default: %name%
+;;label-monitor = %name%
 
 ; If any values for label-dimmed-N are defined, the workspace/mode
 ; colors will get overridden with those values if the monitor is out of focus
@@ -264,36 +291,67 @@ label-monitor = %name%
 ;   label-dimmed-occupied
 ;   label-dimmed-urgent
 ;   label-dimmed-empty
-;label-dimmed-foreground = ${color.FOREGROUND}
-;label-dimmed-underline = ${color.YELLOW}
-;label-dimmed-focused-background = ${color.BACKGROUND}
+;;label-dimmed-foreground = #555
+;;label-dimmed-underline = ${bar/top.background}
+;;label-dimmed-focused-background = #f00
 
-label-focused = %index%:%name%
-label-focused-foreground = ${color.BACKGROUND}
-label-focused-background = ${color.BLUE}
-;label-focused-underline = ${color.RED}
-label-focused-padding = 1
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;;label-focused = %icon%
+;;label-focused-foreground = #ffffff
+;;label-focused-background = #3f3f3f
+;;label-focused-underline = #fba922
 
-label-occupied = %index%:%name%
-label-occupied-foreground = ${color.BACKGROUND}
-label-occupied-background = ${color.GREEN}
-;label-occupied-underline = ${color.GREEN}
-label-occupied-padding = 1
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;;label-occupied = %icon%
+;;label-occupied-underline = #555555
 
-label-urgent = %index%:%name%
-label-urgent-foreground = ${color.BACKGROUND}
-label-urgent-background = ${color.RED}
-;label-urgent-underline = ${color.RED}
-label-urgent-padding = 1
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;;label-urgent = %icon%
+;;label-urgent-foreground = #000000
+;;label-urgent-background = #bd2c40
+;;label-urgent-underline = #9b0a20
 
-label-empty = %index%
-label-empty-foreground = ${color.FOREGROUND}
-label-empty-padding = 1
+; Available tokens:
+;   %name%
+;   %icon%
+;   %index%
+; Default: %icon%  %name%
+;;label-empty = %icon%
+;;label-empty-foreground = #55
+
+; The following labels will be used to indicate the layout/mode
+; for the focused workspace. Requires <label-mode>
+;
+; Available tokens:
+;   None
+;label-monocle = 
+;label-tiled = 
+;label-fullscreen = 
+;label-floating = 
+;label-pseudotiled = P
+;label-locked = 
+;label-locked-foreground = #bd2c40
+;label-sticky = 
+;label-sticky-foreground = #fba922
+;label-private = 
+;label-private-foreground = #bd2c40
 
 ; Separator in between workspaces
-label-separator = " "
-label-separator-padding = 0
-;label-separator-foreground = ${color.YELLOW}
+;;label-separator = |
+;;label-separator-padding = 2
+;;label-separator-foreground = #ffb52a
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -359,7 +417,7 @@ time = at %k:%M:%S
 ;   <label> (default)
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${color.CYAN}
+format-prefix-foreground = ${color.RED}
 
 ; Available tokens:
 ;   %date%
@@ -396,13 +454,13 @@ fixed-values = true
 ;   <ramp-capacity>
 format-mounted = <label-mounted>
 format-mounted-prefix = 
-format-mounted-prefix-foreground = ${color.YELLOW}
+format-mounted-prefix-foreground = ${color.ORANGE}
 
 ; Available tags:
 ;   <label-unmounted> (default)
 format-unmounted = <label-unmounted>
 format-unmounted-prefix = 
-format-unmounted-prefix-foreground = ${color.YELLOW}
+format-unmounted-prefix-foreground = ${color.ORANGE}
 
 ; Available tokens:
 ;   %mountpoint%
@@ -603,7 +661,7 @@ format-prefix-foreground = ${color.BLUE}
 ;   %gb_swap_free%
 ;   %gb_swap_used%
 
-label = " %gb_used%"
+label = " %mb_used%"
 
 ; Only applies if <bar-used> is used
 ;;bar-used-indicator =
@@ -771,7 +829,7 @@ unknown-as-up = true
 ; Available tags:
 ;   <label-connected> (default)
 ;   <ramp-signal>
-format-connected = <label-connected>
+format-connected = <ramp-signal> <label-connected>
 
 ; Available tags:
 ;   <label-disconnected> (default)
@@ -795,7 +853,7 @@ format-disconnected-prefix-foreground = ${color.RED}
 ;   %downspeed% [wireless+wired]
 ;   %linkspeed% [wired]
 ; Default: %ifname% %local_ip%
-label-connected = "%{A1:networkmanager_dmenu &:} %upspeed%%{A}  %downspeed%%{A}"
+label-connected = "%{A1:networkmanager_dmenu &:}%essid%  %downspeed%%{A}"
 ;;label-connected-foreground = #eefafafa
 
 ; Available tokens:
@@ -871,7 +929,7 @@ format-volume = <ramp-volume> <label-volume>
 format-muted-prefix = 
 format-muted-prefix-foreground = ${color.PINK}
 label-muted = " Muted"
-label-muted-foreground = ${color.FOREGROUND}
+label-muted-foreground = ${color.BGA}
 
 ; Only applies if <ramp-volume> is used
 ramp-volume-0 = 
@@ -906,7 +964,7 @@ hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon2/temp2_input
 
 ; Threshold temperature to display warning label (in degrees celsius)
 ; Default: 80
-warn-temperature = 70
+warn-temperature = 60
 
 ; Whether or not to show units next to the temperature tokens (°C, °F)
 ; Default: true
@@ -943,7 +1001,7 @@ ramp-1 = 
 ramp-2 = 
 ramp-3 = 
 ramp-4 = 
-ramp-foreground = ${color.RED}
+ramp-foreground = ${color.AMBER}
 ;;ramp-foreground = #55
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -978,7 +1036,7 @@ label-layout = %layout%
 ; Default: %name%
 label-indicator-on = %name%
 ;;label-indicator-padding = 2
-label-indicator-on-foreground = ${color.BLUE}
+label-indicator-on-foreground = ${color.AC}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -990,7 +1048,7 @@ type = internal/xwindow
 format = <label>
 format-prefix = " "
 format-prefix-foreground = ${color.BLUE}
-;;format-background = ${color.BACKGROUND}
+;;format-background = ${color.BG}
 ;;format-foreground = ${color.AC}
 ;;format-padding = 4
 
@@ -1031,11 +1089,11 @@ enable-scroll = true
 ; NOTE: The desktop name needs to match the name configured by the WM
 ; You can get a list of the defined desktops using:
 ; $ xprop -root _NET_DESKTOP_NAMES
-; icon-0 = 1;
-; icon-1 = 2;
-; icon-2 = 3;
-; icon-3 = 4;
-; icon-4 = 5;
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
 icon-default = 
 
 ; Available tags:
@@ -1055,10 +1113,9 @@ label-monitor = %name%
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-; label-active = " "
-label-active = "%index%"
+label-active = " "
 label-active-foreground = ${color.PINK}
-label-active-background = ${color.BACKGROUND}
+label-active-background = ${color.BG}
 ;;label-active-underline = ${color.AC}
 ;;label-active-overline = ${color.AC}
 
@@ -1067,10 +1124,9 @@ label-active-background = ${color.BACKGROUND}
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-; label-occupied = " "
-label-occupied = "%index%"
+label-occupied = " "
 label-occupied-foreground = ${color.CYAN}
-label-occupied-background = ${color.BACKGROUND}
+label-occupied-background = ${color.BG}
 ;;label-occupied-underline = ${color.AC}
 ;;label-occupied-overline = ${color.AC}
 
@@ -1079,9 +1135,9 @@ label-occupied-background = ${color.BACKGROUND}
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-urgent = "%index%"
+label-urgent = "%icon% "
 label-urgent-foreground = ${color.GREEN}
-label-urgent-background = ${color.BACKGROUND}
+label-urgent-background = ${color.BG}
 ;;label-urgent-underline = ${color.AC}
 ;;label-urgent-overline = ${color.AC}
 
@@ -1090,37 +1146,16 @@ label-urgent-background = ${color.BACKGROUND}
 ;   %icon%
 ;   %index%
 ; Default: %icon%  %name%
-label-empty = "%index%"
-; label-empty-foreground = ${color.FOREGROUND}
-; label-empty-background = ${color.BACKGROUND}
-label-empty-foreground = ${color.BGA}
-label-empty-background = ${color.BACKGROUND}
+label-empty = "%icon% "
+label-empty-foreground = ${color.FG}
+label-empty-background = ${color.BG}
 ;;label-empty-underline = ${color.AC}
 ;;label-empty-overline = ${color.AC}
 
-label-active-padding = 1
-label-urgent-padding = 1
-label-occupied-padding = 1
-label-empty-padding = 1
-
-[module/mod]
-type = internal/bspwm
-
-format = <label-mode>
-format-background = ${color.YELLOW}
-format-foreground = ${color.BACKGROUND}
-format-padding = 1
-
-label-monocle = "Monocle"
-label-tiled = "Tiled"
-
-label-floating = ", Float"
-label-pseudotiled = ", Pseudo"
-label-fullscreen = ", Full"
-
-label-locked = " Locked"
-label-sticky = " Sticky"
-label-private = " Private"
+label-active-padding = 0
+label-urgent-padding = 0
+label-occupied-padding = 0
+label-empty-padding = 0
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______

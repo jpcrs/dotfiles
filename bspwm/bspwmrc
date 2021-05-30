@@ -21,18 +21,17 @@ getcolors
 
 ## Configurations -------------------------------#
 # bspc monitor -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
-
-m=$(bspc query -M | wc -l)
-if [ "$m" = 1 ]
-then
-    bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9 0
-elif [ "$m" = 2 ]
-then
-    bspc monitor HDMI1 -d 1 2 3 4 5
-    bspc monitor eDP1 -d 6 7 8 9 0
-else
-    bspc monitor eDP1 -d ""
-fi
+bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9 0
+# m=$(xrandr -q | grep -w connected | grep -w primary | grep -o '^\S*')
+# if [ ! -z "$m" ]
+# then
+# 	secondary=$(xrandr -q | grep -w connected | grep -v primary | grep -o '^\S*')
+#     bspc monitor $m -d 1 2 3 4 5
+# 	bspc monitor $secondary -d 6 7 8 9 0
+# else
+#     current=$(xrandr -q | grep -w connected | grep -o '^\S*')
+#     bspc monitor $current -d 1 2 3 4 5 6 7 8 9 0
+# fi
 
 bspc config border_width 1
 bspc config window_gap 10
@@ -43,7 +42,7 @@ bspc config normal_border_color "$BACKGROUND"
 bspc config active_border_color "$MAGENTA"
 bspc config presel_feedback_color "$GREEN"
 
-bspc config borderless_monocle true
+bspc config borderless_monocle false
 bspc config gapless_monocle true
 bspc config paddingless_monocle true
 bspc config single_monocle false

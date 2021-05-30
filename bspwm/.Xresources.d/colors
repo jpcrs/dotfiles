@@ -1,0 +1,42 @@
+! -----------------------------------------------------------------------------
+! File: gruvbox-dark.xresources
+! Description: Retro groove colorscheme generalized
+! Author: morhetz <morhetz@gmail.com>
+! Source: https://github.com/morhetz/gruvbox-generalized
+! Last Modified: 6 Sep 2014
+! -----------------------------------------------------------------------------
+
+*background: #282828
+*foreground: #dfbf8e
+
+! Black + DarkGrey
+*color0:  #665c54
+*color8:  #928374
+
+! DarkRed + Red
+*color1:  #ea6962
+*color9:  #ea6962
+
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #98971a
+
+! DarkYellow + Yellow
+*color3:  #e78a4e
+*color11: #e3a84e
+
+! DarkBlue + Blue
+*color4:  #7daea3
+*color12: #7daea3
+
+! DarkMagenta + Magenta
+*color5:  #d3869b
+*color13: #d3869b
+
+! DarkCyan + Cyan
+*color6:  #89b482
+*color14: #89b482
+
+! LightGrey + White
+*color7:  #dfbf8e
+*color15: #dfbf8e

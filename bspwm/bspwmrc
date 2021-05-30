@@ -110,6 +110,7 @@ xsettingsd &
 
 # Lauch keybindings daemon
 sxhkd &
+sxhkd -c ~/.config/sxhkd/sxhkdrc_bspc &
 
 # Enable Super Keys For Menu
 ksuperkey -e 'Super_L=Alt_L|F1' &
@@ -135,3 +136,6 @@ bspfloat &
 
 ## Adjust backlight (AMD)
 #blight -d amdgpu_bl0 set 15%
+
+# Start BSPI
+bspi_listen --config ~/.config/bspwm/bspi/bspi.ini &

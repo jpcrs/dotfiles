@@ -27,9 +27,9 @@ def parse_workspace_name(name):
 # Given a NameParts object, returns the formatted name
 # by concatenating them together.
 def construct_workspace_name(parts):
-    new_name = str(parts.num)+' '+str(parts.num)
+    new_name = str(parts.num)+':'
     if parts.shortname or parts.icons:
-        new_name += ': '
+        new_name += ' '
 
         if parts.shortname:
             new_name += parts.shortname

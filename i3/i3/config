@@ -1,0 +1,274 @@
+# ArchLabs i3 config
+
+# Load colors from Xresources
+set_from_resource $bg          background  #000000
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+
+# border & title
+for_window [class="^.*"] border pixel 1, title_format "%class >> %title"
+#                       BORDER      BACKGROUND  TEXT        INDICATOR   CHILD_BORDER
+client.focused          $cyan       $bg         $darkwhite  $cyan       $cyan
+client.unfocused        #3d3d3d     #3d3d3d     $darkwhite  #3d3d3d     #3d3d3d
+client.focused_inactive #3d3d3d     #3d3d3d     $darkwhite  #3d3d3d     #3d3d3d
+client.urgent           $red        $red        $darkwhite  $red        $red
+client.background       #3d3d3d     #3d3d3d     $darkwhite  #3d3d3d     #3d3d3d
+
+# gaps
+gaps inner 8
+gaps outer 0
+
+# font
+# font Terminus (TTF):Medium 9
+
+# mod key used for most binds
+# Mod1 = Alt
+# Mod4 = Super
+set $Mod Mod4
+
+# direction keys
+set $up k
+set $down j
+set $left h
+set $right l
+
+###############     Autostart      ##################
+
+# run with reload
+exec_always --no-startup-id xrdb -load ~/.Xresources
+
+# run once
+exec --no-startup-id xfsettingsd
+
+# needed for super to launch rofi through ksuperkey, see ~/.xprofile
+bindsym Mod1+F1 exec --no-startup-id rofi_run -r
+
+#############         Bindings           ##################
+
+# kill focused window
+bindsym $Mod+Shift+q kill
+bindsym Mod1+q kill
+bindsym Mod1+F4 kill
+
+# Rofi
+bindsym $Mod+space exec --no-startup-id rofi_run -d
+bindsym $Mod+c exec --no-startup-id rofi_run -q
+bindsym $Mod+b exec --no-startup-id rofi_run -c
+bindsym $Mod+g exec --no-startup-id rofi_run -b
+bindcode $Mod+23 exec --no-startup-id rofi_run -w
+
+# core
+bindsym $Mod+Shift+Return          exec --no-startup-id exo-open --launch WebBrowser
+bindsym $Mod+Return     exec --no-startup-id exo-open --launch TerminalEmulator
+
+# logout script
+bindsym $Mod+x exec --no-startup-id rofi_run -l
+
+# Screenshot
+bindsym $Mod+Shift+S exec --no-startup-id flameshot gui
+
+# audio
+bindsym XF86AudioPlay        exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext        exec --no-startup-id playerctl next
+bindsym XF86AudioPrev        exec --no-startup-id playerctl previous
+bindsym XF86AudioStop        exec --no-startup-id playerctl stop
+bindsym XF86AudioMute        exec --no-startup-id pamixer -t
+bindsym XF86AudioRaiseVolume exec --no-startup-id pamixer -i 2
+bindsym XF86AudioLowerVolume exec --no-startup-id pamixer -d 2
+
+# backlight
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+
+bindsym $Mod+s mode "$mode_resize"
+mode "$mode_resize" {
+    bindsym $left resize grow width 10 px or 1 ppt
+    bindsym $down resize shrink height 10 px or 1 ppt
+    bindsym $up resize grow height 10 px or 1 ppt
+    bindsym $right resize shrink width 10 px or 1 ppt
+
+    bindsym Shift+$left resize grow width 20 px or 5 ppt
+    bindsym Shift+$down resize shrink height 20 px or 5 ppt
+    bindsym Shift+$up resize grow height 20 px or 5 ppt
+    bindsym Shift+$right resize shrink width 20 px or 5 ppt
+
+    bindsym 1 mode "default", resize set 1000 600, move position center
+    bindsym 2 mode "default", resize set 1500 600, move position center
+    bindsym 3 mode "default", resize set 1200 1000, move position center
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+###########          Workspace Bindings          ###############
+
+# switch to workspace
+bindsym $Mod+1 workspace number 1:
+bindsym $Mod+2 workspace number 2:
+bindsym $Mod+3 workspace number 3:
+bindsym $Mod+4 workspace number 4:
+bindsym $Mod+5 workspace number 5:
+bindsym $Mod+6 workspace number 6:
+bindsym $Mod+7 workspace number 7:
+bindsym $Mod+8 workspace number 8:
+bindsym $Mod+9 workspace number 9:
+bindsym $Mod+0 workspace number 10:
+bindsym $Mod+Ctrl+1 workspace number 11:
+bindsym $Mod+Ctrl+2 workspace number 12:
+bindsym $Mod+Ctrl+3 workspace number 13:
+bindsym $Mod+Ctrl+4 workspace number 14:
+bindsym $Mod+Ctrl+5 workspace number 15:
+bindsym $Mod+Ctrl+6 workspace number 16:
+bindsym $Mod+Ctrl+7 workspace number 17:
+bindsym $Mod+Ctrl+8 workspace number 18:
+bindsym $Mod+Ctrl+9 workspace number 19:
+bindsym $Mod+Ctrl+0 workspace number 20:
+
+# switch to next or previous workspace
+# bindcode $Mod+23 workspace next
+# bindcode $Mod+Shift+23 workspace prev
+
+bindcode Mod1+23 exec --no-startup-id python3 ~/.config/i3/i3scripts/move_floating.py
+
+# move focused container to workspace
+bindsym $Mod+Shift+1 move container to workspace number 1:
+bindsym $Mod+Shift+2 move container to workspace number 2:
+bindsym $Mod+Shift+3 move container to workspace number 3:
+bindsym $Mod+Shift+4 move container to workspace number 4:
+bindsym $Mod+Shift+5 move container to workspace number 5:
+bindsym $Mod+Shift+6 move container to workspace number 6:
+bindsym $Mod+Shift+7 move container to workspace number 7:
+bindsym $Mod+Shift+8 move container to workspace number 8:
+bindsym $Mod+Shift+9 move container to workspace number 9:
+bindsym $Mod+Shift+0 move container to workspace number 10:
+bindsym $Mod+Shift+Ctrl+1 move container to workspace number 11:
+bindsym $Mod+Shift+Ctrl+2 move container to workspace number 12:
+bindsym $Mod+Shift+Ctrl+3 move container to workspace number 13:
+bindsym $Mod+Shift+Ctrl+4 move container to workspace number 14:
+bindsym $Mod+Shift+Ctrl+5 move container to workspace number 15:
+bindsym $Mod+Shift+Ctrl+6 move container to workspace number 16:
+bindsym $Mod+Shift+Ctrl+7 move container to workspace number 17:
+bindsym $Mod+Shift+Ctrl+8 move container to workspace number 18:
+bindsym $Mod+Shift+Ctrl+9 move container to workspace number 19:
+bindsym $Mod+Shift+Ctrl+0 move container to workspace number 20:
+
+##############     Reload configs           ################
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $Mod+Shift+r restart
+
+# reload the configuration file
+bindsym $Mod+Shift+c reload
+
+############      Container/Window control  ############
+
+# Scratchpad, Floating
+bindsym $Mod+Mod1+f floating toggle
+floating_modifier  Mod1
+
+bindsym $Mod+w fullscreen global
+
+bindsym $Mod+Shift+z move scratchpad
+bindsym $Mod+z scratchpad show
+
+# change focus
+bindsym $Mod+$left  focus left
+bindsym $Mod+$down  focus down
+bindsym $Mod+$up    focus up
+bindsym $Mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Left  focus left
+bindsym $Mod+Down  focus down
+bindsym $Mod+Up    focus up
+bindsym $Mod+Right focus right
+
+# move focused window
+bindsym $Mod+Shift+$left  move left  20px
+bindsym $Mod+Shift+$down  move down  20px
+bindsym $Mod+Shift+$up    move up    20px
+bindsym $Mod+Shift+$right move right 20px
+
+# alternatively, you can use the cursor keys:
+bindsym $Mod+Shift+Up    move up    20px
+bindsym $Mod+Shift+Down  move down  20px
+bindsym $Mod+Shift+Left  move left  20px
+bindsym $Mod+Shift+Right move right 20px
+
+# Size
+bindsym $Mod+Mod1+$up    resize shrink height 10 px or 1 ppt
+bindsym $Mod+Mod1+$down  resize grow   height 10 px or 1 ppt
+bindsym $Mod+Mod1+$left  resize shrink width  10 px or 1 ppt
+bindsym $Mod+Mod1+$right resize grow   width  10 px or 1 ppt
+
+# layout toggle
+bindsym $Mod+t layout toggle tabbed splith splitv
+bindsym $Mod+f fullscreen toggle
+
+# switch to workspace with urgent window
+for_window [urgent="latest"] focus
+focus_on_window_activation   focus
+
+# container layout
+bindsym $Mod+o split h
+bindsym $Mod+i split v
+bindsym $Mod+Shift+o layout toggle split
+
+default_orientation horizontal
+
+###############      Border & Gaps     ###############
+
+new_window normal
+new_float  normal
+
+hide_edge_borders both
+
+bindsym $Mod+shift+b border toggle
+
+# changing border style
+bindsym $Mod+n border normal
+bindsym $Mod+y border 1pixel
+bindsym $Mod+u border none
+
+# change gaps
+bindsym $Mod+plus                gaps inner current plus  5
+bindsym $Mod+minus               gaps inner current minus 5
+bindsym $Mod+Shift+plus          gaps outer current plus  5
+bindsym $Mod+Shift+minus         gaps outer current minus 5
+bindsym $Mod+Control+plus        gaps inner all     plus  5
+bindsym $Mod+Control+minus       gaps inner all     minus 5
+bindsym $Mod+Control+Shift+plus  gaps outer all     plus  5
+bindsym $Mod+Control+Shift+minus gaps outer all     minus 5
+
+############    application settings   ############
+
+# assign applications to specific workspace
+
+# focus, floating, & sticky
+for_window [class="(?i)(?:qt5ct|pinentry)"]          floating enable, focus
+for_window [title="(?i)(?:copying|deleting|moving)"] floating enable
+for_window [window_role="(?i)(?:pop-up|setup)"]      floating enable
+
+popup_during_fullscreen smart
+
+############ Custom Startup ##############
+
+exec_always --no-startup-id killall -q polybar
+
+# Wait until the processes have been shut down
+exec_always --no-startup-id while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
+exec_always --no-startup-id i3wsr --config ~/.config/i3/i3wsr.toml
+exec_always --no-startup-id polybar main -c ~/.config/polybar/gruvbox/config.ini

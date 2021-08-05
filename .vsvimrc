@@ -9,55 +9,6 @@ set scrolloff=15
 set history=100000 
 set clipboard=unnamed 
  
-nnoremap gd :vsc Edit.GoToDefinition<CR> 
-nnoremap gi :vsc Edit.GotoImplementation<CR>
-nnoremap gr :vsc Edit.FindAllReferences<CR>
-nnoremap gp :vsc Edit.PeekDefinition<CR>
-
-" project search 
-nnoremap <leader>se :vsc Edit.GoToAll<CR> 
- 
-" Select Next Occurrence
-inoremap <C-d> <Esc>:vsc Edit.InsertNextMatchingCaret<CR>
-vnoremap <C-d> <Esc>:vsc Edit.InsertNextMatchingCaret<CR>
-nnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
-vnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
-" Navigation
-nnoremap <C-o> :vsc View.NavigateBackward<CR>
-nnoremap <C-i> :vsc View.NavigateForward<CR>
-
-" Tab navigation
-nnoremap tl gt
-nnoremap th gT
-
-" built in search looks better 
-nnoremap / :vsc Edit.Find<CR> 
- 
-" but preserve ideavim search 
-nnoremap <leader>/ / 
-nnoremap <leader>bb :vsc Debug.ToggleBreakpoint<CR> 
-nnoremap <leader>bv :vsc Debug.Breakpoints<CR> 
-
-" Refactor
-nnoremap <leader>re :vsc Refactor.Rename<cr>
-
-" Terminal
-nnoremap <leader>tl Vy<CR>:vsc View.Terminal<CR> 
-
-" NERDTree
-nnoremap <leader>ff :NERDTreeFind<CR>
-nnoremap <leader>fe :vsc View.SolutionExplorer<CR>
-
-" Clear search
-nnoremap <leader>cs :nohlsearch<CR>
- 
-" Save file
-nnoremap <leader>fs :w<CR>
- 
-" Quit normal mode 
-nnoremap <leader>q  :q<CR>
-nnoremap <leader>Q  :vsc Window.CloseAllDocuments<CR>
- 
 " Quit insert mode 
 inoremap jj <Esc>
 inoremap jk <Esc>
@@ -67,9 +18,11 @@ vnoremap v <Esc>
  
 " Move to the start of line 
 nnoremap H ^
+vnoremap H ^
  
 " Move to the end of line 
 nnoremap L $
+vnoremap L $
  
 " Redo
 nnoremap U <C-r>
@@ -104,6 +57,79 @@ noremap c "_c
 noremap C "_C
 nnoremap x "_x
 nnoremap X "_x
+
+" Tab navigation
+nnoremap tl gt
+nnoremap th gT
+
+" Save file
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>fS :vsc File.SaveAll<CR>
+
+" ------------- Editor Specific -------------
+
+" Jump around
+nnoremap gd :vsc Edit.GoToDefinition<CR> 
+nnoremap gi :vsc Edit.GotoImplementation<CR>
+nnoremap gr :vsc Edit.FindAllReferences<CR>
+nnoremap gp :vsc Edit.PeekDefinition<CR>
+nnoremap gn :vsc Edit.GoToNextLocation<CR>
+nnoremap gb :vsc Edit.GoToPrevLocation<CR>
+vnoremap gn :vsc Edit.GoToNextLocation<CR>
+vnoremap gb :vsc Edit.GoToPrevLocation<CR>
+
+" project search 
+nnoremap <leader>se :vsc Edit.GoToAll<CR> 
+ 
+" Select Next Occurrence
+inoremap <C-d> <Esc>:vsc Edit.InsertNextMatchingCaret<CR>
+nnoremap <C-d> :vsc Edit.InsertNextMatchingCaret<CR>
+nnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
+
+" Navigation
+nnoremap <C-o> :vsc View.NavigateBackward<CR>
+nnoremap <C-i> :vsc View.NavigateForward<CR>
+nnoremap <C-h> :vsc View.NavigateBackward<CR>
+nnoremap <C-l> :vsc View.NavigateForward<CR>
+
+" use built-in search
+nnoremap / :vsc Edit.Find<CR> 
+nnoremap <leader>/ / 
+
+" debugging
+nnoremap <leader>bb :vsc Debug.ToggleBreakpoint<CR> 
+nnoremap <leader>bv :vsc Debug.Breakpoints<CR> 
+nnoremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR> 
+nnoremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR> 
+nnoremap <leader>ba :vsc Debug.EnableAllBreakpoints<CR> 
+nnoremap <leader>be :vsc Debug.EnableBreakpoint<CR> 
+nnoremap <leader>bs :vsc Debug.Attach.SnapshotDebugger<CR> 
+
+" tests
+nnoremap <leader>tv :vsc TestExplorer.ShowTestExplorer<CR> 
+nnoremap <leader>ta :vsc TestExplorer.RunAllTests<CR> 
+nnoremap <leader>tc :vsc TestExplorer.RunAllTestsInContext<CR> 
+nnoremap <leader>tda :vsc TestExplorer.DebugAllTests<CR> 
+nnoremap <leader>tdc :vsc TestExplorer.DebugAllTestsInContext<CR> 
+
+" Refactor
+nnoremap <leader>re :vsc Refactor.Rename<cr>
+
+" Terminal
+nnoremap <leader>vt Vy<CR>:vsc View.Terminal<CR> 
+
+" NERDTree
+nnoremap <leader>ff :NERDTreeFind<CR>
+nnoremap <leader>fe :vsc View.SolutionExplorer<CR>
+
+" Clear search
+nnoremap <leader>cs :nohlsearch<CR>
+ 
+" Manage tabs
+nnoremap <leader>qq :q<CR>
+nnoremap <leader>qb  :vsc File.CloseAllButThis<CR>
+nnoremap <leader>Q  :vsc Window.CloseAllDocuments<CR>
+nnoremap <leader>kt  :vsc Window.KeepTabOpen<CR>
 
 " Visual Studio specific
 nnoremap <leader>ss :vsc Window.QuickLaunch<CR> 

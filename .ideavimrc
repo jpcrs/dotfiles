@@ -13,58 +13,6 @@ set scrolloff=15
 set history=100000 
 set clipboard=unnamed 
  
-nnoremap <space>? :action GotoAction<CR> 
-nnoremap gd :action GotoDeclaration<CR> 
-nnoremap gi :action GotoImplementation<CR> 
-nnoremap gr :action FindUsages<CR>
-
-" project search 
-nnoremap <space>se :action SearchEverywhere<CR> 
- 
-" Select Next Occurrence
-inoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
-vnoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
-nnoremap <space>d :action SelectNextOccurrence<CR>
-vnoremap <space>d :action SelectNextOccurrence<CR>
-
-" Navigation
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-i> :action Forward<CR>
-
-" Tab navigation
-nnoremap tl gt
-nnoremap th gT
-
-" Built in search
-nnoremap / :action Find<CR> 
- 
-" But preserve ideavim search 
-nnoremap <space>/ / 
-
-" Breakpoints
-nnoremap <space>bb :action ToggleLineBreakpoint<CR> 
-nnoremap <space>bv :action ViewBreakpoints<CR> 
-
-" Refactor
-nnoremap <space>re :action RenameElement<CR> 
-
-" Terminal
-nnoremap <space>tl Vy<CR>:action ActivateTerminalToolWindow<CR> 
-
-" NERDTree
-nnoremap <space>ff :NERDTreeFind<CR>
-nnoremap <space>fe :NERDTree<CR>
-
-" Clear search
-nnoremap <space>cs :nohlsearch<CR>
- 
-" Save file
-nnoremap <space>fs :w<CR>
- 
-" Quit normal mode 
-nnoremap <space>q  :q<CR>
-nnoremap <space>Q  CloseAllEditors<CR>
- 
 " Quit insert mode 
 inoremap jj <Esc>
 inoremap jk <Esc>
@@ -74,9 +22,11 @@ vnoremap v <Esc>
  
 " Move to the start of line 
 nnoremap H ^
+vnoremap H ^
  
 " Move to the end of line 
 nnoremap L $
+vnoremap L $
  
 " Redo
 nnoremap U <C-r>
@@ -91,29 +41,114 @@ vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
 " Window operation 
-nnoremap <space>ww <C-W>w
-nnoremap <space>wd <C-W>c 
-nnoremap <space>wj <C-W>j 
-nnoremap <space>wk <C-W>k 
-nnoremap <space>wh <C-W>h 
-nnoremap <space>wl <C-W>l 
-nnoremap <space>ws <C-W>s 
-nnoremap <space>w- <C-W>s 
-nnoremap <space>wv <C-W>v 
-nnoremap <space>w\| <C-W>v
+nnoremap <leader>ww <C-W>w
+nnoremap <leader>wd <C-W>c 
+nnoremap <leader>wj <C-W>j 
+nnoremap <leader>wk <C-W>k 
+nnoremap <leader>wh <C-W>h 
+nnoremap <leader>wl <C-W>l 
+nnoremap <leader>ws <C-W>s 
+nnoremap <leader>w- <C-W>s 
+nnoremap <leader>wv <C-W>v 
+nnoremap <leader>w| <C-W>v
 
 " clipboard
-noremap d "_d
-noremap D "_D
-noremap s "_s
-noremap S "_S
-noremap c "_c
-noremap C "_C
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+nnoremap s "_s
+nnoremap S "_S
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
 nnoremap x "_x
 nnoremap X "_x
 
+" Tab navigation
+nnoremap tl gt
+nnoremap th gT
+
+" Save file
+nnoremap <leader>fs :w<CR>
+nnoremap <leader>fS :vsc File.SaveAll<CR>
+
+" ------------- Editor Specific -------------
+
+
+" Jump around
+nnoremap gd :action GotoDeclaration<CR> 
+nnoremap gi :action GotoImplementation<CR> 
+nnoremap gr :action FindUsages<CR>
+nnoremap gp :action QuickImplementations<CR>
+nnoremap gn :action NextOccurence<CR>
+nnoremap gb :action PreviousOccurence<CR>
+vnoremap gn :action NextOccurence<CR>
+vnoremap gb :action PreviousOccurence<CR>
+
+" project search 
+nnoremap <leader>se :action SearchEverywhere<CR> 
+nnoremap <leader>ss :action GotoAction<CR> 
+ 
+" Select Next Occurrence
+inoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
+vnoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
+nnoremap <leader>d :action SelectNextOccurrence<CR>
+vnoremap <leader>d :action SelectNextOccurrence<CR>
+nnoremap <leader>D :action SelectAllOccurrences<CR>
+
+" Navigation
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap <C-h> :action Back<CR>
+nnoremap <C-l> :action Forward<CR>
+
+" Built in search
+nnoremap / :action Find<CR> 
+nnoremap <leader>/ / 
+
+" Breakpoints
+nnoremap <leader>bb :action ToggleLineBreakpoint<CR> 
+nnoremap <leader>bv :action ViewBreakpoints<CR> 
+nnoremap <leader>br :action Debugger.RemoveAllBreakpoints<CR> 
+" nnoremap <leader>bd :action Debug.DisableAllBreakpoints<CR> 
+" nnoremap <leader>ba :vsc Debug.EnableAllBreakpoints<CR> 
+nnoremap <leader>be :action ToggleBreakpointEnabled<CR> 
+
+" Debug
+nnoremap <leader>sd :action Debug<CR>
+nnoremap <leader>sw :action Run<CR>
+
+" Build
+nnoremap <leader>rb :action BuildSolutionAction<CR>
+nnoremap <leader>rs :action BuildSolutionAction<CR>
+
+" tests
+nnoremap <leader>tv :action RiderUnitTestFocusExplorerAction<CR> 
+nnoremap <leader>ta :action RiderUnitTestRunTreeSplitAction<CR> 
+nnoremap <leader>tc :action RiderUnitTestRunContextAction<CR> 
+" nnoremap <leader>tda :action TestExplorer.DebugAllTests<CR> 
+nnoremap <leader>tdc :action RiderUnitTestDebugContextAction<CR> 
+
+" Refactor
+nnoremap <leader>re :action RenameElement<CR> 
+
+" Terminal
+nnoremap <leader>vt Vy<CR>:action ActivateTerminalToolWindow<CR> 
+
+" NERDTree
+nnoremap <leader>ff :NERDTreeFind<CR>
+nnoremap <leader>fe :NERDTree<CR>
+
+" Clear search
+nnoremap <leader>cs :nohlsearch<CR>
+ 
+" Quit normal mode 
+nnoremap <leader>qq :q<CR>
+nnoremap <leader>qb :action CloseAllEditorsButActive<CR>
+nnoremap <leader>Q  :action CloseAllEditors<CR>
+ 
 " Jetbrains specific
-nnoremap <space>cv :action ChangeView<CR> 
-nnoremap <space>cd :action ChooseDebugConfiguration<CR> 
-nnoremap <space>oi :action OptimizeImports<CR> 
-nnoremap <space>rc :action ChooseRunConfiguration<CR> 
+nnoremap <leader>cv :action ChangeView<CR> 
+nnoremap <leader>cd :action ChooseDebugConfiguration<CR> 
+nnoremap <leader>oi :action OptimizeImports<CR> 
+nnoremap <leader>rc :action ChooseRunConfiguration<CR> 

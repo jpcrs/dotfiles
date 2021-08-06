@@ -49,12 +49,14 @@ nnoremap <leader>wv <C-W>v
 nnoremap <leader>w| <C-W>v
 
 " clipboard
-noremap d "_d
-noremap D "_D
-noremap s "_s
-noremap S "_S
-noremap c "_c
-noremap C "_C
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+nnoremap s "_s
+nnoremap S "_S
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
 nnoremap x "_x
 nnoremap X "_x
 
@@ -83,8 +85,8 @@ nnoremap <leader>se :vsc Edit.GoToAll<CR>
  
 " Select Next Occurrence
 inoremap <C-d> <Esc>:vsc Edit.InsertNextMatchingCaret<CR>
-nnoremap <C-d> :vsc Edit.InsertNextMatchingCaret<CR>
 nnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
+vnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
 
 " Navigation
 nnoremap <C-o> :vsc View.NavigateBackward<CR>
@@ -96,7 +98,7 @@ nnoremap <C-l> :vsc View.NavigateForward<CR>
 nnoremap / :vsc Edit.Find<CR> 
 nnoremap <leader>/ / 
 
-" debugging
+" Breakpoints
 nnoremap <leader>bb :vsc Debug.ToggleBreakpoint<CR> 
 nnoremap <leader>bv :vsc Debug.Breakpoints<CR> 
 nnoremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR> 
@@ -104,6 +106,14 @@ nnoremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR>
 nnoremap <leader>ba :vsc Debug.EnableAllBreakpoints<CR> 
 nnoremap <leader>be :vsc Debug.EnableBreakpoint<CR> 
 nnoremap <leader>bs :vsc Debug.Attach.SnapshotDebugger<CR> 
+
+" Debug
+nnoremap <leader>sd :vsc Debug.Start<CR>
+nnoremap <leader>ss :vsc Debug.StartWithoutDebugging<CR>
+
+" Build
+nnoremap <leader>rb :vsc Build.RebuildSolution<CR>
+nnoremap <leader>rs :vsc Build.BuildSolution<CR>
 
 " tests
 nnoremap <leader>tv :vsc TestExplorer.ShowTestExplorer<CR> 

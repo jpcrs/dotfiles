@@ -82,24 +82,26 @@ vnoremap gb :vsc Edit.GoToPrevLocation<CR>
 
 " project search 
 nnoremap <leader>se :vsc Edit.GoToAll<CR> 
+nnoremap <leader>ss :vsc Window.QuickLaunch<CR> 
  
 " Select Next Occurrence
 inoremap <C-d> <Esc>:vsc Edit.InsertNextMatchingCaret<CR>
 nnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
 vnoremap <leader>d :vsc Edit.InsertNextMatchingCaret<CR>
+nnoremap <leader>D :vsc Edit.InsertCaretsatAllMatching<CR>
 
 " Navigation
-nnoremap <C-o> :vsc View.NavigateBackward<CR>
-nnoremap <C-i> :vsc View.NavigateForward<CR>
-nnoremap <C-h> :vsc View.NavigateBackward<CR>
-nnoremap <C-l> :vsc View.NavigateForward<CR>
+nnoremap <C-o> :vsc workbench.action.navigateBack<CR>
+nnoremap <C-i> :vsc workbench.action.navigateForward<CR>
+nnoremap <C-h> :vsc workbench.action.navigateBack<CR>
+nnoremap <C-l> :vsc workbench.action.navigateForward<CR>
 
 " use built-in search
-nnoremap / :vsc Edit.Find<CR> 
+nnoremap / :vsc actions.find<CR> 
 nnoremap <leader>/ / 
 
 " Breakpoints
-nnoremap <leader>bb :vsc Debug.ToggleBreakpoint<CR> 
+nnoremap <leader>bb :vsc editor.debug.action.toggleBreakpoint<CR> 
 nnoremap <leader>bv :vsc Debug.Breakpoints<CR> 
 nnoremap <leader>br :vsc Debug.DeleteAllBreakpoints<CR> 
 nnoremap <leader>bd :vsc Debug.DisableAllBreakpoints<CR> 
@@ -109,7 +111,7 @@ nnoremap <leader>bs :vsc Debug.Attach.SnapshotDebugger<CR>
 
 " Debug
 nnoremap <leader>sd :vsc Debug.Start<CR>
-nnoremap <leader>ss :vsc Debug.StartWithoutDebugging<CR>
+nnoremap <leader>sw :vsc Debug.StartWithoutDebugging<CR>
 
 " Build
 nnoremap <leader>rb :vsc Build.RebuildSolution<CR>
@@ -137,9 +139,18 @@ nnoremap <leader>cs :nohlsearch<CR>
  
 " Manage tabs
 nnoremap <leader>qq :q<CR>
-nnoremap <leader>qb  :vsc File.CloseAllButThis<CR>
-nnoremap <leader>Q  :vsc Window.CloseAllDocuments<CR>
-nnoremap <leader>kt  :vsc Window.KeepTabOpen<CR>
+nnoremap <leader>qo :vsc File.CloseAllButThis<CR>
+nnoremap <leader>Q :vsc Window.CloseAllDocuments<CR>
+nnoremap <leader>kt :vsc Window.KeepTabOpen<CR>
 
-" Visual Studio specific
-nnoremap <leader>ss :vsc Window.QuickLaunch<CR> 
+" Comment
+nnoremap <leader>kc :vsc Edit.ToggleLineComment<CR>
+vnoremap <leader>kc :vsc Edit.ToggleLineComment<CR>
+
+" Duplicate line
+nnoremap <leader>dl :vsc Edit.Duplicate<CR>
+vnoremap <leader>dl :vsc Edit.Duplicate<CR>
+
+" Expand selection
+nnoremap <leader>vv :vsc Edit.ExpandSelectiontoContainingBlock<CR>
+vnoremap <leader>vv :vsc Edit.ExpandSelectiontoContainingBlock<CR>

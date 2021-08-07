@@ -144,8 +144,20 @@ nnoremap <leader>cs :nohlsearch<CR>
  
 " Quit normal mode 
 nnoremap <leader>qq :q<CR>
-nnoremap <leader>qb :action CloseAllEditorsButActive<CR>
+nnoremap <leader>qo :action CloseAllEditorsButActive<CR>
 nnoremap <leader>Q  :action CloseAllEditors<CR>
+
+" Comment
+nnoremap <leader>kc :action CommentByLineComment<CR>
+vnoremap <leader>kc :action CommentByLineComment<CR>
+
+" Duplicate line
+nnoremap <leader>dl :action EditorDuplicate<CR>
+vnoremap <leader>dl :action EditorDuplicate<CR>
+
+" Expand selection
+nnoremap <leader>vv :action EditorSelectWord<CR>
+vnoremap <leader>vv :action EditorSelectWord<CR>
  
 " Jetbrains specific
 nnoremap <leader>cv :action ChangeView<CR> 

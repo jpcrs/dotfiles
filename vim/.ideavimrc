@@ -85,6 +85,10 @@ nnoremap gb :action PreviousOccurence<CR>
 vnoremap gn :action NextOccurence<CR>
 vnoremap gb :action PreviousOccurence<CR>
 
+" Error
+nnoremap <leader>ne :action ReSharperGotoNextErrorInSolution<CR>
+nnoremap <leader>nE :action ReSharperGotoPrevErrorInSolution<CR>
+
 " project search 
 nnoremap <leader>se :action SearchEverywhere<CR> 
 nnoremap <leader>ss :action GotoAction<CR> 
@@ -158,6 +162,17 @@ vnoremap <leader>dl :action EditorDuplicate<CR>
 " Expand selection
 nnoremap <leader>vv :action EditorSelectWord<CR>
 vnoremap <leader>vv :action EditorSelectWord<CR>
+ 
+" Cursor
+nnoremap <C-S-A-Up> :action EditorCloneCaretAbove<CR>
+nnoremap <C-S-A-Down> :action EditorCloneCaretBelow<CR>
+nnoremap <A-Up> :action MoveLineUp<CR>
+nnoremap <A-Down> :action MoveLineDown<CR>
+
+nnoremap <C-S-A-k> :action EditorCloneCaretAbove<CR>
+nnoremap <C-S-A-j> :action EditorCloneCaretBelow<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+nnoremap <A-j> :action MoveLineDown<CR>
  
 " Jetbrains specific
 nnoremap <leader>cv :action ChangeView<CR> 

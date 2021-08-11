@@ -80,6 +80,10 @@ nnoremap gp :vsc editor.action.peekDefinition<CR>
 "vnoremap gn :vsc Edit.GoToNextLocation<CR>
 "vnoremap gb :vsc Edit.GoToPrevLocation<CR>
 
+" Error
+nnoremap <leader>ne :vsc editor.action.marker.next<CR>
+nnoremap <leader>nE :vsc editor.action.marker.prev<CR>
+
 " project search 
 nnoremap <leader>se :vsc workbench.action.quickOpen<CR> 
 nnoremap <leader>ss :vsc workbench.action.showCommands<CR> 
@@ -134,7 +138,7 @@ nnoremap <leader>/ /
 " Breakpoints
 nnoremap <leader>bb :vsc editor.debug.action.toggleBreakpoint<CR> 
 " nnoremap <leader>bv :vsc Debug.Breakpoints<CR> 
-nnoremap <leader>br :vsc workbench.debug.viewlet.action.removeAllBreakpoints<CR> 
+nnoremap <leader>bD :vsc workbench.debug.viewlet.action.removeAllBreakpoints<CR> 
 nnoremap <leader>bd :vsc workbench.debug.viewlet.action.disableAllBreakpoints<CR> 
 nnoremap <leader>ba :vsc workbench.debug.viewlet.action.enableAllBreakpoints<CR> 
 " nnoremap <leader>be :vsc Debug.EnableBreakpoint<CR> 
@@ -150,7 +154,7 @@ nnoremap <leader>rb :vsc workbench.action.tasks.build<CR>
 nnoremap <leader>tv :vsc test-explorer.focus<CR> 
 nnoremap <leader>ta :vsc dotnet-test-explorer.runAllTests<CR> 
 nnoremap <leader>tc :vsc dotnet-test-explorer.runTestInContext<CR> 
-nnoremap <leader>tda :vsc dotnet-test-explorer.debugTest<CR> 
+nnoremap <leader>tA :vsc dotnet-test-explorer.debugTest<CR> 
 " nnoremap <leader>tdc :vsc test-explorer.debug-test-at-cursor<CR> 
 
 " Refactor
@@ -167,8 +171,8 @@ nnoremap <leader>fe :vsc workbench.view.explorer<CR>
 nnoremap <leader>cs :nohlsearch<CR>
  
 " Manage tabs
-nnoremap <leader>qq :q<CR>
-nnoremap <leader>qo :vsc workbench.action.closeOtherEditors<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>oq :vsc workbench.action.closeOtherEditors<CR>
 nnoremap <leader>Q  :vsc workbench.action.closeAllEditors<CR>
 " nnoremap <leader>kt  :vsc Window.KeepTabOpen<CR>
 
@@ -183,3 +187,11 @@ vnoremap <leader>vv :vsc editor.action.smartSelect.expand<CR>
 " Comment
 nnoremap <leader>kc :vsc editor.action.commentLine<CR>
 vnoremap <leader>kc :vsc editor.action.commentLine<CR>
+
+" Cursor -- Doesn't work great on vimrc
+" nnoremap <C-S-A-h> :vsc cursorColumnSelectLeft<CR>
+" nnoremap <C-S-A-j> :vsc cursorColumnSelectUp<CR>
+" nnoremap <C-S-A-k> :vsc cursorColumnSelectDown<CR>
+" nnoremap <C-S-A-l> :vsc cursorColumnSelectRight<CR>
+" nnoremap <C-j> :vsc editor.action.moveLinesDownAction<CR>
+" nnoremap <C-k> :vsc editor.action.moveLinesUpAction<CR>

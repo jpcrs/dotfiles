@@ -1,0 +1,238 @@
+let mapleader=' '
+set which-key
+set notimeout
+set surround
+set exchange
+set NERDTree
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set showmode
+set number
+set relativenumber
+set scrolloff=15
+set history=100000
+set clipboard=unnamed
+
+" Quit visual mode
+vnoremap v <Esc>
+
+" Move to the start of line
+nnoremap H ^
+vnoremap H ^
+
+" Move to the end of line
+nnoremap L $
+vnoremap L $
+
+" Redo
+nnoremap U <C-r>
+
+" Yank to the end of line
+nnoremap Y y$
+
+" Tab
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+" clipboard
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+nnoremap s "_s
+nnoremap S "_S
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+nnoremap x "_x
+nnoremap X "_x
+xnoremap p "_dP
+
+" Tab navigation
+nnoremap tl gt
+nnoremap th gT
+nnoremap <C-h> gT<CR>
+nnoremap <C-l> gt<CR>
+
+" Save file
+nnoremap <leader>fs :w<CR>| "fs(File Save)
+nnoremap <leader>fS :vsc File.SaveAll<CR>| "fS(File SAVE All)
+
+" ------------- Editor Specific -------------
+
+" Jump around
+nnoremap gd :action GotoDeclaration<CR>| "gd (Go Declaration)
+nnoremap gi :action GotoImplementation<CR>| "gi (Go Implementation)
+nnoremap gr :action FindUsages<CR>| "gr (Go References)
+nnoremap gp :action QuickImplementations<CR>| "gp (Go Peek)
+nnoremap gn :action NextOccurence<CR>| "gn (Go Next)
+vnoremap gn :action NextOccurence<CR>| "gn (Go Next)
+nnoremap gN :action PreviousOccurence<CR>| "gN (Go Previous) -- Uppercase N, go back.
+vnoremap gN :action PreviousOccurence<CR>| "gN (Go Previous) -- Uppercase N, go back.
+
+" LSP
+nnoremap <leader>le :action GotoNextError<CR>| "le (LSP next Error)
+nnoremap <leader>lE :action GotoPreviousError<CR>| "lE (LSP previous Error) -- Uppercase E, previous error.
+nnoremap <leader>li :action ReSharperGotoNextErrorInSolution<CR>| "li (Next Solution Error) -- Don't know how to bind this :)
+nnoremap <leader>lI :action ReSharperGotoPrevErrorInSolution<CR>| "lI (Previous Solution Error)
+nnoremap <leader>lr :action RenameElement<CR>| "lr (LSP Rename)
+nnoremap <leader>la :action ShowIntentionActions<CR>| "la (LSP Action)
+nnoremap <leader>lm :action ParameterInfo<CR>| "lm (LSP Method Info)
+nnoremap <leader>lh :action QuickJavaDoc<CR>| "lh (LSP Hover)
+nnoremap <leader>ls :action GotoSymbol<CR>| "ls (LSP Symbols)
+nnoremap <leader>lp :action Rider.ProblemsView.ErrorsInSolution<CR>| "lp (LSP Problems)
+
+" project search
+nnoremap <leader>se :action SearchEverywhere<CR>| "se (Search Everywhere)
+nnoremap <leader>sf :action GotoFile<CR>| "sf (Search File)
+nnoremap <leader>sa :action GotoAction<CR>| "sa (Search Action)
+nnoremap <leader>sc :action GotoClass<CR>| "sc (Search Class)
+
+" Select Next Occurrence
+inoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
+vnoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
+nnoremap <leader>d :action SelectNextOccurrence<CR>
+vnoremap <leader>d :action SelectNextOccurrence<CR>
+nnoremap <leader>D :action SelectAllOccurrences<CR>
+
+" Navigation
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+
+" Built in search
+nnoremap / :action Find<CR>
+nnoremap <leader>/ /
+
+" Breakpoints
+nnoremap <leader>bb :action ToggleLineBreakpoint<CR>| "bb (Breakpoint BreakPoint) -- ToggleBreak point, but reaching T is not ideal
+nnoremap <leader>bv :action ViewBreakpoints<CR>| "bv (Breakpoint View)
+nnoremap <leader>bd :action Debugger.RemoveAllBreakpoints<CR>| "bD (Breakpoint Delete) -- Delete all Breakpoints
+nnoremap <leader>be :action ToggleBreakpointEnabled<CR>| "be (Breakpoint Enable/disable)
+
+" Debug
+nnoremap <leader>sD :action Debug<CR>| "sD (Start DEBUG)
+nnoremap <leader>sd :action Run<CR>| "sd (Start Debug)
+" Build
+nnoremap <leader>sb :action BuildSolutionAction<CR>| "rb (Solution Build)
+nnoremap <leader>sB :action BuildSolutionAction<CR>| "rB (Solution Build)
+
+" tests
+nnoremap <leader>tv :action RiderUnitTestFocusExplorerAction<CR>| "tv (Test View)
+nnoremap <leader>tr :action RiderUnitTestRunTreeSplitAction<CR>| "tr (Test Run) -- Run All tests
+nnoremap <leader>tc :action RiderUnitTestRunContextAction<CR>| "tc (Test Current) -- Run Current Test
+nnoremap <leader>tC :action RiderUnitTestDebugContextAction<CR>| "tC (Test CURRENT) -- Test current debugging
+
+" Terminal
+nnoremap <leader>vt Vy<CR>:action ActivateTerminalToolWindow<CR>| "vt (View Terminal)
+
+" NERDTree
+nnoremap <leader>fe :NERDTree<CR>| "fe (File explorer)
+
+" Clear search
+nnoremap <leader>cs :nohlsearch<CR>| "cs (Clear Search)
+
+" Quit normal mode
+nnoremap <leader>q :q<CR>
+nnoremap <leader>kt :action CloseAllEditorsButActive<CR>| "kt (Keep Tab) :%bd|e#
+nnoremap <leader>Q :action CloseAllEditors<CR>
+
+" Comment
+nnoremap <leader>kc :action CommentByLineComment<CR>
+vnoremap <leader>kc :action CommentByLineComment<CR>
+
+" Duplicate line
+nnoremap <leader>ld :action EditorDuplicate<CR>| "ld (Duplicate Line)
+vnoremap <leader>ld :action EditorDuplicate<CR>
+
+" Expand selection
+nnoremap <leader>vv :action EditorSelectWord<CR>
+vnoremap <leader>vv :action EditorSelectWord<CR>
+
+" Cursor
+nnoremap <C-S-A-Up> :action EditorCloneCaretAbove<CR>
+nnoremap <C-S-A-Down> :action EditorCloneCaretBelow<CR>
+nnoremap <A-Up> :action MoveLineUp<CR>
+nnoremap <A-Down> :action MoveLineDown<CR>
+
+nnoremap <C-A-k> :action EditorCloneCaretAbove<CR>
+nnoremap <C-A-j> :action EditorCloneCaretBelow<CR>
+nnoremap <A-k> :action MoveLineUp<CR>
+nnoremap <A-j> :action MoveLineDown<CR>
+
+" FSharp
+nnoremap <leader>fi :action Rider.Plugins.FSharp.SendToFsi<CR>| "fi (Fsharp Interactive)
+vnoremap <leader>fi :action Rider.Plugins.FSharp.SendToFsi<CR>| "fi (Fsharp Interactive)
+
+" Jetbrains specific
+nnoremap <leader>cv :action ChangeView<CR>| "cv (Change View)
+nnoremap <leader>cd :action ChooseDebugConfiguration<CR>| "cd (Choose Debug)
+nnoremap <leader>oi :action OptimizeImports<CR>| "oi (Optimize Imports)
+nnoremap <leader>rc :action ChooseRunConfiguration<CR>| "rc (Run configuration)
+
+" Leetcode
+nnoremap <leader>Lv :action ActivateleetcodeToolWindow<CR>
+nnoremap <leader>Lp :action leetcode.editor.OpenContentAction<CR>
+nnoremap <leader>Lh :action leetcode.editor.OpenSolutionAction<CR>
+nnoremap <leader>Lt :action leetcode.editor.RunCodeAction<CR>
+nnoremap <leader>Lc :action leetcode.editor.TestcaseAction<CR>
+
+
+" Which-key config
+let g:WhichKey_ShowVimActions = "true"
+let g:WhichKeyDesc_select_next = "<leader>d Select Next Occurence"
+let g:WhichKeyDesc_select_all = "<leader>D Select All Occurence"
+
+let g:WhichKeyDesc_lsp_opts = "<leader>l LSP..."
+let g:WhichKeyDesc_lsp_error = "<leader>le Next Error"
+let g:WhichKeyDesc_lsp_previousError = "<leader>lE Previous Error"
+let g:WhichKeyDesc_lsp_rename = "<leader>le Rename Element"
+let g:WhichKeyDesc_lsp_actions = "<leader>la Show Actions"
+let g:WhichKeyDesc_lsp_methodInfo = "<leader>lm Method Info"
+let g:WhichKeyDesc_lsp_hover = "<leader>lh Hover Info"
+let g:WhichKeyDesc_lsp_symbol = "<leader>lh Show Symbols"
+let g:WhichKeyDesc_lsp_errors = "<leader>lp Problems in the solution"
+let g:WhichKeyDesc_line_duplicate = "<leader>ld Duplicate line"
+let g:WhichKeyDesc_lsp_nextSolutionError = "<leader>li Next Solution Error"
+let g:WhichKeyDesc_lsp_prevSolutionError = "<leader>lI Previous Solution Error"
+
+let g:WhichKeyDesc_search_opts = "<leader>s Search..."
+let g:WhichKeyDesc_search_everywhere = "<leader>se Everywhere"
+let g:WhichKeyDesc_search_file = "<leader>sf File"
+let g:WhichKeyDesc_search_action = "<leader>sa Action"
+let g:WhichKeyDesc_search_class = "<leader>sc Class"
+
+let g:WhichKeyDesc_breakpoints_opts = "<leader>b Breakpoints..."
+let g:WhichKeyDesc_breakpoints_toggleLine = "<leader>bb Toggle Insert Breakpoint"
+let g:WhichKeyDesc_breakpoints_delete = "<leader>bd Delete All Breakpoints"
+let g:WhichKeyDesc_breakpoints_view = "<leader>bv View Breakpoints"
+let g:WhichKeyDesc_breakpoints_enabledisable = "<leader>be Toggle Enable Breakpoint"
+
+let g:WhichKeyDesc_start_opts = "<leader>s Start..."
+let g:WhichKeyDesc_start_run = "<leader>d Run"
+let g:WhichKeyDesc_start_debug = "<leader>D Debug"
+let g:WhichKeyDesc_start_build = "<leader>b Build"
+let g:WhichKeyDesc_start_rebuild = "<leader>B Build"
+
+let g:WhichKeyDesc_tests_opts = "<leader>t Test..."
+let g:WhichKeyDesc_tests_view = "<leader>tv View Tests"
+let g:WhichKeyDesc_tests_run = "<leader>tr Run All Tests"
+let g:WhichKeyDesc_tests_current = "<leader>tc Run Current Tests"
+let g:WhichKeyDesc_tests_debugcurrent = "<leader>tC Debug Current Tests"
+
+let g:WhichKeyDesc_fileexplorer = "<leader>fe Show file Explorer"
+
+let g:WhichKeyDesc_changeView = "<leader>cv Change View"
+let g:WhichKeyDesc_chooseDebug = "<leader>cd Choose Debug"
+let g:WhichKeyDesc_optimizeImports = "<leader>oi Optimize Imports"
+let g:WhichKeyDesc_runconfiguration = "<leader>oi Choose Run Config"
+
+let g:WhichKeyDesc_quitAll = "<leader>Q Quit All Tabs"
+
+let g:WhichKeyDesc_leetcode_opts = "<leader>L Leetcode..."
+let g:WhichKeyDesc_leetcode_problemContent = "<leader>Lp View Problem"
+let g:WhichKeyDesc_leetcode_solution = "<leader>Lp View Solution"
+let g:WhichKeyDesc_leetcode_testsolution = "<leader>Lp Test"
+let g:WhichKeyDesc_leetcode_testcase = "<leader>Lp Change Test Case"

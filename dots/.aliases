@@ -1,0 +1,7 @@
+alias ..='cd ..'
+alias c='clear'
+alias ls='exa --icons'
+alias ll='exa --icons -la'
+alias path='echo -e ${PATH//:/\\n}'
+alias fd='fdfind'
+alias k='kubectl'

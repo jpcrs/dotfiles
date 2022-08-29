@@ -13,7 +13,13 @@ set iskeyword+=-
 " Quit insert mode 
 inoremap jj <Esc>
 inoremap jk <Esc>
- 
+
+nnoremap <C-d> 22j
+vnoremap <C-d> 22j
+nnoremap <C-u> 22k
+vnoremap <C-u> 22k
+nnoremap gl <C-6>
+
 " Quit visual mode 
 vnoremap v <Esc>
  
@@ -26,7 +32,7 @@ nnoremap L $
 vnoremap L $
  
 " Redo
-nnoremap U <C-r>
+" nnoremap U <C-r>
  
 " Yank to the end of line 
 nnoremap Y y$
@@ -53,8 +59,8 @@ xnoremap p pgvy
 " Tab navigation
 nnoremap tl gt
 nnoremap th gT
-nnoremap <C-h> gT<CR>
-nnoremap <C-l> gt<CR>
+nnoremap <C-h> gT
+nnoremap <C-l> gt
 
 " Save file
 nnoremap <leader>fs :w<CR>
@@ -69,10 +75,10 @@ nnoremap <leader>wr :vsc workbench.action.removeRootFolder<CR>
 nnoremap <leader>wC :vsc workbench.action.closeFolder<CR>
 
 " Jump around
-nnoremap gd :vsc editor.action.revealDefinition<CR> 
-nnoremap gi :vsc editor.action.goToImplementation<CR>
-nnoremap gr :vsc references-view.findReferences<CR>
-nnoremap gp :vsc editor.action.peekDefinition<CR>
+" nnoremap gd :vsc editor.action.revealDefinition<CR> 
+" nnoremap gi :vsc editor.action.goToImplementation<CR>
+" nnoremap gr :vsc references-view.findReferences<CR>
+" nnoremap gp :vsc editor.action.peekDefinition<CR>
 " nnoremap gn :vsc goToNextReference<CR>
 " vnoremap gn :vsc goToNextReference<CR>
 " nnoremap gN :vsc goToPreviousReference<CR>

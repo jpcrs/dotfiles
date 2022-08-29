@@ -34,6 +34,7 @@ function linkDotfile {
 linkDotfile .zshrc
 linkDotfile .XCompose
 linkDotFile .aliases
+linkDotFile bin
 linkDotfile .config/alacritty
 linkDotfile .config/ideavim
 linkDotfile .config/nvim

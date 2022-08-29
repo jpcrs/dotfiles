@@ -171,6 +171,8 @@ nnoremap <leader>cv :action ChangeView<CR>| "cv (Change View)
 nnoremap <leader>cd :action ChooseDebugConfiguration<CR>| "cd (Choose Debug)
 nnoremap <leader>oi :action OptimizeImports<CR>| "oi (Optimize Imports)
 nnoremap <leader>rc :action ChooseRunConfiguration<CR>| "rc (Run configuration)
+nnoremap <leader>re :action ProblemsViewReSharperReanalyzeFilesWithErrors<CR>| "re (Reanalyze files with errors)
+nnoremap <leader>rE :action ReSharperReanalyzeFilesWithErrors<CR>| "rE (Reanalyze all Errors)
 
 " Leetcode
 nnoremap <leader>Lv :action ActivateleetcodeToolWindow<CR>

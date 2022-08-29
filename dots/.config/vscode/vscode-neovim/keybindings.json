@@ -1,0 +1,63 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+d"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+u"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+y"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+e"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+f"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+b"
+    },
+    {
+        "command": "germanScroll.arminUp",
+        "key": "ctrl+y",
+        "mac": "cmd+y",
+        "when": "editorTextFocus && neovim.mode != insert"
+    },
+    {
+        "command": "germanScroll.arminDown",
+        "key": "ctrl+e",
+        "mac": "cmd+e",
+        "when": "editorTextFocus && neovim.mode != insert"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+d",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "jjjjjjjjjjjjjjjjjjjjjj"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+u",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "kkkkkkkkkkkkkkkkkkkkkk"
+    },
+    {
+        "command": "germanScroll.christaUp",
+        "key": "ctrl+b",
+        "mac": "cmd+b",
+        "when": "editorTextFocus && neovim.mode != insert"
+    },
+    {
+        "command": "germanScroll.christaDown",
+        "key": "ctrl+f",
+        "mac": "cmd+f",
+        "when": "editorTextFocus && neovim.mode != insert"
+    },
+]

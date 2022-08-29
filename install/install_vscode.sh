@@ -13,7 +13,7 @@ function install() {
     rm -f packages.microsoft.gpg
 
     sudo apt-get install apt-transport-https > /dev/null
-    (sudo apt-get update && sudo apt-get install -y code code-insider) > /dev/null
+    (sudo apt-get update && sudo apt-get install -y code code-insiders) > /dev/null
 }
 
 main; exit

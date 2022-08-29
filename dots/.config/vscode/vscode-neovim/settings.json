@@ -1,110 +1,12 @@
 {
-    "editor.stickyTabStops": true,
-    "window.menuBarVisibility": "toggle",
-    "editor.suggestSelection": "first",
-    "vim.useSystemClipboard": true,
+    "Lua.workspace.library": [
+        "/home/jpcrs/.vscode/extensions/droidxrx.gameguardian-lua-0.0.3/EmmyLua",
+        "/home/jpcrs/.vscode/extensions/jpcrs.constellation-discovery-0.0.1/constellation"
+    ],
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/jpcrs/init.vim",
+    "editor.cursorSurroundingLines": 15,
     "editor.lineNumbers": "relative",
-    "editor.cursorSurroundingLines": 12,
-    "editor.renderWhitespace": "boundary",
-    "vim.leader": " ",
-    "workbench.startupEditor": "newUntitledFile",
-    "security.workspace.trust.untrustedFiles": "open",
-    "vim.vimrc.enable": true,
-    "vim.vimrc.path": "$HOME/.config/vim/.codevimrc",
-    "workbench.editor.untitled.hint": "hidden",
-    "extensions.experimental.affinity": {
-        "vscodevim.vim": 1,
-        "asvetliakov.vscode-neovim": 1
-    },
-    "vim.normalModeKeyBindingsNonRecursive": [
-        // {
-        //     "before": ["<leader>", "d"],
-        //     "commands": [ "editor.action.addSelectionToNextFindMatch" ]
-        // },
-        {
-            "before": [ "<leader>", "D" ],
-            "commands": [ "editor.action.selectHighlights" ]
-        },
-        {
-            "before": [ "<leader>", "l", "e" ],
-            "commands": [ "editor.action.marker.next" ]
-        },
-        {
-            "before": [ "<leader>", "l", "E" ],
-            "commands": [ "editor.action.marker.prev" ]
-        },
-        {
-            "before": [ "<leader>", "l", "i"],
-            "commands": [ "editor.action.marker.nextInFiles" ]
-        },
-        {
-            "before": [ "<leader>", "l", "I"],
-            "commands": [ "editor.action.marker.prevInFiles" ]
-        },
-        {
-            "before": [ "<space>" ],
-            "commands": [ "whichkey.show" ]
-        },
-
-        // LSP Jump Around
-        {
-            "before": [ "g", "d" ],
-            "commands": [ "editor.action.revealDefinition" ]
-        },
-        {
-            "before": [ "g", "i" ],
-            "commands": [ "editor.action.goToImplementation" ]
-        },
-        {
-            "before": [ "g", "r" ],
-            "commands": [ "references-view.findReferences" ]
-        },
-        {
-            "before": [ "g", "p" ],
-            "commands": [ "editor.action.peekDefinition" ]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [ "<C-d>" ],
-            "commands": [ "editor.action.addSelectionToNextFindMatch" ]
-        },
-        // {
-        //     "before": ["<leader>", "d"],
-        //     "commands": [ "editor.action.addSelectionToNextFindMatch"]
-        // },
-        {
-            "before": [ "<leader>", "D" ],
-            "commands": [ "editor.action.selectHighlights" ]
-        },
-        {
-            "before": [ "<space>" ],
-            "commands": [ "whichkey.show" ]
-        }
-        // {
-        //     "before": ["<leader>", "v", "v"],
-        //     "commands": [ "editor.action.smartSelect.expand" ]
-        // }
-    ],
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [ "<C-d>" ],
-            "commands": [ "editor.action.addSelectionToNextFindMatch" ]
-        },
-        {
-            "before": [ "<C-d>" ],
-            "commands": [ "editor.action.selectHighlights" ]
-        }
-    ],
-    "editor.columnSelection": true,
-    "vim.enableNeovim": true,
-    "vim.neovimPath": "/home/jpcrs/bin/nvim",
-    "errorLens.enabledDiagnosticLevels": [
-        "warning",
-        "info",
-        "error"
-    ],
-    "errorLens.enabled": true,
     "whichkey.bindings": [
         {
             "key": "l",

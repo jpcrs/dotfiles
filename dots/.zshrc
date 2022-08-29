@@ -105,3 +105,5 @@ bindkey '5~' kill-word
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 . $HOME/.asdf/asdf.sh
 eval "$(starship init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

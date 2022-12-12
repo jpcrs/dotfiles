@@ -1,2 +1,0 @@
-## Launch // Capture Screenshot // <><Shift> S ##
-bindsym $Mod+Shift+S exec --no-startup-id flameshot gui

@@ -1,0 +1,62 @@
+cmd - return : open -n /Applications/alacritty.app
+cmd + shift - return : open -n /Applications/safari.app
+
+# Navigation
+cmd - k : yabai -m window --focus north
+cmd - j : yabai -m window --focus south
+cmd - l : yabai -m window --focus east
+cmd - h : yabai -m window --focus west
+
+# Move window
+cmd + shift - k : yabai -m window --warp north
+cmd + shift - j : yabai -m window --warp south
+cmd + shift - l : yabai -m window --warp east
+cmd + shift - h : yabai -m window --warp west
+
+# Move window to Space
+cmd + shift - 1 : yabai -m window --space 1
+cmd + shift - 2 : yabai -m window --space 2
+cmd + shift - 3 : yabai -m window --space 3
+cmd + shift - 4 : yabai -m window --space 4
+cmd + shift - 5 : yabai -m window --space 5
+cmd + shift - 6 : yabai -m window --space 6
+cmd + shift - 7 : yabai -m window --space 7
+cmd + shift - 8 : yabai -m window --space 8
+cmd + shift - 9 : yabai -m window --space 9
+cmd + shift - 0 : yabai -m window --space 10
+cmd + shift + ctrl - 1 : yabai -m window --space 11
+cmd + shift + ctrl - 2 : yabai -m window --space 12
+cmd + shift + ctrl - 3 : yabai -m window --space 13
+
+# Focus on monitor
+cmd + ctrl - tab  : yabai -m display --focus recent
+
+# increase window size
+#small steps
+cmd + ctrl - h : yabai -m window --resize left:-20:0
+cmd + ctrl - k : yabai -m window --resize bottom:0:20
+cmd + ctrl - j : yabai -m window --resize top:0:-20
+cmd + ctrl - l : yabai -m window --resize right:20:0
+
+#toogle borders
+cmd + ctrl - b : yabai -m window --toggle border
+
+# toggle window fullscreen
+cmd + shift - f : yabai -m window --toggle zoom-fullscreen
+
+# toggle window float
+cmd + ctrl - f : yabai -m window --toggle float
+
+# float / unfloat window and center on screen
+cmd + ctrl - t : yabai -m window --toggle float;\
+          yabai -m window --grid 5:5:1:1:3:3
+
+# rotate tree 90
+cmd + shift - r : yabai -m space --rotate 90
+
+# Restart yabai
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+cmd + ctrl - q : skhd --key "cmd - q"
+
+cmd + shift - q : osascript -e 'tell application "System Events" to perform action "AXPress" of (first button whose subrole is "AXCloseButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)'

@@ -1,0 +1,69 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+d"
+    },
+    {
+        "command": "-vscode-neovim.send",
+        "key": "ctrl+u"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+d",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "jjjjjjjjjjjjjjjjjjjjjj"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+u",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "kkkkkkkkkkkkkkkkkkkkkk"
+    },
+    {
+        "key": "shift+cmd+d",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    {
+        "command": "whichkey.show",
+        "key": "space",
+        "when": "editorTextFocus && neovim.mode != insert"
+    },
+    {
+        "key": "h",
+        "command": "magit.toggle-fold",
+        "when": "editorTextFocus && editorLangId == 'magit' && neovim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+    },
+    {
+        "key": "tab",
+        "command": "-magit.toggle-fold"
+    },
+    {
+        "key": "x",
+        "command": "magit.discard-at-point",
+        "when": "editorTextFocus && editorLangId == 'magit' && neovim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+    },
+    {
+        "key": "k",
+        "command": "-magit.discard-at-point"
+    },
+    {
+        "key": "shift+-",
+        "command": "magit.reverting",
+        "when": "editorTextFocus && editorLangId == 'magit' && vim.mode =~ /^(?!SearchInProgressMode|CommandlineInProgress).*$/"
+    },
+    {
+        "key": "shift+v",
+        "command": "-magit.reverting"
+    },
+    {
+      "key": "e",
+      "command": "whichkey.triggerKey",
+      "args": {
+        "key": "e",
+        "when": "sideBarVisible && explorerViewletVisible"
+      },
+      "when": "whichkeyVisible && sideBarVisible && explorerViewletVisible"
+    }
+]

@@ -1,0 +1,268 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "searchFileName",
+            "type": "shell",
+            "command": "code-insiders -r $(rg --files --hidden --glob '!.git/' $(pwd) | fzf -m --ansi --preview 'bat --color=always {}' --bind shift-up:preview-page-up,shift-down:preview-page-down)",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "searchFileNameWorkspaces",
+            "type": "shell",
+            "command": "code-insiders -r $(rg --files --hidden --glob '!.git/' /Users/jpcrs/Projects /Users/jpcrs/.config | fzf -m --ansi --preview 'bat --color=always {}' --bind shift-up:preview-page-up,shift-down:preview-page-down)",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "openProjects",
+            "type": "shell",
+            "command": "code-insiders -r $(fd .git$ -td -H --absolute-path /Users/jpcrs/Projects | sed 's/\\/.git//g' | fzf)",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "openProjectsNewWindow",
+            "type": "shell",
+            "command": "code-insiders -n $(fd .git$ -td -H --absolute-path /Users/jpcrs/Projects | sed 's/\\/.git//g' | fzf)",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "openFileContent",
+            "type": "shell",
+            "command": "code-insiders -r $(rg --column --line-number --no-heading --color=never --smart-case . $(pwd) | sed 's/:/::/g' | awk -F '::' '{ print $1\"::\"$2\"::\"($2-30 >= 0 ? $2-30 : 0)\"::\"$2+30\"::\"$3\"::\"$4 }' | fzf -m --delimiter :: --ansi --preview 'bat --color=always {1} --highlight-line {2} --line-range {3}:{4}' --bind shift-up:preview-page-up,shift-down:preview-page-down | sed 's/::.*//')",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "openFileContentWorkspaces",
+            "type": "shell",
+            "command": "code-insiders -r $(rg --column --line-number --no-heading --color=never --smart-case . /Users/jpcrs/Projects /Users/jpcrs/.config | sed 's/:/::/g' | awk -F '::' '{ print $1\"::\"$2\"::\"($2-30 >= 0 ? $2-30 : 0)\"::\"$2+30\"::\"$3\"::\"$4 }' | fzf -m --delimiter :: --ansi --preview 'bat --color=always {1} --highlight-line {2} --line-range {3}:{4}' --bind shift-up:preview-page-up,shift-down:preview-page-down | sed 's/::.*//')",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "gitFuzzy",
+            "type": "shell",
+            "command": "git fuzzy",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "gitFuzzyLog",
+            "type": "shell",
+            "command": "git checkout $(git fuzzy log)",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "gitFuzzyLogCurrentFile",
+            "type": "shell",
+            "command": "git checkout $(git fuzzy log ${file})",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            }
+        },
+        {
+            "label": "focusTerminal",
+            "command": "${command:terminal.focus}"
+        },
+        {
+            "label": "moveTerminalToEditor",
+            "command": "${command:workbench.action.terminal.moveToEditor}"
+        },
+        {
+            "label": "moveTerminalToPanel",
+            "command": "${command:workbench.action.terminal.moveToTerminalPanel}"
+        },
+        {
+            "label": "toggleMaximized",
+            "command": "${command:workbench.action.toggleMaximizedPanel}"
+        },
+        {
+            "label": "closeTerminal",
+            "command": "${command:workbench.action.closePanel}"
+        },
+        {
+            "label": "cmd-gitFuzzyLog",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "gitFuzzyLog",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-gitFuzzyLogCurrentFile",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "gitFuzzyLogCurrentFile",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-gitFuzzy",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "gitFuzzy",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-searchFileName",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "searchFileName",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-searchFileNameWorkspaces",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "searchFileNameWorkspaces",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-openProjects",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "openProjects",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-openProjectsNewWindow",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "openProjectsNewWindow",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-openFileContent",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "openFileContent",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-openFileContentWorkspaces",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "openFileContentWorkspaces",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        }
+    ]
+}

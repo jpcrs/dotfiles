@@ -9,8 +9,6 @@ export GIT_FUZZY_BRANCH_CHECKOUT_KEY="Ctrl-F"
 export GIT_FUZZY_BRANCH_DELETE_BRANCH_KEY="Ctrl-D"
 export GIT_FUZZY_COMMIT_KEY="Ctrl-A"
 
-ZSH_THEME="robbyrussell"
-
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zoxide kubectl docker docker-compose zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh

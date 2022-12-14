@@ -11,7 +11,7 @@ export GIT_FUZZY_COMMIT_KEY="Ctrl-A"
 
 ZSH_THEME="robbyrussell"
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zoxide kubectl docker docker-compose)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zoxide kubectl docker docker-compose zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases
@@ -22,4 +22,4 @@ eval "$(zoxide init zsh)"
 
 export PATH="/Users/jpcrs/.local/bin:$PATH"
 export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
-export PATH="$PATH:$(asdf where dotnet-core)"
+export PATH="$(asdf where dotnet):$PATH"

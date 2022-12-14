@@ -3,6 +3,7 @@ success_symbol = "[➜](bold green)"  # The "success_symbol" is set to "➜" wit
 
 [directory]
 truncate_to_repo = false
+truncation_length = 0
 
 [line_break]
 disabled = true

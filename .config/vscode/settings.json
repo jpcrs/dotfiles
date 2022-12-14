@@ -393,31 +393,6 @@
           "name": "New File in Explorer",
           "type": "command",
           "command": "explorer.newFile"
-        },
-        {
-          "key": "f",
-          "name": "+Favorites",
-          "type": "bindings",
-          "bindings": [
-            {
-              "key": "a",
-              "name": "Add",
-              "type": "command",
-              "command": "favorites.add"
-            },
-            {
-              "key": "d",
-              "name": "Delete",
-              "type": "command",
-              "command": "favorites.del"
-            },
-            {
-              "key": "l",
-              "name": "List",
-              "type": "command",
-              "command": "favorites.open"
-            }
-          ]
         }
       ]
     },
@@ -939,6 +914,31 @@
           "command": "workbench.action.showAllSymbols"
         },
         {
+          "key": "F",
+          "name": "+Favorites",
+          "type": "bindings",
+          "bindings": [
+            {
+              "key": "a",
+              "name": "Add",
+              "type": "command",
+              "command": "favorites.add"
+            },
+            {
+              "key": "d",
+              "name": "Delete",
+              "type": "command",
+              "command": "favorites.del"
+            },
+            {
+              "key": "l",
+              "name": "List",
+              "type": "command",
+              "command": "favorites.open"
+            }
+          ]
+        },
+        {
           "key": "m",
           "name": "+Project Manager",
           "type": "bindings",
@@ -1168,5 +1168,4 @@
   ],
   "whichkey.delay": 150,
   "whichkey.sortOrder": "alphabetically",
-  "workbench.activityBar.visible": false,
 }

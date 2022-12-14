@@ -1,6 +1,32 @@
-alias ..='cd ..'
-alias c='clear'
+# Tmux
+alias t='tmux attach || tmux new-session'
+alias ta='tmux attach -t'
+alias tn='tmux new-session'
+alias tk='tmux kill-session -t'
+alias tl='tmux list-sessions'
+
+# Kubernetes
+alias k='kubectl'
+alias kna='kubectl get --all-namespaces all'
+alias kl='bash -xc '\''kubectl logs -f $0 --tail=500'\'''
+alias kdev='kubectl config use-context kube-dev'
+alias kstg='kubectl config use-context kube-stg'
+
+# Docker
+alias db='bash -xc '\''docker build -f $0 -t $1'\'''
+alias dr='bash -xc '\''docker run --name $0 -p $1:$2 -d $3'\'''
+
+# Random
+alias gf='git-fuzzy'
+alias gfl='git-fuzzy log'
+alias c='code-insiders'
 alias ls='exa --icons'
 alias ll='exa --icons -la'
 alias path='echo -e ${PATH//:/\\n}'
-alias k='kubectl'
+alias ke='keep'
+
+# FZF
+alias fcv='fzf-file-content-vim'
+alias fnv='fzf-file-name-vim'
+alias fc='fzf-file-content'
+alias fn='fzf-file-name'

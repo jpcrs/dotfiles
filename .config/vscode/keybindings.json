@@ -8,12 +8,14 @@
         "command": "-vscode-neovim.send",
         "key": "ctrl+u"
     },
+    //Hacky way of not messing vscode-neovim viewport
     {
         "command": "vscode-neovim.send",
         "key": "ctrl+d",
         "when": "editorTextFocus && neovim.mode != insert",
         "args": "jjjjjjjjjjjjjjjjjjjjjj"
     },
+    //Hacky way of not messing vscode-neovim viewport
     {
         "command": "vscode-neovim.send",
         "key": "ctrl+u",
@@ -28,7 +30,7 @@
     {
         "command": "whichkey.show",
         "key": "space",
-        "when": "editorTextFocus && neovim.mode != insert"
+        "when": "editorTextFocus && neovim.mode != insert",
     },
     {
         "key": "h",
@@ -37,7 +39,7 @@
     },
     {
         "key": "tab",
-        "command": "-magit.toggle-fold"
+        "command": "-magit.toggle-fold",
     },
     {
         "key": "x",

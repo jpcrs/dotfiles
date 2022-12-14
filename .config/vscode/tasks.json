@@ -4,7 +4,7 @@
         {
             "label": "searchFileName",
             "type": "shell",
-            "command": "code-insiders -r $(rg --files --hidden --glob '!.git/' $(pwd) | fzf -m --ansi --preview 'bat --color=always {}' --bind shift-up:preview-page-up,shift-down:preview-page-down)",
+            "command": "code-insiders -r $(fzf-file-name)",
             "presentation": {
                 "reveal": "always",
                 "focus": true,
@@ -60,7 +60,7 @@
         {
             "label": "openFileContent",
             "type": "shell",
-            "command": "code-insiders -r $(rg --column --line-number --no-heading --color=never --smart-case . $(pwd) | sed 's/:/::/g' | awk -F '::' '{ print $1\"::\"$2\"::\"($2-30 >= 0 ? $2-30 : 0)\"::\"$2+30\"::\"$3\"::\"$4 }' | fzf -m --delimiter :: --ansi --preview 'bat --color=always {1} --highlight-line {2} --line-range {3}:{4}' --bind shift-up:preview-page-up,shift-down:preview-page-down | sed 's/::.*//')",
+            "command": "code-insiders -r $(fzf-file-content)",
             "presentation": {
                 "reveal": "always",
                 "focus": true,

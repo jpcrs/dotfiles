@@ -1,4 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
+export PATH="/Users/jpcrs/.local/bin:$PATH"
+export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
+export PATH="$(asdf where dotnet):$PATH"
 
 export NNN_PLUG='o:fzopen;d:diffs;v:imgview;j:autojump;p:pskill'
 export NNN_OPTS="Hd"
@@ -9,6 +12,8 @@ export GIT_FUZZY_BRANCH_CHECKOUT_KEY="Ctrl-F"
 export GIT_FUZZY_BRANCH_DELETE_BRANCH_KEY="Ctrl-D"
 export GIT_FUZZY_COMMIT_KEY="Ctrl-A"
 
+export TMUX_FZF_OPTIONS="-p -w 80% -h 80% -m"
+
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zoxide kubectl docker docker-compose zsh-vi-mode)
 
 source $ZSH/oh-my-zsh.sh
@@ -17,7 +22,3 @@ source $HOME/.aliases
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-export PATH="/Users/jpcrs/.local/bin:$PATH"
-export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
-export PATH="$(asdf where dotnet):$PATH"

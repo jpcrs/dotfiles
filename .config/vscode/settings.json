@@ -1070,12 +1070,6 @@
           "command": "workbench.actions.view.problems"
         },
         {
-          "key": "e",
-          "name": "Explorer",
-          "type": "command",
-          "command": "workbench.view.explorer"
-        },
-        {
           "key": "L",
           "name": "Leetcode",
           "type": "command",

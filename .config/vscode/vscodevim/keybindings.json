@@ -1,0 +1,45 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "shift+cmd+d",
+        "command": "editor.action.selectHighlights",
+        "when": "editorFocus"
+    },
+    // Use built in VSCode pattern matcher for entire word search (ctrl + n)
+    {
+        "key": "ctrl+n",
+        "command": "editor.action.addSelectionToNextFindMatch",
+        "when": "vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' && !inDebugRepl"
+    },
+    // Skip current match (ctrl + x)
+    {
+        "key": "ctrl+x",
+        "command": "editor.action.moveSelectionToNextFindMatch",
+        "when": "vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' && !inDebugRepl"
+    },
+    // Go back to previous match (ctrl + p)
+    {
+        "key": "ctrl+p",
+        "command": "editor.action.moveSelectionToPreviousFindMatch",
+        "when": "vim.active && editorFocus && vim.mode == 'Visual' || vim.mode == 'VisualBlock' && !inDebugRepl"
+    },
+    // Select all matches (ctrl + a). This is effectively the same as (ctrl + shift + l)
+    {
+        "key": "ctrl+a",
+        "command": "editor.action.selectHighlights",
+        "when": "vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' && !inDebugRepl"
+    },
+    {
+        "key": "shift+a",
+        "command": "extension.multiCommand.execute",
+        "args": {
+            "sequence": [
+                "workbench.action.focusPreviousGroup",
+                "workbench.action.focusNextGroup",
+                "extension.vim_escape",
+                "extension.vim_insert",
+            ]
+        },
+        "when": "vim.active && editorFocus && vim.mode == 'VisualBlock' && !inDebugRepl"
+    },
+]

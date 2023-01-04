@@ -1,10 +1,5 @@
-#sudo yabai --load-sa
-#yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-
-# Window Config
-yabai -m config layout bsp
-yabai -m config window_gap 5
-yabai -m config --space 7 layout float
+# Specific Window Config
+#yabai -m config --space 7 layout float
 
 # devide windows by 2
 yabai -m config split_ratio                0.50
@@ -14,15 +9,17 @@ yabai -m config mouse_modifier             cmd
 yabai -m config mouse_action1              resize
 yabai -m config mouse_action2              move
 
-# window border
-yabai -m config window_border on
+# window border (Off because mac ventura 13 not working properly.)
+yabai -m config window_border off
 yabai -m config window_border_width 3
 yabai -m config active_window_border_color 0xFF89b482
 yabai -m config normal_window_border_color 0xFF32302f
 yabai -m config insert_feedback_color        0xFFea6962
+yabai -m config window_border_blur off
+yabai -m config border_blur off
 
 # window gaps
-yabai -m config layout                     bsp
+yabai -m config layout                     float
 yabai -m config top_padding                5
 yabai -m config bottom_padding             5
 yabai -m config left_padding               5
@@ -32,3 +29,7 @@ yabai -m config external_bar main:28:0
 
 # don't tile unresizable apps
 yabai -m rule --add app="^(Calculator|VLC|System Preferences|zoom.us|Photo Booth|Archive Utility|Python)$" manage=off
+
+#yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+yabai -m signal --add event=window_created action="sketchybar --trigger refresh_current_workspace"
+yabai -m signal --add event=window_destroyed action="sketchybar --trigger refresh_current_workspace"

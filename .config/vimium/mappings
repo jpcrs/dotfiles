@@ -1,0 +1,12 @@
+unmap t
+map <s-SPACE> LinkHints.activateModeToOpenInNewTab
+map w LinkHints.activateMode action=hover
+map <c-o> goBack
+map <c-i> goForward
+map <c-h> previousTab
+map <c-l> nextTab
+map <c-u> scrollPageUp
+map <c-d> scrollPageDown
+map th previousTab
+map tl nextTab
+map w createTab

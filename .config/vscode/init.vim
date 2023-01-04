@@ -132,10 +132,10 @@ nnoremap U <Cmd>call VSCodeNotify('redo')<CR>
 " Use Built-in Search
 nnoremap / <Cmd>call VSCodeNotify('actions.find')<CR> 
 
-" ------------------- MOVED TO WHICH KEY -------------------
-
 " Vim Search
 nnoremap <leader>/ /  " / (Vim Search)
+
+" ------------------- MOVED TO WHICH KEY -------------------
 
 " Buffer
 "  nnoremap <leader>bh <Cmd>call VSCodeNotify('workbench.action.moveEditorToLeftGroup')<CR>" bh (Buffer -> Move Buffer to Left Group)

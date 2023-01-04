@@ -2,6 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH="/Users/jpcrs/.local/bin:$PATH"
 export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
 export PATH="$(asdf where dotnet):$PATH"
+export PATH="$PATH:/Users/jpcrs/.dotnet/tools"
 
 export NNN_PLUG='o:fzopen;d:diffs;v:imgview;j:autojump;p:pskill'
 export NNN_OPTS="Hd"
@@ -21,4 +22,10 @@ source $HOME/.aliases
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+
+if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
+  export PATH=/opt/homebrew/opt/ruby/bin:$PATH
+  export PATH=`gem environment gemdir`/bin:$PATH
+fi
+
 . /opt/homebrew/opt/asdf/libexec/asdf.sh

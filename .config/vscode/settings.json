@@ -45,7 +45,7 @@
   "leetcode.workspaceFolder": "/Users/jpcrs/Projects/neetcode/csharp/neetcode/",
   "leetcode.hint.commandShortcut": false,
   "Lua.telemetry.enable": false,
-  "errorLens.enabled": true,
+  "errorLens.enabled": false,
   "errorLens.enabledDiagnosticLevels": [
     "warning",
     "info",
@@ -81,6 +81,13 @@
       "type:": "command",
       "command": "vscode-neovim.send",
       "args": "<Plug>(easymotion-s)"
+    },
+    {
+      "key": "N",
+      "name": "Shut up!",
+      "icon": "bell-slash-dot",
+      "type": "command",
+      "command": "notifications.clearAll",
     },
     {
       "key": "e",
@@ -240,6 +247,12 @@
           "name": "Jump to Cursor",
           "type": "command",
           "command": "debug.jumpToCursor"
+        },
+        {
+          "key": "h",
+          "name": "Hover",
+          "type": "command",
+          "command": "editor.debug.action.showDebugHover"
         },
         {
           "key": "O",
@@ -945,7 +958,7 @@
           "bindings": [
             {
               "key": "a",
-              "name": "Add to Favorites",
+              "name": "Add Project to Workspace",
               "type": "command",
               "command": "projectManager.addToWorkspace"
             },
@@ -966,6 +979,12 @@
               "name": "Refresh Projects",
               "type": "command",
               "command": "projectManager.refreshAnyProjects"
+            },
+            {
+              "key": "s",
+              "name": "Save Project to Favorites",
+              "type": "command",
+              "command": "projectManager.saveProject"
             }
           ]
         }
@@ -1070,6 +1089,12 @@
           "command": "workbench.actions.view.problems"
         },
         {
+          "key": "e",
+          "name": "Explorer",
+          "type": "command",
+          "command": "workbench.view.explorer"
+        },
+        {
           "key": "L",
           "name": "Leetcode",
           "type": "command",
@@ -1162,4 +1187,14 @@
   ],
   "whichkey.delay": 150,
   "whichkey.sortOrder": "alphabetically",
+  "notebook.cellToolbarLocation": {
+    "default": "right",
+    "jupyter-notebook": "left"
+  },
+  "explorer.compactFolders": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "rust-analyzer.inlayHints.typeHints.enable": false,
+  "rust-analyzer.inlayHints.renderColons": false,
+  "rust-analyzer.inlayHints.chainingHints.enable": false,
+  "rust-analyzer.inlayHints.parameterHints.enable": false,
 }

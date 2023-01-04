@@ -1,0 +1,28 @@
+{
+    "$schema": "https:\/\/app.linearmouse.org\/schema\/0.7.5",
+    "schemes": [
+        {
+            "pointer": {
+                "acceleration": 0,
+                "speed": 0.1126,
+                "disableAcceleration": true
+            },
+            "if": {
+                "device": {
+                    "productName": "Xlite Mini Wireless",
+                    "productID": "0xfa7c",
+                    "category": "mouse",
+                    "vendorID": "0x25a7"
+                }
+            },
+            "scrolling": {
+                "reverse": {
+                    "vertical": true
+                },
+                "distance": {
+                    "vertical": 3
+                }
+            }
+        }
+    ]
+}

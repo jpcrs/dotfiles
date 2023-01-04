@@ -1,7 +1,7 @@
 # Tmux
 alias t='tmux attach || tmux new-session'
 alias ta='tmux attach -t'
-alias tn='tmux new-session'
+alias tn='tmux new -s'
 alias tk='tmux kill-session -t'
 alias tl='tmux list-sessions'
 
@@ -24,6 +24,12 @@ alias ls='exa --icons'
 alias ll='exa --icons -la'
 alias path='echo -e ${PATH//:/\\n}'
 alias ke='keep'
+alias b='binocular -i -si'
+alias bf='binocular -i -si -f'
+alias bd='binocular -i -si -d'
+alias bs='binocular -i -si -p "~/Projects ~/.config"'
+alias bfs='binocular -i -si -f -p "~/Projects ~/.config"'
+alias bds='binocular -i -si -d -p "~/Projects ~/.config"'
 
 # FZF
 alias fcv='fzf-file-content-vim'

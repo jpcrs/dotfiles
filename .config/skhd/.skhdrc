@@ -1,5 +1,6 @@
-cmd - return : open -n /Applications/alacritty.app
-cmd + shift - return : open -n /Applications/safari.app
+cmd - return : open -n /Applications/iTerm.app
+cmd + shift - return : open -n /Applications/Brave\ Browser.app
+cmd + ctrl - return : code-insiders -n
 
 # Navigation
 cmd - k : yabai -m window --focus north
@@ -14,22 +15,31 @@ cmd + shift - l : yabai -m window --warp east
 cmd + shift - h : yabai -m window --warp west
 
 # Move window to Space
-cmd + shift - 1 : yabai -m window --space 1
-cmd + shift - 2 : yabai -m window --space 2
-cmd + shift - 3 : yabai -m window --space 3
-cmd + shift - 4 : yabai -m window --space 4
-cmd + shift - 5 : yabai -m window --space 5
-cmd + shift - 6 : yabai -m window --space 6
-cmd + shift - 7 : yabai -m window --space 7
-cmd + shift - 8 : yabai -m window --space 8
-cmd + shift - 9 : yabai -m window --space 9
-cmd + shift - 0 : yabai -m window --space 10
-cmd + shift + ctrl - 1 : yabai -m window --space 11
-cmd + shift + ctrl - 2 : yabai -m window --space 12
-cmd + shift + ctrl - 3 : yabai -m window --space 13
+cmd + shift - 1 : yabai -m window --space 1 && sketchybar --trigger refresh_workspaces WORKSPACES=1 FORCE_CURRENT=true
+cmd + shift - 2 : yabai -m window --space 2 && sketchybar --trigger refresh_workspaces WORKSPACES=2  FORCE_CURRENT=true
+cmd + shift - 3 : yabai -m window --space 3 && sketchybar --trigger refresh_workspaces WORKSPACES=3  FORCE_CURRENT=true
+cmd + shift - 4 : yabai -m window --space 4 && sketchybar --trigger refresh_workspaces WORKSPACES=4  FORCE_CURRENT=true
+cmd + shift - 5 : yabai -m window --space 5 && sketchybar --trigger refresh_workspaces WORKSPACES=5  FORCE_CURRENT=true
+cmd + shift - 6 : yabai -m window --space 6 && sketchybar --trigger refresh_workspaces WORKSPACES=6  FORCE_CURRENT=true
+cmd + shift - 7 : yabai -m window --space 7 && sketchybar --trigger refresh_workspaces WORKSPACES=7  FORCE_CURRENT=true
+cmd + shift - 8 : yabai -m window --space 8 && sketchybar --trigger refresh_workspaces WORKSPACES=8  FORCE_CURRENT=true
+cmd + shift - 9 : yabai -m window --space 9 && sketchybar --trigger refresh_workspaces WORKSPACES=9  FORCE_CURRENT=true
+cmd + shift - 0 : yabai -m window --space 10 && sketchybar --trigger refresh_workspaces WORKSPACES=10 FORCE_CURRENT=true
+cmd + shift + ctrl - 1 : yabai -m window --space 11 && sketchybar --trigger refresh_workspaces WORKSPACES=11 FORCE_CURRENT=true
+cmd + shift + ctrl - 2 : yabai -m window --space 12 && sketchybar --trigger refresh_workspaces WORKSPACES=12 FORCE_CURRENT=true
+cmd + shift + ctrl - 3 : yabai -m window --space 13 && sketchybar --trigger refresh_workspaces WORKSPACES=13 FORCE_CURRENT=true
+
+# I hate mac.
+cmd + alt - 2 : skhd -t "²"
+cmd + alt - 3 : skhd -t "³"
+cmd + alt - n : skhd -t "ⁿ"
 
 # Focus on monitor
 cmd + ctrl - tab  : yabai -m display --focus recent
+
+# make floating window fill screen
+cmd + ctrl + shift - k : yabai -m window --move abs:0:30 \
+yabai -m window --grid 0:0:0:0:1:1
 
 # increase window size
 #small steps
@@ -62,7 +72,6 @@ cmd + shift - r : yabai -m space --rotate 90
 
 # Restart yabai
 ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
-
-cmd + ctrl - q : skhd --key "cmd - q"
+ctrl + alt + cmd - s : sketchybar --trigger refresh_workspaces
 
 cmd + shift - q : osascript -e 'tell application "System Events" to perform action "AXPress" of (first button whose subrole is "AXCloseButton") of (first window whose subrole is "AXStandardWindow") of (first process whose frontmost is true)'

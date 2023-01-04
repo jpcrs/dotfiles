@@ -4,7 +4,7 @@
         {
             "label": "searchFileName",
             "type": "shell",
-            "command": "code-insiders -r $(fzf-file-name)",
+            "command": "binocular -si -i -f",
             "presentation": {
                 "reveal": "always",
                 "focus": true,
@@ -13,12 +13,13 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "searchFileNameWorkspaces",
             "type": "shell",
-            "command": "code-insiders -r $(rg --files --hidden --glob '!.git/' /Users/jpcrs/Projects /Users/jpcrs/.config | fzf -m --ansi --preview 'bat --color=always {}' --bind shift-up:preview-page-up,shift-down:preview-page-down)",
+            "command": "binocular -f -si -i -p '~/.config ~/Projects'",
             "presentation": {
                 "reveal": "always",
                 "focus": true,
@@ -27,40 +28,13 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
-        },
-        {
-            "label": "openProjects",
-            "type": "shell",
-            "command": "code-insiders -r $(fd .git$ -td -H --absolute-path /Users/jpcrs/Projects | sed 's/\\/.git//g' | fzf)",
-            "presentation": {
-                "reveal": "always",
-                "focus": true,
-                "panel": "dedicated",
-                "revealProblems": "never",
-                "showReuseMessage": false,
-                "clear": true,
-                "close": true
-            }
-        },
-        {
-            "label": "openProjectsNewWindow",
-            "type": "shell",
-            "command": "code-insiders -n $(fd .git$ -td -H --absolute-path /Users/jpcrs/Projects | sed 's/\\/.git//g' | fzf)",
-            "presentation": {
-                "reveal": "always",
-                "focus": true,
-                "panel": "dedicated",
-                "revealProblems": "never",
-                "showReuseMessage": false,
-                "clear": true,
-                "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "openFileContent",
             "type": "shell",
-            "command": "code-insiders -r $(fzf-file-content)",
+            "command": "binocular -si -i",
             "presentation": {
                 "reveal": "always",
                 "focus": true,
@@ -69,12 +43,13 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "openFileContentWorkspaces",
             "type": "shell",
-            "command": "code-insiders -r $(rg --column --line-number --no-heading --color=never --smart-case . /Users/jpcrs/Projects /Users/jpcrs/.config | sed 's/:/::/g' | awk -F '::' '{ print $1\"::\"$2\"::\"($2-30 >= 0 ? $2-30 : 0)\"::\"$2+30\"::\"$3\"::\"$4 }' | fzf -m --delimiter :: --ansi --preview 'bat --color=always {1} --highlight-line {2} --line-range {3}:{4}' --bind shift-up:preview-page-up,shift-down:preview-page-down | sed 's/::.*//')",
+            "command": "binocular -si -i -p '~/.config ~/Projects'",
             "presentation": {
                 "reveal": "always",
                 "focus": true,
@@ -83,7 +58,8 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "gitFuzzy",
@@ -97,7 +73,8 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "gitFuzzyLog",
@@ -111,7 +88,8 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
         },
         {
             "label": "gitFuzzyLogCurrentFile",
@@ -125,27 +103,48 @@
                 "showReuseMessage": false,
                 "clear": true,
                 "close": true
-            }
+            },
+            "hide": true
+        },
+        {
+            "label": "searchFileHistory",
+            "type": "shell",
+            "command": "binocular -i -si -p \\\"\"$(echo $(rg -l -g 'entries.json' $(echo ${file} | sed -e 's/ /%20/g') '/Users/jpcrs/Library/Application Support/Code - Insiders/User/History/') | sed 's:[^/]*$::')\"\\\"",
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "revealProblems": "never",
+                "showReuseMessage": false,
+                "clear": true,
+                "close": true
+            },
+            "hide": true
         },
         {
             "label": "focusTerminal",
-            "command": "${command:terminal.focus}"
+            "command": "${command:terminal.focus}",
+            "hide": true
         },
         {
             "label": "moveTerminalToEditor",
-            "command": "${command:workbench.action.terminal.moveToEditor}"
+            "command": "${command:workbench.action.terminal.moveToEditor}",
+            "hide": true
         },
         {
             "label": "moveTerminalToPanel",
-            "command": "${command:workbench.action.terminal.moveToTerminalPanel}"
+            "command": "${command:workbench.action.terminal.moveToTerminalPanel}",
+            "hide": true
         },
         {
             "label": "toggleMaximized",
-            "command": "${command:workbench.action.toggleMaximizedPanel}"
+            "command": "${command:workbench.action.toggleMaximizedPanel}",
+            "hide": true
         },
         {
             "label": "closeTerminal",
-            "command": "${command:workbench.action.closePanel}"
+            "command": "${command:workbench.action.closePanel}",
+            "hide": true
         },
         {
             "label": "cmd-gitFuzzyLog",
@@ -260,6 +259,19 @@
             "dependsOn": [
                 "toggleMaximized",
                 "openFileContentWorkspaces",
+                "toggleMaximized",
+                "closeTerminal"
+            ],
+        },
+        {
+            "label": "cmd-searchFileHistory",
+            "dependsOrder": "sequence",
+            "presentation": {
+                "revealProblems": "never"
+            },
+            "dependsOn": [
+                "toggleMaximized",
+                "searchFileHistory",
                 "toggleMaximized",
                 "closeTerminal"
             ],

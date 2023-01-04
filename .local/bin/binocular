@@ -1,0 +1,287 @@
+#!/usr/bin/env bash
+
+# Specify the options
+EDITOR_COMMAND="line={2}; code -g {1}${line:-:{2}}"
+EDITOR_COMMAND_NEW_WINDOW="line={2}; code -g -n {1}${line:-:{2}}"
+ENTER_COMMAND='echo ${1}${2:+:}${2}'
+
+GREEN="${GREEN:-$(tput setaf 2)}"
+YELLOW="${YELLOW:-$(tput setaf 3)}"
+BOLD="${BOLD:-$(tput bold)}"
+NORMAL="${NORMAL:-$(tput sgr0)}"
+
+GREP_MODE_KEY="ctrl-g"
+FILE_MODE_KEY="ctrl-f"
+DIRECTORY_MODE_KEY="ctrl-d"
+OPEN_EDITOR_KEY="ctrl-o"
+OPEN_NEW_EDITOR_KEY="ctrl-n"
+
+GF_LOG_HEADER='
+These are '"${YELLOW}shortcuts:"'
+
+'"${YELLOW}${BOLD}∆${NORMAL} ${GREEN}$GREP_MODE_KEY${NORMAL}    ${NORMAL}-- Change to grep mode"'
+'""'
+'"${YELLOW}${BOLD}∆${NORMAL} ${GREEN}$FILE_MODE_KEY${NORMAL}    ${NORMAL}-- Change to file names mode"'
+'""'
+'"${YELLOW}${BOLD}∆${NORMAL} ${GREEN}$DIRECTORY_MODE_KEY${NORMAL}    ${NORMAL}-- Change to folders mode"'
+'""'
+'"${YELLOW}${BOLD}∆${NORMAL} ${GREEN}$OPEN_EDITOR_KEY${NORMAL}    ${NORMAL}-- Open the file/folder in the defined editor."'
+               '"${YELLOW}default: ${NORMAL}line=\{2}; code -g \{1}\${line:-:\{2}}"'
+'""'
+'"${YELLOW}${BOLD}∆${NORMAL} ${GREEN}$OPEN_NEW_EDITOR_KEY${NORMAL}    ${NORMAL}-- Open the file/folder in a new editor window"'
+               '"${YELLOW}default: ${NORMAL}line=\{2}; code -g -n \{1}\${line:-:\{2}}"'
+'
+
+query=""
+path=$(pwd)
+ignoreline=false
+file=false
+directory=false
+
+print_usage() {
+  cat <<EOF
+$0 - Fuzzy search content, files or folders.
+
+Usage: $0 [OPTION...]
+
+Options:
+  -q, --query <QUERY>...
+                  Query to be executed by Ripgrep (string)
+                  default: *
+
+  -p, --path <PATH>...
+                  Path that will be used as base path in the search (string)
+                  default: \$pwd
+
+  -f, --file (flag)
+                  Open search using file names instead of grep
+
+  -d, --directory (flag)
+                  Open search using folders instead of grep
+
+  -c, --code (flag)
+                  Open the selected file on vscode (When pressing enter)
+
+  -sc, --shortcut-code (flag)
+                  Open the selected file on vscode (When using the shortcuts ctrl-o ctrl-n)
+
+  -i, --code-insiders (flag)
+                  Open the selected file on vscode-insiders (When pressing enter)
+
+  -si, --shortcut-code-insiders (flag)
+                  Open the selected file on vscode-insiders (When using the shortcuts ctrl-o ctrl-n)
+
+  -v, --vim (flag)
+                  Open the selected file on vim (When pressing enter)
+
+  -il, --ignore-line (flag)
+                  Doesn't output the line number, just the file name, even when using the grep mode
+
+  -ec, --editor-command (flag)
+                  Command used to open a new file when using the ctrl+o shortcut.
+                  default: "line={2}; code -g {1}\${line:-:{2}}"
+
+  -en, --editor-command-new (flag)
+                  Command used to open a new file on a new window when using the ctrl+n shortcut.
+                  default: "line={2}; code -g -n {1}\${line:-:{2}}"
+
+  -h, --help
+                  Display this help and exit
+EOF
+}
+
+# Iterate over the options and arguments
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --query)
+      query=$2
+      shift 2
+      ;;
+    --path)
+      path=$2
+      shift 2
+      ;;
+    --file)
+      file=true
+      shift
+      ;;
+    --directory)
+      directory=true
+      shift
+      ;;
+    --code)
+      ENTER_COMMAND='code -g ${1}${2:+:}${2}'
+      shift
+      ;;
+    --shortcut-code)
+      EDITOR_COMMAND="line={2}; code -g {1}${line:-:{2}}"
+      EDITOR_COMMAND_NEW_WINDOW="line={2}; code -g -n {1}${line:-:{2}}"
+      shift
+      ;;
+    --code-insiders)
+      ENTER_COMMAND='code-insiders -g ${1}${2:+:}${2}'
+      shift
+      ;;
+    --shortcut-code-insiders)
+      EDITOR_COMMAND="line={2}; code-insiders -g {1}${line:-:{2}}"
+      EDITOR_COMMAND_NEW_WINDOW="line={2}; code-insiders -g -n {1}${line:-:{2}}"
+      shift
+      ;;
+    --vim)
+      ENTER_COMMAND='vim ${1}${2:+ +}${2}'
+      shift
+      ;;
+    --ignore-line)
+      ignoreline=true
+      shift
+      ;;
+    --editor-command)
+      shift
+      ;;
+    --editor-command-new)
+      shift
+      ;;
+    -h|--help)
+      print_usage
+      exit 0
+      ;;
+    -*)
+      # This is a short option
+      case "$1" in
+        -q)
+          query=$2
+          shift 2
+          ;;
+        -p)
+          echo $2
+          path=$2
+          shift 2
+          ;;
+        -f)
+          file=true
+          shift
+          ;;
+        -d)
+          directory=true
+          shift
+          ;;
+        -c)
+          ENTER_COMMAND='code -g "${1}${2:+:}${2}"'
+          shift
+          ;;
+        -sc)
+          EDITOR_COMMAND="line={2}; code -g {1}${line:-:{2}}"
+          EDITOR_COMMAND_NEW_WINDOW="line={2}; code -g -n {1}${line:-:{2}}"
+          shift
+          ;;
+        -i)
+          ENTER_COMMAND='code-insiders -g "${1}${2:+:}${2}"'
+          shift
+          ;;
+        -si)
+          EDITOR_COMMAND="line={2}; code-insiders -g {1}${line:-:{2}}"
+          EDITOR_COMMAND_NEW_WINDOW="line={2}; code-insiders -g -n {1}${line:-:{2}}"
+          shift
+          ;;
+        -v)
+          ENTER_COMMAND='vim ${1}${2:+ +}${2}'
+          shift
+          ;;
+        -il)
+          ignoreline=true
+          shift
+          ;;
+        -ec)
+          EDITOR_COMMAND=$2
+          shift
+          ;;
+        -en)
+          EDITOR_COMMAND_NEW_WINDOW=$2
+          shift
+          ;;
+        -h)
+          print_usage
+          exit 0
+          ;;
+        *)
+          echo "Invalid option: $1" >&2
+          print_usage
+          exit 1
+          ;;
+      esac
+      ;;
+    *)
+      # This is not an option, so it must be an argument
+      break
+      ;;
+  esac
+done
+
+GREP_CMD="rg --hidden --column --line-number --no-heading --color=always --smart-case --glob '!.git/' '' $path"
+GREP_PREVIEW_STYLE='bat --color=always {1} --highlight-line {2}'
+GREP_PROMPT="1. grep> "
+
+FILE_CMD="fd -tf -HI --exclude .git --exclude node_modules '' $path"
+FILE_PREVIEW_STYLE='bat --color=always {}'
+FILE_PROMPT="2. files> "
+
+DIRECTORY_CMD="fd -td -H --exclude .git --exclude node_modules --absolute-path '' $path"
+DIRECTORY_PREVIEW_STYLE='ls -al --color=always {}'
+DIRECTORY_PROMPT="3. directories> "
+
+if [ ${directory} == true ]; then
+  CMD=$DIRECTORY_CMD
+  PROMPT=$DIRECTORY_PROMPT
+  PREVIEW=$DIRECTORY_PREVIEW_STYLE
+elif [ ${file} == true ]; then
+  CMD=$FILE_CMD
+  PROMPT=$FILE_PROMPT
+  PREVIEW=$FILE_PREVIEW_STYLE
+else
+  CMD=$GREP_CMD
+  PROMPT=$GREP_PROMPT
+  PREVIEW=$GREP_PREVIEW_STYLE
+fi
+
+function openvscode {
+  code-insiders -g $1 $2
+}
+
+function search {
+  IFS=: read -ra selected < <(
+    FZF_DEFAULT_COMMAND="$CMD" \
+    fzf -e -m --ansi \
+        -q "$query" \
+        --border \
+        --info=hidden \
+        --no-separator \
+        --layout=reverse \
+        --prompt "$PROMPT" \
+        --header "/ CTRL-h (help) /" \
+        --color "hl:-1:underline,hl+:-1:underline:reverse" \
+        --bind "change:top" \
+        --bind "shift-up:preview-page-up,shift-down:preview-page-down" \
+        --bind 'ctrl-p:toggle-preview' \
+        --bind "ctrl-h:preview:printf '$GF_LOG_HEADER'" \
+        --bind "ctrl-x:change-preview-window(80%,border-bottom|50%,border-bottom|20%,border-bottom|hidden|)" \
+        --bind "ctrl-o:execute-silent($EDITOR_COMMAND)+abort" \
+        --bind "ctrl-n:execute-silent($EDITOR_COMMAND_NEW)+abort" \
+        --bind "$GREP_MODE_KEY:reload($GREP_CMD {q})+change-prompt($GREP_PROMPT)+change-preview-window(50%)+change-preview($GREP_PREVIEW_STYLE)+unbind(change,ctrl-r)+rebind(change,ctrl-f)+rebind(change,ctrl-d)" \
+        --bind "$FILE_MODE_KEY:reload($FILE_CMD)+change-prompt($FILE_PROMPT)+change-preview-window(50%)+change-preview($FILE_PREVIEW_STYLE)+unbind(change,ctrl-f)+rebind(change,ctrl-r)+rebind(change,ctrl-d)" \
+        --bind "$DIRECTORY_MODE_KEY:reload($DIRECTORY_CMD)+change-prompt($DIRECTORY_PROMPT)+change-preview-window(hidden)+change-preview($DIRECTORY_PREVIEW_STYLE)+unbind(change,ctrl-d)+rebind(change,ctrl-r)+rebind(change,ctrl-f)" \
+        --delimiter : \
+        --preview "$PREVIEW" \
+        --preview-window '50%' \
+        --no-height
+  )
+[ -n "${selected[0]}" ] && [ "${ignoreline}" == false ] && openFile "${selected[0]}" "${selected[1]}"
+[ -n "${selected[0]}" ] && [ "${ignoreline}" == true ] && openFile "${selected[0]}"
+}
+
+function openFile {
+  eval "$ENTER_COMMAND"
+  exit 0
+}
+
+search
+exit 0

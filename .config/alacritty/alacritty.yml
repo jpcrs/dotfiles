@@ -10,8 +10,8 @@ import:
 ## Terminal window settings
 window:
   dimensions:
-    columns: 82
-    lines: 25
+    columns: 244
+    lines: 55
 
   padding:
     x: 12

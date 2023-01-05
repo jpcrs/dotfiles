@@ -24,7 +24,7 @@
                 "workbench.action.focusPreviousGroup",
                 "workbench.action.focusNextGroup",
                 "extension.vim_escape",
-                "extension.vim_insert"
+                "extension.vim_insert",
             ]
         },
         "when": "vim.active && editorFocus && vim.mode == 'VisualBlock' && !inDebugRepl"
@@ -56,5 +56,16 @@
     {
         "key": "shift+v",
         "command": "-magit.reverting"
+    },
+    // Make tree toggle work
+    {
+      "key": "e",
+      "command": "whichkey.triggerKey",
+      "args": {
+        "key": "e",
+        "when": "sideBarVisible && explorerViewletVisible"
+      },
+      "when": "whichkeyVisible && sideBarVisible && explorerViewletVisible"
     }
+
 ]

@@ -1,6 +1,34 @@
 {
+    //VSCODE CONFIG
+    "editor.accessibilitySupport": "off",
     "editor.cursorSurroundingLines": 15,
     "security.workspace.trust.untrustedFiles": "open",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.stickyTabStops": true,
+    "editor.suggestSelection": "first",
+    "zenMode.fullScreen": false,
+    "zenMode.hideTabs": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "workbench.layoutControl.enabled": false,
+    "workbench.layoutControl.type": "menu",
+    "workbench.editor.tabSizing": "shrink",
+    "explorer.autoReveal": false,
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.preferredDarkColorTheme": "Gruvbox Material Dark",
+    "workbench.preferredHighContrastLightColorTheme": "Gruvbox Material Light",
+    "workbench.preferredLightColorTheme": "Gruvbox Material Light",
+    "workbench.preferredHighContrastColorTheme": "Gruvbox Material Dark",
+    "workbench.activityBar.visible": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1,
+        "vscodevim.vim": 1
+    },
+    //VIM STUFF
     "vim.vimrc.path": "$HOME/.config/vscode/vsvim.vim",
     "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
@@ -18,9 +46,21 @@
             ]
         },
         {
-            "before": ["<C-j>"],
+            "before": ["<c-j>"],
             "after": ["leader", "leader", "s"]
         },
+        {
+            "before": ["u"],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": ["U"],
+            "commands": [
+                "redo"
+            ]
+        }
     ],
     "vim.visualModeKeyBindingsNonRecursive": [
         {
@@ -529,6 +569,12 @@
                     "key": "r",
                     "name": "Find References",
                     "type": "command",
+                    "command": "editor.action.referenceSearch.trigger"
+                },
+                {
+                    "key": "R",
+                    "name": "Find References View",
+                    "type": "command",
                     "command": "references-view.findReferences"
                 },
                 {
@@ -741,13 +787,13 @@
                 },
                 {
                     "key": "n",
-                    "name": "Next ",
+                    "name": "Next",
                     "type": "command",
                     "command": "bookmarks.jumpToNext"
                 },
                 {
                     "key": "p",
-                    "name": "Previous ",
+                    "name": "Previous",
                     "type": "command",
                     "command": "bookmarks.jumpToPrevious"
                 },
@@ -783,8 +829,8 @@
                     "type": "bindings",
                     "bindings": [
                         {
-                            "key": "w",
-                            "name": "Whole Projects",
+                            "key": "p",
+                            "name": "Project",
                             "type": "command",
                             "command": "workbench.action.tasks.test"
                         },
@@ -893,7 +939,7 @@
                     "key": "e",
                     "name": "Everything",
                     "type": "command",
-                    "command": "workbench.action.quickOpen"
+                    "command": "workbench.action.showCommands"
                 },
                 {
                     "key": "f",
@@ -1014,16 +1060,10 @@
                     "command": "editor.action.commentLine"
                 },
                 {
-                    "key": "R",
-                    "name": "Find References",
-                    "type": "command",
-                    "command": "editor.action.referenceSearch.trigger"
-                },
-                {
                     "key": "r",
                     "name": "Replace",
                     "type": "command",
-                    "command": "workbench.action.replaceInFiles "
+                    "command": "workbench.action.replaceInFiles"
                 },
                 {
                     "key": "s",
@@ -1172,5 +1212,4 @@
             ]
         }
     ],
-    "editor.lineNumbers": "relative",
 }

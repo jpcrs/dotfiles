@@ -4,10 +4,10 @@
     "vim.vimrc.path": "$HOME/.config/vscode/vsvim.vim",
     "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
-    "vim.hlsearch": true,
+    "vim.hlsearch": false,
     "vim.incsearch": true,
     "vim.easymotion":true,
-    "vim.leader": " ",
+    "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -41,12 +41,40 @@
             "command": "workbench.action.showCommands"
         },
         {
-            "key": "j",
-            "name": "Jump",
+            "key": "J",
+            "name": "Jump to a word",
+            "type": "commands",
             "icon": "live-share",
-            "type:": "command",
-            "command": "vscode-neovim.send",
-            "args": "<Plug>(easymotion-s)"
+            "commands": [
+                "vim.remap"
+            ],
+            "args": [
+                {
+                    "after": [
+                        "<leader>",
+                        "<leader>",
+                        "/",
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "j",
+            "name": "Jump to a word",
+            "type": "commands",
+            "icon": "live-share",
+            "commands": [
+                "vim.remap"
+            ],
+            "args": [
+                {
+                    "after": [
+                        "<leader>",
+                        "<leader>",
+                        "s",
+                    ]
+                }
+            ]
         },
         {
             "key": "N",
@@ -1144,4 +1172,5 @@
             ]
         }
     ],
+    "editor.lineNumbers": "relative",
 }

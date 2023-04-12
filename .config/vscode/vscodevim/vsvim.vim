@@ -31,9 +31,11 @@ nnoremap <C-u> 22k
 " Move to the end of line 
 nnoremap L $
 vnoremap L $
- 
+
 " Redo
-nnoremap U <C-r>
+"  nnoremap u :vsc undo<CR>
+"  nnoremap U :vsc redo<CR>
+"  nnoremap U <C-r>
  
 " Yank to the end of line 
 nnoremap Y y$
@@ -66,18 +68,19 @@ nnoremap <C-l> gt<CR>
 " ------------------- VSCode commands rebind -------------------
 " Jump around
 nnoremap <C-w>gd :vsc editor.action.revealDefinitionAside<CR>
-nnoremap gd :vsc editor.action.revealDefinition<CR>
+"  nnoremap gd :vsc editor.action.revealDefinition<CR>
 nnoremap gf :vsc editor.action.revealDeclaration<CR>
 nnoremap gi :vsc editor.action.goToImplementation<CR>
-nnoremap gr :vsc references-view.findReferences<CR>
+nnoremap gr :vsc editor.action.referenceSearch.trigger<CR>
+nnoremap gR :vsc references-view.findReferences<CR>
 nnoremap gp :vsc editor.action.peekDefinition<CR>
 vnoremap gn :vsc goToNextReference<CR>
 vnoremap gN :vsc goToPreviousReference<CR>
 nnoremap gL :vsc workbench.action.navigateToLastEditLocation<CR>
 
 " Built-in undo/redo
-nnoremap u :vsc undo<CR>
-nnoremap U :vsc redo<CR>
+"  nnoremap u :vsc undo<CR>
+"  nnoremap U :vsc redo<CR>
 
 " Use Built-in Search
 "  nnoremap / :vsc actions.find<CR> 

@@ -22,6 +22,7 @@ source $HOME/.aliases
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
+eval "$(github-copilot-cli alias -- "$0")"
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH

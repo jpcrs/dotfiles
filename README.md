@@ -17,7 +17,7 @@ File Manager: [ranger](https://github.com/ranger/ranger) / [nnn](https://github.
 
 ## Vim Emulation Shortcuts
 
-| Base Commands      | Description         | Visual Studio Code                         | JetBrains |
+| Base Commands      | Description        | Visual Studio Code                         | JetBrains |
 | ------------------ | ------------------- | ------------------------------------------ | --------- |
 | `<leader>`         | Show whichkey       | `whichkey.show`                            | `WIP`     |
 | `<leader><leader>` | Show command list   | `workbench.action.showCommands`            | `WIP`     |

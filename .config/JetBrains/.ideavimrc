@@ -1,9 +1,10 @@
 let mapleader=' '
+set NERDTree
 set which-key
+set easymotion
 set notimeout
 set surround
 set exchange
-set NERDTree
 set hlsearch
 set incsearch
 set ignorecase
@@ -14,31 +15,35 @@ set relativenumber
 set scrolloff=15
 set history=100000
 set clipboard=unnamed
+set visualbell
+set noerrorbells
 
-" Quit visual mode
+" ------------------- Vim default rebindings -------------------
+
+" Quit visual mode with ESC
 vnoremap v <Esc>
-
-" Move to the start of line
+ 
+" Move to the start of line 
 nnoremap H ^
 vnoremap H ^
-
-" Move to the end of line
+ 
+" Move to the end of line 
 nnoremap L $
 vnoremap L $
-
+ 
 " Redo
 nnoremap U <C-r>
-
-" Yank to the end of line
+ 
+" Yank to the end of line 
 nnoremap Y y$
-
+ 
 " Tab
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
-" clipboard
+" Clipboard
 nnoremap d "_d
 vnoremap d "_d
 nnoremap D "_D
@@ -49,7 +54,7 @@ vnoremap c "_c
 nnoremap C "_C
 nnoremap x "_x
 nnoremap X "_x
-xnoremap p "_dP
+xnoremap p pgvy
 
 " Tab navigation
 nnoremap tl gt
@@ -58,181 +63,426 @@ nnoremap <C-h> gT<CR>
 nnoremap <C-l> gt<CR>
 
 " Save file
-nnoremap <leader>fs :w<CR>| "fs(File Save)
-nnoremap <leader>fS :vsc File.SaveAll<CR>| "fS(File SAVE All)
+nnoremap <leader>fs :action SaveDocument<CR>
+nnoremap <leader>fS :action SaveAll<CR>
 
-" ------------- Editor Specific -------------
+" Reload config
+nnoremap <leader>R :source ~/.ideavimrc<CR>
 
-" Jump around
-nnoremap gd :action GotoDeclaration<CR>| "gd (Go Declaration)
-nnoremap gi :action GotoImplementation<CR>| "gi (Go Implementation)
-nnoremap gr :action FindUsages<CR>| "gr (Go References)
-nnoremap gp :action QuickImplementations<CR>| "gp (Go Peek)
-nnoremap gn :action NextOccurence<CR>| "gn (Go Next)
-vnoremap gn :action NextOccurence<CR>| "gn (Go Next)
-nnoremap gN :action PreviousOccurence<CR>| "gN (Go Previous) -- Uppercase N, go back.
-vnoremap gN :action PreviousOccurence<CR>| "gN (Go Previous) -- Uppercase N, go back.
+" ------------------- Editor Specific -------------------
 
-" LSP
-nnoremap <leader>le :action GotoNextError<CR>| "le (LSP next Error)
-nnoremap <leader>lE :action GotoPreviousError<CR>| "lE (LSP previous Error) -- Uppercase E, previous error.
-nnoremap <leader>li :action ReSharperGotoNextErrorInSolution<CR>| "li (Next Solution Error) -- Don't know how to bind this :)
-nnoremap <leader>lI :action ReSharperGotoPrevErrorInSolution<CR>| "lI (Previous Solution Error)
-nnoremap <leader>lr :action RenameElement<CR>| "lr (LSP Rename)
-nnoremap <leader>la :action ShowIntentionActions<CR>| "la (LSP Action)
-nnoremap <leader>lm :action ParameterInfo<CR>| "lm (LSP Method Info)
-nnoremap <leader>lh :action QuickJavaDoc<CR>| "lh (LSP Hover)
-nnoremap <leader>ls :action GotoSymbol<CR>| "ls (LSP Symbols)
-nnoremap <leader>lp :action Rider.ProblemsView.ErrorsInSolution<CR>| "lp (LSP Problems)
-
-" project search
-nnoremap <leader>se :action SearchEverywhere<CR>| "se (Search Everywhere)
-nnoremap <leader>sf :action GotoFile<CR>| "sf (Search File)
-nnoremap <leader>sa :action GotoAction<CR>| "sa (Search Action)
-nnoremap <leader>sc :action GotoClass<CR>| "sc (Search Class)
-
-" Select Next Occurrence
-inoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
-vnoremap <C-d> <Esc>:action SelectNextOccurrence<CR>
-nnoremap <leader>d :action SelectNextOccurrence<CR>
-vnoremap <leader>d :action SelectNextOccurrence<CR>
-nnoremap <leader>D :action SelectAllOccurrences<CR>
-
-" Navigation
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-i> :action Forward<CR>
-
-" Built in search
-nnoremap / :action Find<CR>
-nnoremap <leader>/ /
-
-" Breakpoints
-nnoremap <leader>bb :action ToggleLineBreakpoint<CR>| "bb (Breakpoint BreakPoint) -- ToggleBreak point, but reaching T is not ideal
-nnoremap <leader>bv :action ViewBreakpoints<CR>| "bv (Breakpoint View)
-nnoremap <leader>bd :action Debugger.RemoveAllBreakpoints<CR>| "bD (Breakpoint Delete) -- Delete all Breakpoints
-nnoremap <leader>be :action ToggleBreakpointEnabled<CR>| "be (Breakpoint Enable/disable)
-
-" Debug
-nnoremap <leader>sD :action Debug<CR>| "sD (Start DEBUG)
-nnoremap <leader>sd :action Run<CR>| "sd (Start Debug)
-" Build
-nnoremap <leader>sb :action BuildSolutionAction<CR>| "rb (Solution Build)
-nnoremap <leader>sB :action BuildSolutionAction<CR>| "rB (Solution Build)
-
-" tests
-nnoremap <leader>tv :action RiderUnitTestFocusExplorerAction<CR>| "tv (Test View)
-nnoremap <leader>tr :action RiderUnitTestRunTreeSplitAction<CR>| "tr (Test Run) -- Run All tests
-nnoremap <leader>tc :action RiderUnitTestRunContextAction<CR>| "tc (Test Current) -- Run Current Test
-nnoremap <leader>tC :action RiderUnitTestDebugContextAction<CR>| "tC (Test CURRENT) -- Test current debugging
-
-" Terminal
-nnoremap <leader>vt Vy<CR>:action ActivateTerminalToolWindow<CR>| "vt (View Terminal)
-
-" NERDTree
-nnoremap <leader>fe :NERDTree<CR>| "fe (File explorer)
-
-" Clear search
-nnoremap <leader>cs :nohlsearch<CR>| "cs (Clear Search)
-
-" Quit normal mode
-nnoremap <leader>q :q<CR>
-nnoremap <leader>kt :action CloseAllEditorsButActive<CR>| "kt (Keep Tab) :%bd|e#
-nnoremap <leader>Q :action CloseAllEditors<CR>
-
-" Comment
-nnoremap <leader>kc :action CommentByLineComment<CR>
-vnoremap <leader>kc :action CommentByLineComment<CR>
-
-" Duplicate line
-nnoremap <leader>ld :action EditorDuplicate<CR>| "ld (Duplicate Line)
-vnoremap <leader>ld :action EditorDuplicate<CR>
-
-" Expand selection
-nnoremap <leader>vv :action EditorSelectWord<CR>
-vnoremap <leader>vv :action EditorSelectWord<CR>
-
-" Cursor
-nnoremap <C-S-A-Up> :action EditorCloneCaretAbove<CR>
-nnoremap <C-S-A-Down> :action EditorCloneCaretBelow<CR>
-nnoremap <A-Up> :action MoveLineUp<CR>
-nnoremap <A-Down> :action MoveLineDown<CR>
-
-nnoremap <C-A-k> :action EditorCloneCaretAbove<CR>
-nnoremap <C-A-j> :action EditorCloneCaretBelow<CR>
-nnoremap <A-k> :action MoveLineUp<CR>
-nnoremap <A-j> :action MoveLineDown<CR>
-
-" FSharp
-nnoremap <leader>fi :action Rider.Plugins.FSharp.SendToFsi<CR>| "fi (Fsharp Interactive)
-vnoremap <leader>fi :action Rider.Plugins.FSharp.SendToFsi<CR>| "fi (Fsharp Interactive)
-
-" Jetbrains specific
-nnoremap <leader>cv :action ChangeView<CR>| "cv (Change View)
-nnoremap <leader>cd :action ChooseDebugConfiguration<CR>| "cd (Choose Debug)
-nnoremap <leader>oi :action OptimizeImports<CR>| "oi (Optimize Imports)
-nnoremap <leader>rc :action ChooseRunConfiguration<CR>| "rc (Run configuration)
-
-" Leetcode
-nnoremap <leader>Lv :action ActivateleetcodeToolWindow<CR>
-nnoremap <leader>Lp :action leetcode.editor.OpenContentAction<CR>
-nnoremap <leader>Lh :action leetcode.editor.OpenSolutionAction<CR>
-nnoremap <leader>Lt :action leetcode.editor.RunCodeAction<CR>
-nnoremap <leader>Lc :action leetcode.editor.TestcaseAction<CR>
+" ------------- Built-in undo/redo -------------
+nnoremap u :action $Undo<CR>
+nnoremap U :action $Redo<CR>
 
 
-" Which-key config
-let g:WhichKey_ShowVimActions = "true"
-let g:WhichKeyDesc_select_next = "<leader>d Select Next Occurence"
-let g:WhichKeyDesc_select_all = "<leader>D Select All Occurence"
+" ------------- Base <leader> commands -------------
+let g:WhichKeyDesc_search_everywhere1 = "<leader><leader> Search Everywhere"
+nnoremap <leader><leader> :action SearchEverywhere<CR>
+vnoremap <leader><leader> :action SearchEverywhere<CR>
 
-let g:WhichKeyDesc_lsp_opts = "<leader>l LSP..."
-let g:WhichKeyDesc_lsp_error = "<leader>le Next Error"
-let g:WhichKeyDesc_lsp_previousError = "<leader>lE Previous Error"
-let g:WhichKeyDesc_lsp_rename = "<leader>le Rename Element"
-let g:WhichKeyDesc_lsp_actions = "<leader>la Show Actions"
-let g:WhichKeyDesc_lsp_methodInfo = "<leader>lm Method Info"
-let g:WhichKeyDesc_lsp_hover = "<leader>lh Hover Info"
-let g:WhichKeyDesc_lsp_symbol = "<leader>lh Show Symbols"
-let g:WhichKeyDesc_lsp_errors = "<leader>lp Problems in the solution"
-let g:WhichKeyDesc_line_duplicate = "<leader>ld Duplicate line"
-let g:WhichKeyDesc_lsp_nextSolutionError = "<leader>li Next Solution Error"
-let g:WhichKeyDesc_lsp_prevSolutionError = "<leader>lI Previous Solution Error"
+let g:WhichKeyDesc_search_character = "<leader>j Search a character"
+map <leader>j <Plug>(easymotion-s2)
 
-let g:WhichKeyDesc_search_opts = "<leader>s Search..."
-let g:WhichKeyDesc_search_everywhere = "<leader>se Everywhere"
+let g:WhichKeyDesc_search_word = "<leader>J Search a word"
+map <leader>J <Plug>(easymotion-sn)
+
+let g:WhichKeyDesc_clear_notifications = "<leader>N Shut up!"
+nnoremap <leader>N :action ClearAllNotifications<CR>
+
+let g:WhichKeyDesc_toggle_explorer = "<leader>N Show tree/explorer view"
+nnoremap <leader>e :NERDTreeToggle<CR>
+
+" ------------- Buffer -------------
+let g:WhichKeyDesc_buffer_opts = "<leader>L +Buffer"
+
+"  let g:WhichKeyDesc_move_buffer_left = "<leader>bh Move Buffer to Left Group" (Intellij doesn't support?)
+"  nnoremap <leader>bh :action ??CR>
+
+let g:WhichKeyDesc_move_buffer_bottom = "<leader>bj Move Buffer to Bottom Group"
+nnoremap <leader>bj :action MoveTabDown<CR>
+
+"  let g:WhichKeyDesc_move_buffer_up = "<leader>bk Move Buffer to Top Group" (Intellij doesn't support?)
+"  nnoremap <leader>bk :action ??CR>
+
+let g:WhichKeyDesc_move_buffer_right = "<leader>bh Move Buffer to Right Group"
+nnoremap <leader>bl :action MoveTabRight<CR>
+
+let g:WhichKeyDesc_buffer_new = "<leader>bn New Buffer"
+nnoremap <leader>bn :action NewFile<CR>
+
+let g:WhichKeyDesc_buffer_paste = "<leader>by Paste Whole Buffer"
+nnoremap <leader>bp ggVGp
+
+let g:WhichKeyDesc_buffer_pin = "<leader>bt Toggle Buffer Pin"
+let g:WhichKeyDesc_buffer_pin2 = "<leader>bT Toggle Buffer Pin"
+nnoremap <leader>bt :action PinActiveTabToggle<CR>
+nnoremap <leader>bT :action PinActiveTabToggle<CR>
+
+let g:WhichKeyDesc_buffer_yank = "<leader>by Yank Whole Buffer"
+nnoremap <leader>by ggVGy
+
+" ------------- New Buffer -------------
+"  let g:WhichKeyDesc_buffer_new_opts = "<leader>N +New"
+
+"  let g:WhichKeyDesc_buffer_new_left = "<leader>bnh New Buffer Left"
+"  nnoremap <leader>bnh :action ??CR>
+
+"  let g:WhichKeyDesc_buffer_new_down = "<leader>bnh New Buffer Down"
+"  nnoremap <leader>bnj :action ??CR>
+
+"  let g:WhichKeyDesc_buffer_new_up = "<leader>bnh New Buffer Up"
+"  nnoremap <leader>bnk :action ??<CR>
+
+"  let g:WhichKeyDesc_buffer_new_right = "<leader>bnh New Buffer Right"
+"  nnoremap <leader>bnl :action ??<CR>
+
+" ------------- Debug -------------
+let g:WhichKeyDesc_debug_opts = "<leader>d +Debug"
+
+let g:WhichKeyDesc_debug_run_cursor = "<leader>dC Run to Cursor"
+nnoremap <leader>dC :action RunToCursor<CR>
+
+let g:WhichKeyDesc_debug_resume = "<leader>dc Continue"
+nnoremap <leader>dc :action Resume<CR>
+
+let g:WhichKeyDesc_debug_step_into = "<leader>dc Step Into"
+nnoremap <leader>di :action StepInto<CR>
+
+let g:WhichKeyDesc_debug_jump_to_cursor = "<leader>dc Jump to Cursor"
+nnoremap <leader>dj :action ForceRunToCursor<CR>
+
+let g:WhichKeyDesc_debug_hover = "<leader>dh Hover"
+nnoremap <leader>dh :action QuickEvaluateExpression<CR>
+
+let g:WhichKeyDesc_debug_step_out = "<leader>dO Step Out"
+nnoremap <leader>dO :action StepOut<CR>
+
+let g:WhichKeyDesc_debug_step_out = "<leader>do Step Over"
+nnoremap <leader>do :action StepOver<CR>
+
+let g:WhichKeyDesc_debug_pause = "<leader>dp Pause"
+nnoremap <leader>dp :action Pause<CR>
+
+let g:WhichKeyDesc_debug_restart = "<leader>dR Restart"
+nnoremap <leader>dR :action Debug<CR>
+
+let g:WhichKeyDesc_debug_run = "<leader>dR Run without Debugging"
+nnoremap <leader>dr :action Run<CR>
+
+let g:WhichKeyDesc_debug_start = "<leader>dR Start"
+nnoremap <leader>ds :action Debug<CR>
+
+let g:WhichKeyDesc_debug_stop = "<leader>dS Stop"
+nnoremap <leader>dS :action Stop<CR>
+
+let g:WhichKeyDesc_debug_view_repl = "<leader>dv View Repl"
+nnoremap <leader>dv :action EvaluateExpression<CR>
+
+let g:WhichKeyDesc_debug_view_watch = "<leader>dv View Watch"
+nnoremap <leader>dw :action ActivateDebugToolWindow<CR>
+
+" ------------- Debug Breakpoints -------------
+let g:WhichKeyDesc_debug_breakpoints_opts = "<leader>db +Breakpoints"
+
+let g:WhichKeyDesc_breakpoints_add = "<leader>dbb Add Breakpoint"
+nnoremap <leader>dbb :action ToggleLineBreakpoint<CR>
+
+let g:WhichKeyDesc_breakpoints_add_conditional = "<leader>dbc Add Conditional Breakpoint"
+nnoremap <leader>dbc :action AddConditionalBreakpoint<CR>
+
+let g:WhichKeyDesc_breakpoints_remove_breakpoint = "<leader>dbd Remove Breakpoint"
+nnoremap <leader>dbd :action ToggleLineBreakpoint<CR>
+
+let g:WhichKeyDesc_breakpoints_remove_all_breakpoint = "<leader>dbD Remove All Breakpoints"
+nnoremap <leader>dbD :action Debugger.RemoveAllBreakpoints<CR>
+
+let g:WhichKeyDesc_breakpoints_disable_all_breakpoint = "<leader>dbE Disable All Breakpoints"
+nnoremap <leader>dbE :action XDebugger.MuteBreakpoints<CR>
+
+let g:WhichKeyDesc_breakpoints_enable_all_breakpoint = "<leader>dbe Enable All Breakpoints"
+nnoremap <leader>dbe :action XDebugger.MuteBreakpoints<CR>
+
+let g:WhichKeyDesc_breakpoints_next = "<leader>dbn Next Breakpoint"
+nnoremap <leader>dbn :action ViewBreakpoints<CR>
+
+let g:WhichKeyDesc_breakpoints_previous = "<leader>dbp Previous Breakpoint"
+nnoremap <leader>dbp :action ViewBreakpoints<CR>
+
+let g:WhichKeyDesc_breakpoints_toggle = "<leader>dbs Enable/Disable (Switch) Breakpoint"
+nnoremap <leader>dbp :action ToggleBreakpointEnabled<CR>
+
+" ------------- Files -------------
+let g:WhichKeyDesc_files_opts = "<leader>f +Files"
+
+let g:WhichKeyDesc_files_save = "<leader>fs Save"
+nnoremap <leader>fs :action SaveDocument<CR>
+
+let g:WhichKeyDesc_files_save_all = "<leader>fS Save All"
+nnoremap <leader>fS :action SaveAll<CR>
+
+"  let g:WhichKeyDesc_files_save_all = "<leader>fL Locate in OS"
+"  nnoremap <leader>fL :action ??<CR>
+
+let g:WhichKeyDesc_files_view_file_explorer = "<leader>fe View File in Explorer"
+nnoremap <leader>fe :NERDTreeFind<CR>
+
+let g:WhichKeyDesc_files_new = "<leader>fn New File"
+nnoremap <leader>fn :action NewFile<CR>
+
+" ------------- Git -------------
+" Not using this on Intellij
+"  let g:WhichKeyDesc_files_opts = "<leader>g +Git"
+
+" ------------- Git Web Link -------------
+let g:WhichKeyDesc_git_opts = "<leader>g +Git"
+let g:WhichKeyDesc_git_weblinks_opts = "<leader>gw +WebLinks"
+let g:WhichKeyDesc_git_weblinks_selection = "<leader>gws Copy Selection"
+nnoremap <leader>gws :action com.github.kawamataryo.copygitlink.CopyPermalink<CR>
+vnoremap <leader>gws :action com.github.kawamataryo.copygitlink.CopyPermalink<CR>
+
+" ------------- Go -------------
+let g:WhichKeyDesc_go_declaration = "gd Declaration"
+nnoremap gd :action GotoDeclaration<CR>
+
+let g:WhichKeyDesc_go_implementation = "gi Implementation"
+nnoremap gi :action GotoImplementation<CR>
+
+let g:WhichKeyDesc_find_references = "gr Find References"
+nnoremap gr :action FindUsages<CR>
+
+let g:WhichKeyDesc_peek_implementation = "gp Peek Implementation"
+nnoremap gp :action QuickImplementations<CR>
+
+let g:WhichKeyDesc_next_occurence = "gn Next Occurence"
+nnoremap gn :action NextOccurence<CR>
+vnoremap gn :action NextOccurence<CR>
+
+let g:WhichKeyDesc_previous_occurence = "gN Previous Occurence"
+nnoremap gN :action PreviousOccurence<CR>
+vnoremap gN :action PreviousOccurence<CR>
+
+let g:WhichKeyDesc_go_last_edit = "gL Last Edit Location"
+nnoremap gL :action JumpToLastChange<CR>
+
+let g:WhichKeyDesc_go_last_edit = "gl Last Buffer"
+nnoremap gl <C-6>
+
+" ------------- LSP -------------
+let g:WhichKeyDesc_lsp_opts = "<leader>l +LSP"
+
+let g:WhichKeyDesc_lsp_action = "<leader>la Action"
+nnoremap <leader>la :action ShowIntentionActions<CR>
+
+let g:WhichKeyDesc_lsp_hover = "<leader>lh Hover"
+nnoremap <leader>lh :action QuickJavaDoc<CR>
+
+let g:WhichKeyDesc_lsp_method_hint = "<leader>lm Method Hint"
+nnoremap <leader>lm :action ParameterInfo<CR>
+
+let g:WhichKeyDesc_lsp_rename = "<leader>lr Rename"
+nnoremap <leader>lr :action RenameElement<CR>
+
+let g:WhichKeyDesc_errors_next_error_all = "<leader>leN Next Error All Files"
+nnoremap <leader>lN :action ReSharperGotoNextErrorInSolution<CR>
+
+let g:WhichKeyDesc_errors_next_error = "<leader>len Next Error"
+nnoremap <leader>ln :action GotoNextError<CR>
+
+let g:WhichKeyDesc_errors_previous_error_all = "<leader>leP Previous Error All Files"
+nnoremap <leader>lP :action ReSharperGotoPreviousErrorInSolution<CR>
+
+let g:WhichKeyDesc_errors_previous_error = "<leader>lep Previous Error"
+nnoremap <leader>lp :action GotoPreviousError<CR>
+
+let g:WhichKeyDesc_errors_view = "<leader>lev View Error Pane"
+nnoremap <leader>lev :action ActivateProblemsViewToolWindow<CR>
+
+" ------------- Bookmarks -------------
+let g:WhichKeyDesc_marks_opts = "<leader>m +Marks"
+
+"  let g:WhichKeyDesc_marks_clear = "<leader>mc Clear"
+"  nnoremap <leader>mc :action ??<CR>
+
+let g:WhichKeyDesc_marks_clear_all = "<leader>mC Clear All"
+nnoremap <leader>mC :delmarks A-Z0-9<CR>
+
+let g:WhichKeyDesc_marks_find = "<leader>mf Find"
+nnoremap <leader>mf :action ShowBookmarks<CR>
+
+let g:WhichKeyDesc_marks_find_all = "<leader>mF Find All Files"
+nnoremap <leader>mF :action ShowBookmarks<CR>
+
+let g:WhichKeyDesc_marks_labeled = "<leader>ml Labeled"
+nnoremap <leader>ml :action ToggleBookmarkWithMnemonic<CR>
+
+let g:WhichKeyDesc_marks_next = "<leader>mn Next"
+nnoremap <leader>mn :action GotoNextBookmark<CR>
+
+let g:WhichKeyDesc_marks_previous = "<leader>mp Previous"
+nnoremap <leader>mp :action GotoPreviousBookmark<CR>
+
+let g:WhichKeyDesc_marks_toggle = "<leader>mt Toggle"
+nnoremap <leader>mt :action ToggleBookmark<CR>
+
+let g:WhichKeyDesc_marks_view = "<leader>mv View"
+nnoremap <leader>mv :action ActivateBookmarksToolWindow<CR>
+
+" ------------- Project -------------
+let g:WhichKeyDesc_projects_opts = "<leader>p +Project"
+
+let g:WhichKeyDesc_projects_build = "<leader>pb Build"
+nnoremap <leader>pb :action BuildSolutionAction<CR>
+
+" ------------- Tests -------------
+" Todo
+
+" ------------- Project Workspace -------------
+let g:WhichKeyDesc_projects_workspace_opts = "<leader>pw +Workspace"
+
+"  let g:WhichKeyDesc_projects_workspace_add = "<leader>pwa Add"
+"  nnoremap <leader>pwa :action ??<CR>
+
+"  let g:WhichKeyDesc_projects_workspace_change = "<leader>pwc Change"
+"  nnoremap <leader>pwc :action ??<CR>
+
+let g:WhichKeyDesc_projects_workspace_quit = "<leader>pwq Quit"
+nnoremap <leader>pwq :action CloseProject<CR>
+
+"  let g:WhichKeyDesc_projects_workspace_remove = "<leader>pwr Remove"
+"  nnoremap <leader>pwr :action ??<CR>
+
+" ------------- Quit -------------
+let g:WhichKeyDesc_quit_opts = "<leader>q +Quit"
+
+let g:WhichKeyDesc_quit_quit = "<leader>qq Quit"
+nnoremap <leader>qq :action CloseEditor<CR>
+
+let g:WhichKeyDesc_quit_keep_buffer = "<leader>qk Close All Other Buffers"
+nnoremap <leader>qk :action CloseAllEditorsButActive<CR>
+
+let g:WhichKeyDesc_quit_all = "<leader>qQ Quit All"
+nnoremap <leader>qQ :action CloseAllEditors<CR>
+
+let g:WhichKeyDesc_quit_undo = "<leader>qu Undo (Reopen closed)"
+nnoremap <leader>qu :action ReopenClosedTab<CR>
+
+" ------------- Search -------------
+let g:WhichKeyDesc_search_opts = "<leader>s +Search"
+
+let g:WhichKeyDesc_search_file_content = "<leader>sc File Content"
+nnoremap <leader>sc :action TextSearchAction<CR>
+
+"  let g:WhichKeyDesc_search_file_content_workspaces = "<leader>sC File Content (Configured Workspaces)"
+"  nnoremap <leader>sC :action ??<CR>
+
+let g:WhichKeyDesc_search_file_history = "<leader>sh File History"
+nnoremap <leader>sh :action LocalHistory.ShowHistory<CR>
+
+let g:WhichKeyDesc_search_file_name = "<leader>sn File Name"
+nnoremap <leader>sf :action GotoFile<CR>
+
+"  let g:WhichKeyDesc_search_file_name_workspaces = "<leader>sN File Name (Configured Workspaces)"
+"  nnoremap <leader>sN :action ??<CR>
+
+let g:WhichKeyDesc_search_everything = "<leader>se Everything"
+nnoremap <leader>se :action SearchEverywhere<CR>
+vnoremap <leader>se :action SearchEverywhere<CR>
+
 let g:WhichKeyDesc_search_file = "<leader>sf File"
-let g:WhichKeyDesc_search_action = "<leader>sa Action"
-let g:WhichKeyDesc_search_class = "<leader>sc Class"
+nnoremap <leader>sf :action GotoFile<CR>
 
-let g:WhichKeyDesc_breakpoints_opts = "<leader>b Breakpoints..."
-let g:WhichKeyDesc_breakpoints_toggleLine = "<leader>bb Toggle Insert Breakpoint"
-let g:WhichKeyDesc_breakpoints_delete = "<leader>bd Delete All Breakpoints"
-let g:WhichKeyDesc_breakpoints_view = "<leader>bv View Breakpoints"
-let g:WhichKeyDesc_breakpoints_enabledisable = "<leader>be Toggle Enable Breakpoint"
+let g:WhichKeyDesc_search_recent_files = "<leader>sr Recent Files"
+nnoremap <leader>sr :action RecentFiles<CR>
 
-let g:WhichKeyDesc_start_opts = "<leader>s Start..."
-let g:WhichKeyDesc_start_run = "<leader>d Run"
-let g:WhichKeyDesc_start_debug = "<leader>D Debug"
-let g:WhichKeyDesc_start_build = "<leader>b Build"
-let g:WhichKeyDesc_start_rebuild = "<leader>B Build"
+let g:WhichKeyDesc_search_symbol = "<leader>ss Symbol"
+nnoremap <leader>ss :action GotoSymbol<CR>
 
-let g:WhichKeyDesc_tests_opts = "<leader>t Test..."
-let g:WhichKeyDesc_tests_view = "<leader>tv View Tests"
-let g:WhichKeyDesc_tests_run = "<leader>tr Run All Tests"
-let g:WhichKeyDesc_tests_current = "<leader>tc Run Current Tests"
-let g:WhichKeyDesc_tests_debugcurrent = "<leader>tC Debug Current Tests"
+let g:WhichKeyDesc_search_symbol_project = "<leader>sS Symbol Whole Project"
+nnoremap <leader>sS :action GotoSymbol<CR>
 
-let g:WhichKeyDesc_fileexplorer = "<leader>fe Show file Explorer"
+" ------------- Favorites -------------
+" Not using on intellij
 
-let g:WhichKeyDesc_changeView = "<leader>cv Change View"
-let g:WhichKeyDesc_chooseDebug = "<leader>cd Choose Debug"
-let g:WhichKeyDesc_optimizeImports = "<leader>oi Optimize Imports"
-let g:WhichKeyDesc_runconfiguration = "<leader>oi Choose Run Config"
+" ------------- Project Manager -------------
+" Not using on intellij
 
-let g:WhichKeyDesc_quitAll = "<leader>Q Quit All Tabs"
+" ------------- Text -------------
+let g:WhichKeyDesc_text_opts = "<leader>t +Text"
 
-let g:WhichKeyDesc_leetcode_opts = "<leader>L Leetcode..."
-let g:WhichKeyDesc_leetcode_problemContent = "<leader>Lp View Problem"
-let g:WhichKeyDesc_leetcode_solution = "<leader>Lp View Solution"
-let g:WhichKeyDesc_leetcode_testsolution = "<leader>Lp Test"
-let g:WhichKeyDesc_leetcode_testcase = "<leader>Lp Change Test Case"
+let g:WhichKeyDesc_text_duplicate_line = "<leader>td Duplicate Line"
+nnoremap <leader>td :action EditorDuplicate<CR>
+vnoremap <leader>td :action EditorDuplicate<CR>
+
+let g:WhichKeyDesc_text_format_region = "<leader>tf Format Region"
+nnoremap <leader>tf :action ReformatCode<CR>
+vnoremap <leader>tf :action ReformatCode<CR>
+
+let g:WhichKeyDesc_text_organize_imports = "<leader>ti Organize Imports"
+nnoremap <leader>ti :action OptimizeImports<CR>
+vnoremap <leader>ti :action OptimizeImports<CR>
+
+let g:WhichKeyDesc_text_comment_line = "<leader>tk Comment Line"
+nnoremap <leader>tk :action CommentByLineComment<CR>
+vnoremap <leader>tk :action CommentByLineComment<CR>
+
+let g:WhichKeyDesc_text_replace = "<leader>tr Replace"
+nnoremap <leader>tr :action Replace<CR>
+vnoremap <leader>tr :action Replace<CR>
+
+let g:WhichKeyDesc_text_sort_lines_ascending = "<leader>ts Sort Lines Ascending"
+nnoremap <leader>ts :action EditorSortLines<CR>
+vnoremap <leader>ts :action EditorSortLines<CR>
+
+"  let g:WhichKeyDesc_text_sort_lines_descending = "<leader>tS Sort Lines Descending"
+"  nnoremap <leader>ts :action ??<CR>
+"  vnoremap <leader>ts :action ??<CR>
+
+" ------------- Text Fold -------------
+let g:WhichKeyDesc_text_fold_opts = "<leader>tf +Fold"
+
+let g:WhichKeyDesc_text_fold_all = "<leader>tfa Fold All"
+nnoremap <leader>tfa :action CollapseAllRegions<CR>
+vnoremap <leader>tfa :action CollapseAllRegions<CR>
+
+let g:WhichKeyDesc_text_fold_toggle = "<leader>tfh Fold Toggle"
+nnoremap <leader>tfa :action ExpandCollapseToggleAction<CR>
+vnoremap <leader>tfa :action ExpandCollapseToggleAction<CR>
+
+let g:WhichKeyDesc_text_unfold_all = "<leader>tfu Unfold All"
+nnoremap <leader>tfa :action ExpandAllRegions<CR>
+vnoremap <leader>tfa :action ExpandAllRegions<CR>
+
+" ------------- View -------------
+let g:WhichKeyDesc_view_opts = "<leader>v +View"
+
+let g:WhichKeyDesc_view_error_list = "<leader>vE Errors List"
+nnoremap <leader>vE ActivateProblemsViewToolWindow<CR>
+
+let g:WhichKeyDesc_view_explorer = "<leader>ve Explorer"
+nnoremap <leader>ve :NERDTreeToggle<CR>
+
+let g:WhichKeyDesc_view_marks = "<leader>vm Marks"
+nnoremap <leader>vm ActivateBookmarksToolWindow<CR>
+
+"  let g:WhichKeyDesc_view_pm = "<leader>vp Projects Manager"
+"  nnoremap <leader>vp ??<CR>
+
+let g:WhichKeyDesc_view_expand_selection = "<leader>vv Expand Selection"
+nnoremap <leader>vv EditorSelectWord<CR>
+vnoremap <leader>vv EditorSelectWord<CR>
+
+" ------------- View Toggle -------------
+let g:WhichKeyDesc_view_toggle_opts = "<leader>vt +Toggle"
+
+let g:WhichKeyDesc_view_activity_bar = "<leader>vta Activity Bar"
+nnoremap <leader>vta HideAllWindows<CR>
+
+"  let g:WhichKeyDesc_view_error_lens = "<leader>vte Error Lens"
+"  nnoremap <leader>vte ??<CR>
+
+let g:WhichKeyDesc_view_side_bar = "<leader>vts Side Bar"
+nnoremap <leader>vte HideAllWindows<CR>
+
+let g:WhichKeyDesc_view_zen_mode = "<leader>vtz Zen Mode"
+nnoremap <leader>vtz ToggleDistractionFreeMode<CR>

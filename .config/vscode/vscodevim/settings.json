@@ -7,9 +7,7 @@
     "editor.stickyTabStops": true,
     "editor.suggestSelection": "first",
     "zenMode.fullScreen": false,
-    "zenMode.hideTabs": false,
     "zenMode.hideLineNumbers": false,
-    "zenMode.hideStatusBar": false,
     "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
     "workbench.editor.tabSizing": "shrink",
@@ -23,7 +21,6 @@
     "workbench.preferredHighContrastLightColorTheme": "Gruvbox Material Light",
     "workbench.preferredLightColorTheme": "Gruvbox Material Light",
     "workbench.preferredHighContrastColorTheme": "Gruvbox Material Dark",
-    "workbench.activityBar.visible": false,
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1,
         "vscodevim.vim": 1
@@ -59,6 +56,25 @@
             "before": ["U"],
             "commands": [
                 "redo"
+            ]
+        },
+        //Commands that moves the cursor and can't be defined in the vimrc file.
+        {
+            "before": ["g", "d"],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": ["<C-o>"],
+            "commands": [
+                "workbench.action.navigateBack"
+            ]
+        },
+        {
+            "before": ["<C-i>"],
+            "commands": [
+                "workbench.action.navigateForward"
             ]
         }
     ],
@@ -100,7 +116,7 @@
         },
         {
             "key": "j",
-            "name": "Jump to a word",
+            "name": "Jump to a character",
             "type": "commands",
             "icon": "live-share",
             "commands": [
@@ -249,6 +265,20 @@
                             ]
                         }
                     ]
+                }
+            ]
+        },
+        {
+            "key": "c",
+            "name": "+Copilot",
+            "icon": "robot",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "h",
+                    "name": "Help",
+                    "type": "command",
+                    "command": "editor.action.inlineSuggest.trigger"
                 }
             ]
         },
@@ -464,24 +494,31 @@
                             "key": "c",
                             "name": "Log (Current File)",
                             "type": "command",
-                            "command": "workbench.action.tasks.runTask",
-                            "args": "cmd-gitFuzzyLogCurrentFile"
+                            "command": "binocular.customCommands",
+                            "args": "Git fuzzy log current file"
                         },
                         {
                             "key": "l",
                             "name": "Log",
                             "type": "command",
-                            "command": "workbench.action.tasks.runTask",
-                            "args": "cmd-gitFuzzyLog"
+                            "command": "binocular.customCommands",
+                            "args": "Git fuzzy log"
                         },
                         {
                             "key": "f",
                             "name": "Fuzzy",
                             "type": "command",
-                            "command": "workbench.action.tasks.runTask",
-                            "args": "cmd-gitFuzzy"
+                            "command": "binocular.customCommands",
+                            "args": "GitFuzzy"
                         }
                     ]
+                },
+                {
+                    "key": "L",
+                    "name": "LazyGit",
+                    "type": "command",
+                    "command": "binocular.customCommands",
+                    "args": "Lazygit"
                 },
                 {
                     "key": "l",
@@ -703,6 +740,12 @@
                     "command": "leetcode.searchProblem"
                 },
                 {
+                    "key": "S",
+                    "name": "Submit",
+                    "type": "command",
+                    "command": "leetcode.submitSolution"
+                },
+                {
                     "key": "t",
                     "name": "Test",
                     "type": "command",
@@ -909,31 +952,51 @@
             "bindings": [
                 {
                     "key": "c",
-                    "name": "File Content",
+                    "name": "Binocular: File Content",
                     "type": "command",
-                    "command": "workbench.action.tasks.runTask",
-                    "args": "cmd-openFileContent"
+                    "command": "binocular.searchFileContent",
                 },
                 {
                     "key": "C",
-                    "name": "File Content (Configured Workspaces)",
+                    "name": "Binocular: File Content (Configured Workspaces)",
                     "type": "command",
-                    "command": "workbench.action.tasks.runTask",
-                    "args": "cmd-openFileContentWorkspaces"
+                    "command": "binocular.searchContentConfiguredFolders"
+                },
+                {
+                    "key": "d",
+                    "name": "Binocular: Directories",
+                    "type": "command",
+                    "command": "binocular.searchDirectoryConfiguredFolders",
+                },
+                {
+                    "key": "g",
+                    "name": "Binocular: Git Folders",
+                    "type": "command",
+                    "command": "binocular.searchGitFoldersConfiguredFolders",
+                },
+                {
+                    "key": "G",
+                    "name": "Binocular: Git Folders",
+                    "type": "command",
+                    "command": "binocular.searchGitFoldersConfiguredFolders",
+                },
+                {
+                    "key": "h",
+                    "name": "File History",
+                    "type": "command",
+                    "command": "binocular.searchFileHistory"
                 },
                 {
                     "key": "n",
                     "name": "File Name",
                     "type": "command",
-                    "command": "workbench.action.tasks.runTask",
-                    "args": "cmd-searchFileName"
+                    "command": "binocular.searchFile"
                 },
                 {
                     "key": "N",
                     "name": "File Name (Configured Workspaces)",
                     "type": "command",
-                    "command": "workbench.action.tasks.runTask",
-                    "args": "cmd-searchFileNameWorkspaces"
+                    "command": "binocular.searchFileConfiguredFolders"
                 },
                 {
                     "key": "e",
@@ -1212,4 +1275,39 @@
             ]
         }
     ],
+    "zenMode.hideActivityBar": false,
+    "leetcode.hint.commandShortcut": false,
+    "leetcode.showLocked": true,
+    "leetcode.defaultLanguage": "csharp",
+    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/personal/leetcode/csharp",
+    "binocular.general.additionalSearchLocations": [
+        "~/Projects",
+        "~/.config"
+    ],
+    "binocular.command.commands": [
+        {
+            "shellCommand": "lazygit",
+            "commandIdentifier": "Lazygit"
+        },
+        {
+            "shellCommand": "git fuzzy",
+            "commandIdentifier": "GitFuzzy"
+        },
+        {
+            "shellCommand": "git checkout $(git fuzzy log)",
+            "commandIdentifier": "Git fuzzy log"
+        },
+        {
+            "shellCommand": "git checkout $(git fuzzy log ${file})",
+            "commandIdentifier": "Git fuzzy log current file"
+        }
+    ],
+    "editor.autoClosingQuotes": "never",
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot-labs.showBrushesLenses": true,
+    "zenMode.hideStatusBar": false,
+    "zenMode.hideTabs": false,
+    "leetcode.hint.configWebviewMarkdown": false,
+    "leetcode.hint.commentDescription": false,
+    "git.openRepositoryInParentFolders": "never",
 }

@@ -17,6 +17,7 @@ set history=100000
 set clipboard=unnamed
 set visualbell
 set noerrorbells
+set ideajoin
 
 " ------------------- Vim default rebindings -------------------
 
@@ -77,24 +78,20 @@ nnoremap U :action $Redo<CR>
 
 
 " ------------- Base <leader> commands -------------
-let g:WhichKeyDesc_search_everywhere1 = "<leader><leader> Search Everywhere"
-nnoremap <leader><leader> :action SearchEverywhere<CR>
-vnoremap <leader><leader> :action SearchEverywhere<CR>
-
 let g:WhichKeyDesc_search_character = "<leader>j Search a character"
 map <leader>j <Plug>(easymotion-s2)
 
-let g:WhichKeyDesc_search_word = "<leader>J Search a word"
-map <leader>J <Plug>(easymotion-sn)
+let g:WhichKeyDesc_search_word = "<leader>w Search a word"
+map <leader>w <Plug>(easymotion-sn)
 
 let g:WhichKeyDesc_clear_notifications = "<leader>N Shut up!"
 nnoremap <leader>N :action ClearAllNotifications<CR>
 
-let g:WhichKeyDesc_toggle_explorer = "<leader>N Show tree/explorer view"
+let g:WhichKeyDesc_toggle_explorer = "<leader>e Show tree/explorer view"
 nnoremap <leader>e :NERDTreeToggle<CR>
 
 " ------------- Buffer -------------
-let g:WhichKeyDesc_buffer_opts = "<leader>L +Buffer"
+let g:WhichKeyDesc_buffer_opts = "<leader>b +Buffer"
 
 "  let g:WhichKeyDesc_move_buffer_left = "<leader>bh Move Buffer to Left Group" (Intellij doesn't support?)
 "  nnoremap <leader>bh :action ??CR>

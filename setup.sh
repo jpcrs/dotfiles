@@ -33,6 +33,7 @@ brew install asdf
 brew install bat
 brew install btop
 brew install coreutils
+brew install colima
 brew install docker
 brew install exa
 brew install fd
@@ -84,7 +85,6 @@ brew install surfshark
 brew install telegram
 brew install todoist
 brew install visual-studio-code
-brew install warp
 wget https://raw.githubusercontent.com/Homebrew/homebrew-cask-versions/master/Casks/visual-studio-code-insiders.rb -P ~/Downloads
 brew install --build-from-source ~/Downloads/visual-studio-code-insiders.rb
 rm ~/Downloads/visual-studio-code-insiders.rb

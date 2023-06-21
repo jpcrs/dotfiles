@@ -8,14 +8,12 @@
     "editor.suggestSelection": "first",
     "zenMode.fullScreen": false,
     "zenMode.hideLineNumbers": false,
-    "workbench.layoutControl.enabled": false,
     "workbench.layoutControl.type": "menu",
     "workbench.editor.tabSizing": "shrink",
     "explorer.autoReveal": false,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.iconTheme": "gruvbox-material-icon-theme",
     "workbench.editor.untitled.hint": "hidden",
     "workbench.preferredDarkColorTheme": "Gruvbox Material Dark",
     "workbench.preferredHighContrastLightColorTheme": "Gruvbox Material Light",
@@ -26,119 +24,58 @@
         "vscodevim.vim": 1
     },
     //VIM STUFF
-    "vim.vimrc.path": "$HOME/.config/vscode/vsvim.vim",
+    "vim.vimrc.path": "$HOME/.config/vscode/vscodevim/vsvim.vim",
     "vim.vimrc.enable": true,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": false,
     "vim.incsearch": true,
-    "vim.easymotion":true,
+    "vim.easymotion": true,
     "vim.leader": ",",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
-                "<space>"
+                "u"
             ],
-            "commands": [
-                "whichkey.show"
-            ]
-        },
-        {
-            "before": ["<c-j>"],
-            "after": ["leader", "leader", "s"]
-        },
-        {
-            "before": ["u"],
             "commands": [
                 "undo"
             ]
         },
         {
-            "before": ["U"],
+            "before": [
+                "U"
+            ],
             "commands": [
                 "redo"
             ]
         },
         //Commands that moves the cursor and can't be defined in the vimrc file.
         {
-            "before": ["g", "d"],
+            "before": [
+                "g",
+                "d"
+            ],
             "commands": [
                 "editor.action.revealDefinition"
             ]
         },
         {
-            "before": ["<C-o>"],
+            "before": [
+                "<C-o>"
+            ],
             "commands": [
                 "workbench.action.navigateBack"
             ]
         },
         {
-            "before": ["<C-i>"],
+            "before": [
+                "<C-i>"
+            ],
             "commands": [
                 "workbench.action.navigateForward"
             ]
         }
     ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<space>"
-            ],
-            "commands": [
-                "whichkey.show"
-            ]
-        }
-    ],
     "whichkey.bindings": [
-        {
-            "key": " ",
-            "name": "VSCode Commands",
-            "icon": "rocket",
-            "type": "command",
-            "command": "workbench.action.showCommands"
-        },
-        {
-            "key": "J",
-            "name": "Jump to a word",
-            "type": "commands",
-            "icon": "live-share",
-            "commands": [
-                "vim.remap"
-            ],
-            "args": [
-                {
-                    "after": [
-                        "<leader>",
-                        "<leader>",
-                        "/",
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "j",
-            "name": "Jump to a character",
-            "type": "commands",
-            "icon": "live-share",
-            "commands": [
-                "vim.remap"
-            ],
-            "args": [
-                {
-                    "after": [
-                        "<leader>",
-                        "<leader>",
-                        "s",
-                    ]
-                }
-            ]
-        },
-        {
-            "key": "N",
-            "name": "Shut up!",
-            "icon": "bell-slash-dot",
-            "type": "command",
-            "command": "notifications.clearAll",
-        },
         {
             "key": "e",
             "name": "Show tree/explorer view",
@@ -156,6 +93,49 @@
                     "name": "Hide explorer",
                     "type": "command",
                     "command": "workbench.action.toggleSidebarVisibility"
+                }
+            ]
+        },
+        {
+            "key": "j",
+            "name": "Jump to a character",
+            "type": "commands",
+            "icon": "live-share",
+            "commands": [
+                "vim.remap"
+            ],
+            "args": [
+                {
+                    "after": [
+                        "<leader>",
+                        "<leader>",
+                        "s"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "N",
+            "name": "Clear Notifications",
+            "icon": "bell-slash-dot",
+            "type": "command",
+            "command": "notifications.clearAll"
+        },
+        {
+            "key": "w",
+            "name": "Jump to a word",
+            "type": "commands",
+            "icon": "live-share",
+            "commands": [
+                "vim.remap"
+            ],
+            "args": [
+                {
+                    "after": [
+                        "<leader>",
+                        "<leader>",
+                        "/"
+                    ]
                 }
             ]
         },
@@ -271,14 +251,44 @@
         {
             "key": "c",
             "name": "+Copilot",
-            "icon": "robot",
+            "icon": "octoface",
             "type": "bindings",
             "bindings": [
+                {
+                    "key": "a",
+                    "name": "Accept Suggestion",
+                    "type": "command",
+                    "command": "github.copilot.acceptCursorPanelSolution"
+                },
+                {
+                    "key": "e",
+                    "name": "Explain Selection",
+                    "type": "command",
+                    "command": "github.copilot.interactiveEditor.explain"
+                },
                 {
                     "key": "h",
                     "name": "Help",
                     "type": "command",
-                    "command": "editor.action.inlineSuggest.trigger"
+                    "command": "github.copilot.interactiveEditor.generate"
+                },
+                {
+                    "key": "p",
+                    "name": "Panel View",
+                    "type": "command",
+                    "command": "github.copilot.generate"
+                },
+                {
+                    "key": "n",
+                    "name": "New Chat Buffer",
+                    "type": "command",
+                    "command": "workbench.action.openChat.copilot"
+                },
+                {
+                    "key": "v",
+                    "name": "View Chat",
+                    "type": "command",
+                    "command": "workbench.panel.interactiveSession.view.copilot.focus"
                 }
             ]
         },
@@ -290,7 +300,7 @@
             "bindings": [
                 {
                     "key": "C",
-                    "name": "Run to Cursor",
+                    "name": "Continue to Cursor",
                     "type": "command",
                     "command": "editor.debug.action.runToCursor"
                 },
@@ -390,25 +400,25 @@
                             "command": "editor.debug.action.conditionalBreakpoint"
                         },
                         {
-                            "key": "d",
-                            "name": "Remove Breakpoint",
-                            "type": "command",
-                            "command": "debug.removeBreakpoint"
-                        },
-                        {
-                            "key": "D",
+                            "key": "R",
                             "name": "Remove All Breakpoints",
                             "type": "command",
                             "command": "workbench.debug.viewlet.action.removeAllBreakpoints"
                         },
                         {
-                            "key": "E",
+                            "key": "D",
                             "name": "Disable All Breakpoints",
                             "type": "command",
                             "command": "workbench.debug.viewlet.action.disableAllBreakpoints"
                         },
                         {
                             "key": "e",
+                            "name": "Enable/Disable (Switch) Breakpoint",
+                            "type": "command",
+                            "command": "debug.enableOrDisableBreakpoint"
+                        },
+                        {
+                            "key": "E",
                             "name": "Enable All Breakpoints",
                             "type": "command",
                             "command": "workbench.debug.viewlet.action.enableAllBreakpoints"
@@ -424,12 +434,6 @@
                             "name": "Previous Breakpoint",
                             "type": "command",
                             "command": "editor.debug.action.goToPreviousBreakpoint"
-                        },
-                        {
-                            "key": "s",
-                            "name": "Enable/Disable (Switch) Breakpoint",
-                            "type": "command",
-                            "command": "debug.enableOrDisableBreakpoint"
                         }
                     ]
                 }
@@ -442,6 +446,43 @@
             "type": "bindings",
             "bindings": [
                 {
+                    "key": "e",
+                    "name": "View File in Explorer",
+                    "type": "command",
+                    "command": "workbench.files.action.showActiveFileInExplorer"
+                },
+                {
+                    "key": "f",
+                    "name": "+Favorites",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "a",
+                            "name": "Add",
+                            "type": "command",
+                            "command": "favorites.add"
+                        },
+                        {
+                            "key": "d",
+                            "name": "Delete",
+                            "type": "command",
+                            "command": "favorites.del"
+                        },
+                        {
+                            "key": "l",
+                            "name": "List",
+                            "type": "command",
+                            "command": "favorites.open"
+                        }
+                    ]
+                },
+                {
+                    "key": "L",
+                    "name": "Locate in OS",
+                    "type": "command",
+                    "command": "revealFileInOS"
+                },
+                {
                     "key": "s",
                     "name": "Save",
                     "type": "command",
@@ -452,18 +493,6 @@
                     "name": "SaveAll",
                     "type": "command",
                     "command": "workbench.action.files.saveFiles"
-                },
-                {
-                    "key": "L",
-                    "name": "Locate in OS",
-                    "type": "command",
-                    "command": "revealFileInOS"
-                },
-                {
-                    "key": "e",
-                    "name": "View File in Explorer",
-                    "type": "command",
-                    "command": "workbench.files.action.showActiveFileInExplorer"
                 },
                 {
                     "key": "n",
@@ -573,9 +602,9 @@
                             "name": "Copy Selection",
                             "type": "command",
                             "command": "gitweblinks.copySelectionToChoice"
-                        },
+                        }
                     ]
-                },
+                }
             ]
         },
         {
@@ -766,6 +795,25 @@
             "type": "bindings",
             "bindings": [
                 {
+                    "key": "c",
+                    "name": "+CSharp",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "s",
+                            "name": "View Solution Explorer",
+                            "type": "command",
+                            "command": "solutionExplorer.focus"
+                        },
+                        {
+                            "key": "c",
+                            "name": "Close Solution",
+                            "type": "command",
+                            "command": "solutionExplorer.focus"
+                        }
+                    ]
+                },
+                {
                     "key": "f",
                     "name": "+FSharp",
                     "type": "bindings",
@@ -851,7 +899,75 @@
                     "name": "View Explorer",
                     "type": "command",
                     "command": "bookmarksExplorer.focus"
+                }
+            ]
+        },
+        {
+            "key": "n",
+            "name": "+Notebooks",
+            "icon": "bookmark",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "a",
+                    "name": "Add New Cell",
+                    "type": "command",
+                    "command": "jupyter.notebookeditor.addcellbelow"
                 },
+                {
+                    "key": "c",
+                    "name": "Clear Cell Output",
+                    "type": "command",
+                    "command": "notebook.cell.clearOutputs"
+                },
+                {
+                    "key": "C",
+                    "name": "Clear All Cells Output",
+                    "type": "command",
+                    "command": "notebook.clearAllCellsOutputs"
+                },
+                {
+                    "key": "d",
+                    "name": "Delete Cell",
+                    "type": "command",
+                    "command": "notebook.cell.delete"
+                },
+                {
+                    "key": "e",
+                    "name": "Execute Cell",
+                    "type": "command",
+                    "command": "notebook.cell.execute"
+                },
+                {
+                    "key": "E",
+                    "name": "Execute Cell",
+                    "type": "command",
+                    "command": "notebook.execute"
+                },
+                {
+                    "key": "j",
+                    "name": "Execute Cell and Select Below",
+                    "type": "command",
+                    "command": "notebook.cell.executeAndSelectBelow"
+                },
+                {
+                    "key": "J",
+                    "name": "Execute Cell and Insert Below",
+                    "type": "command",
+                    "command": "notebook.cell.executeAndInsertBelow"
+                },
+                {
+                    "key": "l",
+                    "name": "Select Cell Language",
+                    "type": "command",
+                    "command": "notebook.cell.changeLanguage"
+                },
+                {
+                    "key": "v",
+                    "name": "View Notebook Variables",
+                    "type": "command",
+                    "command": "polyglot-notebook-panel-values.focus"
+                }
             ]
         },
         {
@@ -867,6 +983,43 @@
                     "command": "workbench.action.tasks.build"
                 },
                 {
+                    "key": "m",
+                    "name": "+Project Manager",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "a",
+                            "name": "Add Project to Workspace",
+                            "type": "command",
+                            "command": "projectManager.addToWorkspace"
+                        },
+                        {
+                            "key": "f",
+                            "name": "Filter Projects",
+                            "type": "command",
+                            "command": "projectManager.filterProjectsByTag"
+                        },
+                        {
+                            "key": "l",
+                            "name": "List Projects",
+                            "type": "command",
+                            "command": "projectManager.listProjects"
+                        },
+                        {
+                            "key": "r",
+                            "name": "Refresh Projects",
+                            "type": "command",
+                            "command": "projectManager.refreshAnyProjects"
+                        },
+                        {
+                            "key": "s",
+                            "name": "Save Project to Favorites",
+                            "type": "command",
+                            "command": "projectManager.saveProject"
+                        }
+                    ]
+                },
+                {
                     "key": "t",
                     "name": "+Tests",
                     "type": "bindings",
@@ -876,7 +1029,7 @@
                             "name": "Project",
                             "type": "command",
                             "command": "workbench.action.tasks.test"
-                        },
+                        }
                     ]
                 },
                 {
@@ -954,7 +1107,7 @@
                     "key": "c",
                     "name": "Binocular: File Content",
                     "type": "command",
-                    "command": "binocular.searchFileContent",
+                    "command": "binocular.searchFileContent"
                 },
                 {
                     "key": "C",
@@ -966,35 +1119,35 @@
                     "key": "d",
                     "name": "Binocular: Directories",
                     "type": "command",
-                    "command": "binocular.searchDirectoryConfiguredFolders",
+                    "command": "binocular.searchDirectoryConfiguredFolders"
                 },
                 {
                     "key": "g",
                     "name": "Binocular: Git Folders",
                     "type": "command",
-                    "command": "binocular.searchGitFoldersConfiguredFolders",
+                    "command": "binocular.searchGitFoldersConfiguredFolders"
                 },
                 {
                     "key": "G",
                     "name": "Binocular: Git Folders",
                     "type": "command",
-                    "command": "binocular.searchGitFoldersConfiguredFolders",
+                    "command": "binocular.searchGitFoldersConfiguredFolders"
                 },
                 {
                     "key": "h",
-                    "name": "File History",
+                    "name": "Binocular: File History",
                     "type": "command",
                     "command": "binocular.searchFileHistory"
                 },
                 {
                     "key": "n",
-                    "name": "File Name",
+                    "name": "Binocular: File Name",
                     "type": "command",
                     "command": "binocular.searchFile"
                 },
                 {
                     "key": "N",
-                    "name": "File Name (Configured Workspaces)",
+                    "name": "Binocular: File Name (Configured Workspaces)",
                     "type": "command",
                     "command": "binocular.searchFileConfiguredFolders"
                 },
@@ -1029,66 +1182,10 @@
                     "command": "workbench.action.showAllSymbols"
                 },
                 {
-                    "key": "F",
-                    "name": "+Favorites",
-                    "type": "bindings",
-                    "bindings": [
-                        {
-                            "key": "a",
-                            "name": "Add",
-                            "type": "command",
-                            "command": "favorites.add"
-                        },
-                        {
-                            "key": "d",
-                            "name": "Delete",
-                            "type": "command",
-                            "command": "favorites.del"
-                        },
-                        {
-                            "key": "l",
-                            "name": "List",
-                            "type": "command",
-                            "command": "favorites.open"
-                        }
-                    ]
-                },
-                {
-                    "key": "m",
-                    "name": "+Project Manager",
-                    "type": "bindings",
-                    "bindings": [
-                        {
-                            "key": "a",
-                            "name": "Add Project to Workspace",
-                            "type": "command",
-                            "command": "projectManager.addToWorkspace"
-                        },
-                        {
-                            "key": "f",
-                            "name": "Filter Projects",
-                            "type": "command",
-                            "command": "projectManager.filterProjectsByTag"
-                        },
-                        {
-                            "key": "l",
-                            "name": "List Projects",
-                            "type": "command",
-                            "command": "projectManager.listProjects"
-                        },
-                        {
-                            "key": "r",
-                            "name": "Refresh Projects",
-                            "type": "command",
-                            "command": "projectManager.refreshAnyProjects"
-                        },
-                        {
-                            "key": "s",
-                            "name": "Save Project to Favorites",
-                            "type": "command",
-                            "command": "projectManager.saveProject"
-                        }
-                    ]
+                    "key": "v",
+                    "name": "Search View",
+                    "type": "command",
+                    "command": "workbench.action.findInFiles"
                 }
             ]
         },
@@ -1162,9 +1259,9 @@
                             "name": "Unfold All",
                             "type": "command",
                             "command": "editor.unfoldAll"
-                        },
+                        }
                     ]
-                },
+                }
             ]
         },
         {
@@ -1259,10 +1356,16 @@
                             "command": "errorLens.toggle"
                         },
                         {
-                            "key": "s",
-                            "name": "Side Bar",
+                            "key": "t",
+                            "name": "Tabs",
                             "type": "command",
-                            "command": "workbench.action.toggleSidebarVisibility"
+                            "command": "workbench.action.toggleTabsVisibility"
+                        },
+                        {
+                            "key": "s",
+                            "name": "Status bar",
+                            "type": "command",
+                            "command": "workbench.action.toggleStatusbarVisibility"
                         },
                         {
                             "key": "z",
@@ -1310,4 +1413,52 @@
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commentDescription": false,
     "git.openRepositoryInParentFolders": "never",
+    "workbench.tree.renderIndentGuides": "none",
+    "editor.guides.indentation": false,
+    "debug.showBreakpointsInOverviewRuler": true,
+    "workbench.editor.tabCloseButton": "off",
+    "editor.scrollbar.horizontalScrollbarSize": 0,
+    "editor.scrollbar.verticalScrollbarSize": 4,
+    "notebook.breadcrumbs.showCodeCells": false,
+    "breadcrumbs.enabled": false,
+    "errorLens.enabled": true,
+    "editor.unfoldOnClickAfterEndOfLine": true,
+    "workbench.layoutControl.enabled": false,
+    "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
+    "editor.fontFamily": "Inconsolata Nerd Font, Menlo, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.fontWeight": "400",
+    //apc
+    "apc.electron": {
+        "titleBarStyle": "hidden" // inline titleBar
+    },
+    "window.titleBarStyle": "native",
+    "apc.activityBar": {
+        "size": 36 // if position set to bottom  this is the heigth else width of activity bar
+    },
+    "apc.header": {
+        "height": 26,
+        "fontSize": 11
+    },
+    "apc.listRow": {
+        "height": 19,
+        "fontSize": 12
+    },
+    "apc.statusBar": {
+        "position": "bottom",
+        "height": 19,
+        "fontSize": 11
+    },
+    "apc.stylesheet": {
+        ".title-label > h2": "display:none;"
+    },
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": false,
+        "markdown": true,
+        "scminput": false
+    },
+    "workbench.statusBar.visible": false,
+    "workbench.activityBar.visible": false
 }

@@ -1,8 +1,9 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/Users/jpcrs/.local/bin:$PATH"
 export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
-export PATH="$(asdf where dotnet):$PATH"
-export PATH="$PATH:/Users/jpcrs/.dotnet/tools"
+export PATH="$PATH:/Users/jpcrs/.dotnet"
+# export PATH="$(asdf where dotnet):$PATH"
+export DOTNET_ROOT="/Users/jpcrs/.dotnet"
 
 export NNN_PLUG='o:fzopen;d:diffs;v:imgview;j:autojump;p:pskill'
 export NNN_OPTS="Hd"
@@ -22,7 +23,6 @@ source $HOME/.aliases
 
 eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
-eval "$(github-copilot-cli alias -- "$0")"
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
   export PATH=/opt/homebrew/opt/ruby/bin:$PATH
@@ -30,3 +30,20 @@ if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
 fi
 
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+eval "$(github-copilot-cli alias -- "$0")"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jpcrs/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jpcrs/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jpcrs/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jpcrs/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+

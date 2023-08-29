@@ -97,6 +97,13 @@
             ]
         },
         {
+            "key": ";",
+            "name": "Close Side Bar",
+            "icon": "layout-sidebar-left",
+            "type": "command",
+            "command": "workbench.action.closeSidebar"
+        },
+        {
             "key": "j",
             "name": "Jump to a character",
             "type": "commands",
@@ -168,6 +175,12 @@
                     "name": "Move Buffer to Right Group",
                     "type": "command",
                     "command": "workbench.action.moveEditorToRightGroup"
+                },
+                {
+                    "key": "q",
+                    "name": "Close All Buffers on Pane",
+                    "type": "command",
+                    "command": "workbench.action.closeEditorsInGroup"
                 },
                 {
                     "key": "n",
@@ -261,22 +274,28 @@
                     "command": "github.copilot.acceptCursorPanelSolution"
                 },
                 {
+                    "key": "d",
+                    "name": "Generate Documentation",
+                    "type": "command",
+                    "command": "github.copilot.interactiveEditor.generateDocs"
+                },
+                {
                     "key": "e",
                     "name": "Explain Selection",
                     "type": "command",
                     "command": "github.copilot.interactiveEditor.explain"
                 },
                 {
-                    "key": "h",
-                    "name": "Help",
+                    "key": "f",
+                    "name": "Fix",
                     "type": "command",
-                    "command": "github.copilot.interactiveEditor.generate"
+                    "command": "github.copilot.interactiveEditor.fix"
                 },
                 {
-                    "key": "p",
-                    "name": "Panel View",
+                    "key": "g",
+                    "name": "Generate",
                     "type": "command",
-                    "command": "github.copilot.generate"
+                    "command": "github.copilot.interactiveEditor.generate"
                 },
                 {
                     "key": "n",
@@ -285,10 +304,22 @@
                     "command": "workbench.action.openChat.copilot"
                 },
                 {
+                    "key": "p",
+                    "name": "Panel View",
+                    "type": "command",
+                    "command": "github.copilot.generate"
+                },
+                {
+                    "key": "t",
+                    "name": "Generate Tests",
+                    "type": "command",
+                    "command": "github.copilot.interactiveEditor.generateTests"
+                },
+                {
                     "key": "v",
                     "name": "View Chat",
                     "type": "command",
-                    "command": "workbench.panel.interactiveSession.view.copilot.focus"
+                    "command": "workbench.panel.chat.view.copilot.focus"
                 }
             ]
         },
@@ -711,25 +742,25 @@
                     "type": "bindings",
                     "bindings": [
                         {
-                            "key": "N",
+                            "key": "n",
                             "name": "Next Error All Files",
                             "type": "command",
                             "command": "editor.action.marker.next"
                         },
                         {
-                            "key": "n",
+                            "key": "N",
                             "name": "Next Error Current File",
                             "type": "command",
                             "command": "editor.action.marker.nextInFiles"
                         },
                         {
-                            "key": "P",
+                            "key": "p",
                             "name": "Previous Error All Files",
                             "type": "command",
                             "command": "editor.action.marker.prev"
                         },
                         {
-                            "key": "p",
+                            "key": "P",
                             "name": "Previous Error Current File",
                             "type": "command",
                             "command": "editor.action.marker.prevInFiles"
@@ -757,10 +788,16 @@
                     "command": "leetcode.showSolution"
                 },
                 {
+                    "key": "l",
+                    "name": "Language",
+                    "type": "command",
+                    "command": "leetcode.switchDefaultLanguage"
+                },
+                {
                     "key": "p",
                     "name": "View Problem",
                     "type": "command",
-                    "command": "leetcode.showProblem"
+                    "command": "leetcode.previewProblem"
                 },
                 {
                     "key": "s",
@@ -814,6 +851,19 @@
                     ]
                 },
                 {
+                    "key": "d",
+                    "name": "+Docker",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "v",
+                            "name": "View Docker",
+                            "type": "command",
+                            "command": "dockerContainers.focus"
+                        },
+                    ]
+                },
+                {
                     "key": "f",
                     "name": "+FSharp",
                     "type": "bindings",
@@ -837,7 +887,20 @@
                             "command": "fsi.SendSelection"
                         }
                     ]
-                }
+                },
+                {
+                    "key": "k",
+                    "name": "+Kubernetes",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "v",
+                            "name": "View Clusters",
+                            "type": "command",
+                            "command": "extension.vsKubernetesExplorer.focus"
+                        },
+                    ]
+                },
             ]
         },
         {
@@ -1186,6 +1249,12 @@
                     "name": "Search View",
                     "type": "command",
                     "command": "workbench.action.findInFiles"
+                },
+                {
+                    "key": "w",
+                    "name": "Search Window",
+                    "type": "command",
+                    "command": "workbench.action.switchWindow"
                 }
             ]
         },
@@ -1381,8 +1450,8 @@
     "zenMode.hideActivityBar": false,
     "leetcode.hint.commandShortcut": false,
     "leetcode.showLocked": true,
-    "leetcode.defaultLanguage": "csharp",
-    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/personal/leetcode/csharp",
+    "leetcode.defaultLanguage": "python3",
+    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/personal/leetcode/multi/exercises",
     "binocular.general.additionalSearchLocations": [
         "~/Projects",
         "~/.config"
@@ -1413,15 +1482,13 @@
     "leetcode.hint.configWebviewMarkdown": false,
     "leetcode.hint.commentDescription": false,
     "git.openRepositoryInParentFolders": "never",
-    "workbench.tree.renderIndentGuides": "none",
-    "editor.guides.indentation": false,
     "debug.showBreakpointsInOverviewRuler": true,
     "workbench.editor.tabCloseButton": "off",
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 4,
     "notebook.breadcrumbs.showCodeCells": false,
     "breadcrumbs.enabled": false,
-    "errorLens.enabled": true,
+    "errorLens.enabled": false,
     "editor.unfoldOnClickAfterEndOfLine": true,
     "workbench.layoutControl.enabled": false,
     "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
@@ -1430,7 +1497,9 @@
     "editor.fontWeight": "400",
     //apc
     "apc.electron": {
-        "titleBarStyle": "hidden" // inline titleBar
+        "frame": false,
+        "titleBarStyle": "customButtonsOnHover", // inline titleBar
+        "opacity": 0.96
     },
     "window.titleBarStyle": "native",
     "apc.activityBar": {
@@ -1450,7 +1519,22 @@
         "fontSize": 11
     },
     "apc.stylesheet": {
-        ".title-label > h2": "display:none;"
+        ".title-label > h2": "display:none;",
+        ".quick-input-widget": "border: solid !important; border-width: 0.5px !important; margin-top: 15%; box-shadow: 0px 0px 0px 0px !important;",
+        ".quick-input-widget > .quick-input-titlebar": "display: none",
+        ".quick-input-widget > .quick-input-list > .monaco-list": "font-size: 11px !important; max-height: 43vh !important;",
+        "#quickInput_list > div > div.scrollbar.vertical": "display: none !important; width: 0px !important;",
+        ".quick-input-widget > .quick-input-list .codicon": "font-size: 10px !important; color: #83a598 !important; padding-right: 5px;",
+        ".quick-input-widget > .quick-input-list .monaco-list-row[aria-label*=\" +\"] .label-description": "color: #8ec07c;",
+        ".monaco-grid-view > .monaco-sash": "display: none !important;",
+        ".title .monaco-icon-label-container": "font-size: 10px !important; line-height: 27px !important; padding-bottom: 7px !important",
+        ".title .monaco-icon-name-container > .label-name": "font-size: 10px !important",
+        ".title": "padding-left: 0px !important; height: 26px !important",
+        ".monaco-action-bar .actions-container": "height: 75% !important",
+        ".title.show-file-icons": "height: 26px !important",
+        ".monaco-editor .scroll-decoration": "box-shadow: none;",
+        ".monaco-icon-label:after": "font-size: 10px !important;"
+        // ".monaco-editor .cursor": "background: linear-gradient(to bottom, #ea6962, #e78a4e) !important; box-shadow: 0 0 15px 1px #ee0979, #ff6a00 0px 0px 34px 1px; color: #161616 !important",
     },
     "workbench.colorTheme": "Gruvbox Material Dark",
     "github.copilot.enable": {
@@ -1459,6 +1543,9 @@
         "markdown": true,
         "scminput": false
     },
-    "workbench.statusBar.visible": false,
-    "workbench.activityBar.visible": false
+    "editor.suggest.insertMode": "insert",
+    "omnisharp.enableRoslynAnalyzers": true,
+    "workbench.tree.renderIndentGuides": "none",
+    "workbench.editor.showTabs": false,
+    "workbench.activityBar.visible": false,
 }

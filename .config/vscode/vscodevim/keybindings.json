@@ -90,7 +90,7 @@
     {
         "key": "space",
         "command": "whichkey.show",
-        "when": "(vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine' && !inDebugRepl) || (!inputFocus)"
+        "when": "(!vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' || vim.mode == 'VisualLine' && !inDebugRepl) || (!inputFocus)"
     },
     // NerdTree behavior
     {

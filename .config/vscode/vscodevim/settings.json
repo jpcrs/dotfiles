@@ -34,6 +34,14 @@
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
+                " "
+            ],
+            "commands": [
+                "whichkey.show"
+            ]
+        },
+        {
+            "before": [
                 "u"
             ],
             "commands": [
@@ -44,7 +52,7 @@
             "before": [
                 "U"
             ],
-            "commands": [
+           "commands": [
                 "redo"
             ]
         },
@@ -80,21 +88,23 @@
             "key": "e",
             "name": "Show tree/explorer view",
             "icon": "list-tree",
-            "type": "conditional",
-            "bindings": [
-                {
-                    "key": "",
-                    "name": "default",
-                    "type": "command",
-                    "command": "workbench.view.explorer"
-                },
-                {
-                    "key": "when:sideBarVisible && explorerViewletVisible",
-                    "name": "Hide explorer",
-                    "type": "command",
-                    "command": "workbench.action.toggleSidebarVisibility"
-                }
-            ]
+            "type": "command",
+            "command": "workbench.view.explorer"
+            // "type": "conditional",
+            // "bindings": [
+            //     {
+            //         "key": "",
+            //         "name": "default",
+            //         "type": "command",
+            //         "command": "workbench.view.explorer"
+            //     },
+            //     {
+            //         "key": "when:sideBarVisible && explorerViewletVisible",
+            //         "name": "Hide explorer",
+            //         "type": "command",
+            //         "command": "workbench.action.toggleSidebarVisibility"
+            //     }
+            // ]
         },
         {
             "key": ";",
@@ -124,7 +134,7 @@
         {
             "key": "N",
             "name": "Clear Notifications",
-            "icon": "bell-slash-dot",
+           "icon": "bell-slash-dot",
             "type": "command",
             "command": "notifications.clearAll"
         },
@@ -1450,7 +1460,7 @@
     "zenMode.hideActivityBar": false,
     "leetcode.hint.commandShortcut": false,
     "leetcode.showLocked": true,
-    "leetcode.defaultLanguage": "python3",
+    "leetcode.defaultLanguage": "csharp",
     "leetcode.workspaceFolder": "/Users/jpcrs/Projects/personal/leetcode/multi/exercises",
     "binocular.general.additionalSearchLocations": [
         "~/Projects",
@@ -1546,6 +1556,9 @@
     "editor.suggest.insertMode": "insert",
     "omnisharp.enableRoslynAnalyzers": true,
     "workbench.tree.renderIndentGuides": "none",
+    "accessibility.dimUnfocused.enabled": true,
     "workbench.editor.showTabs": false,
-    "workbench.activityBar.visible": false,
+    "clangd.checkUpdates": true,
+    "clangd.path": "/Users/jpcrs/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/16.0.2/clangd_16.0.2/bin/clangd",
+    "editor.inlayHints.enabled": "off",
 }

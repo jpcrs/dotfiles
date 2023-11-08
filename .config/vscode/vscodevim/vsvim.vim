@@ -13,7 +13,6 @@ set iskeyword+=-
 
 
 " ------------------- Vim default rebindings -------------------
-
 " Go to last buffer
 nnoremap gl <C-6>
 

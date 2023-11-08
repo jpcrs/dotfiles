@@ -1,9 +1,11 @@
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="/Users/jpcrs/.local/bin:$PATH"
 export PATH="/Users/jpcrs/.local/bin/git-fuzzy/bin:$PATH"
-export PATH="$PATH:/Users/jpcrs/.dotnet"
+# export PATH="/Users/jpcrs/.dotnet:$PATH"
 # export PATH="$(asdf where dotnet):$PATH"
-export DOTNET_ROOT="/Users/jpcrs/.dotnet"
+# export DOTNET_ROOT="/Users/jpcrs/.dotnet"
+export DOTNET_ROOT="/usr/local/share/dotnet"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 
 export NNN_PLUG='o:fzopen;d:diffs;v:imgview;j:autojump;p:pskill'
 export NNN_OPTS="Hd"

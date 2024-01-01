@@ -36,3 +36,6 @@ alias fcv='fzf-file-content-vim'
 alias fnv='fzf-file-name-vim'
 alias fc='fzf-file-content'
 alias fn='fzf-file-name'
+
+# Localstack
+alias a='aws --endpoint-url=http://localhost:4566'

@@ -1,28 +1,47 @@
 {
-    "$schema": "https:\/\/app.linearmouse.org\/schema\/0.7.5",
-    "schemes": [
-        {
-            "pointer": {
-                "acceleration": 0,
-                "speed": 0.1126,
-                "disableAcceleration": true
-            },
-            "if": {
-                "device": {
-                    "productName": "Xlite Mini Wireless",
-                    "productID": "0xfa7c",
-                    "category": "mouse",
-                    "vendorID": "0x25a7"
-                }
-            },
-            "scrolling": {
-                "reverse": {
-                    "vertical": true
-                },
-                "distance": {
-                    "vertical": 3
-                }
-            }
+  "schemes" : [
+    {
+      "pointer" : {
+        "speed" : 0.1126,
+        "acceleration" : 0,
+        "disableAcceleration" : true
+      },
+      "if" : {
+        "device" : {
+          "vendorID" : "0x25a7",
+          "productID" : "0xfa7c",
+          "productName" : "Xlite Mini Wireless",
+          "category" : "mouse"
         }
-    ]
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        },
+        "distance" : {
+          "vertical" : 3
+        }
+      }
+    },
+    {
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
+        }
+      },
+      "pointer" : {
+        "disableAcceleration" : true,
+        "acceleration" : 0.9023
+      },
+      "if" : {
+        "device" : {
+          "productName" : "X2 V2 Mini",
+          "productID" : "0xf508",
+          "vendorID" : "0x3554",
+          "category" : "mouse"
+        }
+      }
+    }
+  ],
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
 }

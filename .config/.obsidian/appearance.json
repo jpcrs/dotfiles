@@ -1,0 +1,12 @@
+{
+  "accentColor": "",
+  "cssTheme": "Things",
+  "theme": "obsidian",
+  "translucency": false,
+  "baseFontSize": 14,
+  "textFontFamily": "Inconsolata Nerd Font",
+  "interfaceFontFamily": "Inconsolata Nerd Font",
+  "enabledCssSnippets": [
+    "header"
+  ]
+}

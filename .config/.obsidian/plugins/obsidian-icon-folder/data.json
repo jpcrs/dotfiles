@@ -1,0 +1,42 @@
+{
+  "settings": {
+    "migrated": true,
+    "iconPacksPath": ".obsidian/plugins/obsidian-icon-folder/icons",
+    "fontSize": 16,
+    "emojiStyle": "none",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "RiMicrosoftLine",
+      "FabAws",
+      "FabMicrosoft",
+      "FasCloud",
+      "FasBuildingColumns"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false
+  },
+  "templates": "RiCheckboxMultipleBlankFill",
+  "Daily": "FasCalendarDays",
+  "Study": "FasBookOpen",
+  "Study/Books": "FasBook",
+  "Study/Articles": "FabFirefoxBrowser",
+  "Study/Leetcode": "FasCode",
+  "Study/Leetcode/Patterns": "FabPatreon",
+  "Study/Leetcode/Exercise": "FasWeightHanging",
+  "Study/Data Structures": "RiBuilding2Line",
+  "Study/Design Patterns": "FasBuildingColumns",
+  "Study/Cloud": "FasCloud",
+  "Study/Cloud/AWS": "FabAws",
+  "Study/Cloud/Azure": "RiMicrosoftLine",
+  "Study/Programming Languages": "RiComputerLine",
+  "Study/Programming Languages/C++": "FasC",
+  "Study/Programming Languages/CSharp": "FasHashtag",
+  "Study/Programming Languages/CSharp/DotNet": "FabMicrosoft"
+}

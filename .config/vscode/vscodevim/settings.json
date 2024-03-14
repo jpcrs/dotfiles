@@ -1,36 +1,12 @@
 {
-    //VSCODE CONFIG
-    "editor.accessibilitySupport": "off",
-    "editor.cursorSurroundingLines": 15,
-    "security.workspace.trust.untrustedFiles": "open",
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.stickyTabStops": true,
-    "editor.suggestSelection": "first",
-    "zenMode.fullScreen": false,
-    "zenMode.hideLineNumbers": false,
-    "workbench.layoutControl.type": "menu",
-    "workbench.editor.tabSizing": "shrink",
-    "explorer.autoReveal": false,
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
-    "workbench.iconTheme": "gruvbox-material-icon-theme",
-    "workbench.editor.untitled.hint": "hidden",
-    "workbench.preferredDarkColorTheme": "Gruvbox Material Dark",
-    "workbench.preferredHighContrastLightColorTheme": "Gruvbox Material Light",
-    "workbench.preferredLightColorTheme": "Gruvbox Material Light",
-    "workbench.preferredHighContrastColorTheme": "Gruvbox Material Dark",
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1,
-        "vscodevim.vim": 1
-    },
-    //VIM STUFF
-    "vim.vimrc.path": "$HOME/.config/vscode/vscodevim/vsvim.vim",
-    "vim.vimrc.enable": true,
-    "vim.useSystemClipboard": true,
+    // Vim
+    "vim.easymotion": true,
     "vim.hlsearch": false,
     "vim.incsearch": true,
-    "vim.easymotion": true,
     "vim.leader": ",",
+    "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.config/vscode/vscodevim/vsvim.vim",
     "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": [
@@ -52,7 +28,7 @@
             "before": [
                 "U"
             ],
-           "commands": [
+            "commands": [
                 "redo"
             ]
         },
@@ -83,6 +59,7 @@
             ]
         }
     ],
+    // Whichkey
     "whichkey.bindings": [
         {
             "key": "e",
@@ -90,28 +67,26 @@
             "icon": "list-tree",
             "type": "command",
             "command": "workbench.view.explorer"
-            // "type": "conditional",
-            // "bindings": [
-            //     {
-            //         "key": "",
-            //         "name": "default",
-            //         "type": "command",
-            //         "command": "workbench.view.explorer"
-            //     },
-            //     {
-            //         "key": "when:sideBarVisible && explorerViewletVisible",
-            //         "name": "Hide explorer",
-            //         "type": "command",
-            //         "command": "workbench.action.toggleSidebarVisibility"
-            //     }
-            // ]
         },
         {
             "key": ";",
-            "name": "Close Side Bar",
+            "name": "Toggle Side Bar",
             "icon": "layout-sidebar-left",
-            "type": "command",
-            "command": "workbench.action.closeSidebar"
+            "type": "conditional",
+            "bindings": [
+                {
+                    "key": "",
+                    "name": "Show Sidebar",
+                    "type": "command",
+                    "command": "workbench.action.focusSideBar"
+                },
+                {
+                    "key": "when:sideBarVisible",
+                    "name": "Hide Sidebar",
+                    "type": "command",
+                    "command": "workbench.action.closeSidebar"
+                }
+            ],
         },
         {
             "key": "j",
@@ -132,9 +107,9 @@
             ]
         },
         {
-            "key": "N",
-            "name": "Clear Notifications",
-           "icon": "bell-slash-dot",
+            "key": "S",
+            "name": "Silence!",
+            "icon": "bell-slash-dot",
             "type": "command",
             "command": "notifications.clearAll"
         },
@@ -200,21 +175,15 @@
                 },
                 {
                     "key": "p",
-                    "name": "Paste Whole Buffer",
-                    "type": "command",
-                    "command": "ggVGp"
-                },
-                {
-                    "key": "t",
                     "name": "Pin Editor",
                     "type": "command",
-                    "command": "workbench.action.pinEditor"
+                    "command": "workbench.action.pinEditor",
                 },
                 {
-                    "key": "T",
+                    "key": "P",
                     "name": "Unpin Editor",
                     "type": "command",
-                    "command": "workbench.action.unpinEditor"
+                    "command": "workbench.action.unpinEditor",
                 },
                 {
                     "key": "y",
@@ -518,7 +487,7 @@
                     ]
                 },
                 {
-                    "key": "L",
+                    "key": "l",
                     "name": "Locate in OS",
                     "type": "command",
                     "command": "revealFileInOS"
@@ -584,14 +553,14 @@
                     ]
                 },
                 {
-                    "key": "L",
+                    "key": "l",
                     "name": "LazyGit",
                     "type": "command",
                     "command": "binocular.customCommands",
                     "args": "Lazygit"
                 },
                 {
-                    "key": "l",
+                    "key": "L",
                     "name": "+Git Lens",
                     "type": "bindings",
                     "bindings": [
@@ -870,7 +839,7 @@
                             "name": "View Docker",
                             "type": "command",
                             "command": "dockerContainers.focus"
-                        },
+                        }
                     ]
                 },
                 {
@@ -908,9 +877,9 @@
                             "name": "View Clusters",
                             "type": "command",
                             "command": "extension.vsKubernetesExplorer.focus"
-                        },
+                        }
                     ]
-                },
+                }
             ]
         },
         {
@@ -1093,19 +1062,6 @@
                     ]
                 },
                 {
-                    "key": "t",
-                    "name": "+Tests",
-                    "type": "bindings",
-                    "bindings": [
-                        {
-                            "key": "p",
-                            "name": "Project",
-                            "type": "command",
-                            "command": "workbench.action.tasks.test"
-                        }
-                    ]
-                },
-                {
                     "key": "w",
                     "name": "+Workspace",
                     "type": "bindings",
@@ -1270,6 +1226,100 @@
         },
         {
             "key": "t",
+            "name": "+Tests",
+            "icon": "beaker",
+            "type": "bindings",
+            "bindings": [
+                {
+                    "key": "d",
+                    "name": "+Debug",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "a",
+                            "name": "All Tests",
+                            "type": "command",
+                            "command": "testing.debugAll"
+                        },
+                        {
+                            "key": "c",
+                            "name": "Cursor Test",
+                            "type": "command",
+                            "command": "testing.debugAtCursor"
+                        },
+                        {
+                            "key": "f",
+                            "name": "File Tests",
+                            "type": "command",
+                            "command": "testing.debugCurrentFile"
+                        },
+                        {
+                            "key": "F",
+                            "name": "Failed Tests",
+                            "type": "command",
+                            "command": "testing.debugFailTests"
+                        },
+                        {
+                            "key": "l",
+                            "name": "Last Tests",
+                            "type": "command",
+                            "command": "testing.debugLastRun"
+                        }
+                    ]
+                },
+                {
+                    "key": "r",
+                    "name": "+Run",
+                    "type": "bindings",
+                    "bindings": [
+                        {
+                            "key": "a",
+                            "name": "Run Tests",
+                            "type": "command",
+                            "command": "testing.runAll"
+                        },
+                        {
+                            "key": "c",
+                            "name": "Cursor Test",
+                            "type": "command",
+                            "command": "testing.runAtCursor"
+                        },
+                        {
+                            "key": "f",
+                            "name": "File Tests",
+                            "type": "command",
+                            "command": "testing.runCurrentFile"
+                        },
+                        {
+                            "key": "F",
+                            "name": "Failed Tests",
+                            "type": "command",
+                            "command": "testing.reRunFailTests"
+                        },
+                        {
+                            "key": "l",
+                            "name": "Last Tests",
+                            "type": "command",
+                            "command": "testing.reRunLastRun"
+                        }
+                    ],
+                },
+                {
+                    "key": "v",
+                    "name": "View Test Explorer",
+                    "type": "command",
+                    "command": "workbench.view.testing.focus"
+                },
+                {
+                    "key": "V",
+                    "name": "View Test Result Panel",
+                    "type": "command",
+                    "command": "workbench.panel.testResults.view.focus"
+                }
+            ]
+        },
+        {
+            "key": "T",
             "name": "+Text",
             "icon": "text-size",
             "type": "bindings",
@@ -1457,108 +1507,87 @@
             ]
         }
     ],
-    "zenMode.hideActivityBar": false,
-    "leetcode.hint.commandShortcut": false,
-    "leetcode.showLocked": true,
-    "leetcode.defaultLanguage": "csharp",
-    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/personal/leetcode/multi/exercises",
-    "binocular.general.additionalSearchLocations": [
-        "~/Projects",
-        "~/.config"
-    ],
-    "binocular.command.commands": [
-        {
-            "shellCommand": "lazygit",
-            "commandIdentifier": "Lazygit"
-        },
-        {
-            "shellCommand": "git fuzzy",
-            "commandIdentifier": "GitFuzzy"
-        },
-        {
-            "shellCommand": "git checkout $(git fuzzy log)",
-            "commandIdentifier": "Git fuzzy log"
-        },
-        {
-            "shellCommand": "git checkout $(git fuzzy log ${file})",
-            "commandIdentifier": "Git fuzzy log current file"
-        }
-    ],
-    "editor.autoClosingQuotes": "never",
-    "editor.inlineSuggest.enabled": false,
-    "github.copilot-labs.showBrushesLenses": true,
-    "zenMode.hideStatusBar": false,
-    "zenMode.hideTabs": false,
-    "leetcode.hint.configWebviewMarkdown": false,
-    "leetcode.hint.commentDescription": false,
-    "git.openRepositoryInParentFolders": "never",
-    "debug.showBreakpointsInOverviewRuler": true,
-    "workbench.editor.tabCloseButton": "off",
-    "editor.scrollbar.horizontalScrollbarSize": 0,
-    "editor.scrollbar.verticalScrollbarSize": 4,
-    "notebook.breadcrumbs.showCodeCells": false,
-    "breadcrumbs.enabled": false,
-    "errorLens.enabled": false,
-    "editor.unfoldOnClickAfterEndOfLine": true,
-    "workbench.layoutControl.enabled": false,
-    "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font Mono",
-    "editor.fontFamily": "Inconsolata Nerd Font, Menlo, 'Courier New', monospace",
-    "editor.fontSize": 13,
-    "editor.fontWeight": "400",
-    //apc
+    // APC
     "apc.electron": {
-        "frame": false,
-        "titleBarStyle": "customButtonsOnHover", // inline titleBar
-        "opacity": 0.96
+        "frame": false, // Hide title bar
+        "titleBarStyle": "customButtonsOnHover", // Hide buttons on mac
+        "opacity": 0.99
     },
-    "window.titleBarStyle": "native",
     "apc.activityBar": {
-        "size": 36 // if position set to bottom  this is the heigth else width of activity bar
+        "size": 36 // Size of icons in the activity bar
     },
     "apc.header": {
-        "height": 26,
-        "fontSize": 11
+        "fontSize": 10 // Fontsize on tabs
     },
     "apc.listRow": {
-        "height": 19,
-        "fontSize": 12
+        "height": 19, // Spacing in the explorer window
+        "fontSize": 12 // Font size in the explorer window
     },
     "apc.statusBar": {
-        "position": "bottom",
-        "height": 19,
-        "fontSize": 11
+        "height": 19, // Status bar height
+        "fontSize": 11 // Status bar size
     },
     "apc.stylesheet": {
-        ".title-label > h2": "display:none;",
+        ".title-label > h2": "display:none;", // Hide title in the activity window
         ".quick-input-widget": "border: solid !important; border-width: 0.5px !important; margin-top: 15%; box-shadow: 0px 0px 0px 0px !important;",
         ".quick-input-widget > .quick-input-titlebar": "display: none",
-        ".quick-input-widget > .quick-input-list > .monaco-list": "font-size: 11px !important; max-height: 43vh !important;",
+        ".quick-input-widget > .quick-input-list > .monaco-list": "font-size: 11px !important; max-height: 50vh !important;",
         "#quickInput_list > div > div.scrollbar.vertical": "display: none !important; width: 0px !important;",
         ".quick-input-widget > .quick-input-list .codicon": "font-size: 10px !important; color: #83a598 !important; padding-right: 5px;",
         ".quick-input-widget > .quick-input-list .monaco-list-row[aria-label*=\" +\"] .label-description": "color: #8ec07c;",
         ".monaco-grid-view > .monaco-sash": "display: none !important;",
-        ".title .monaco-icon-label-container": "font-size: 10px !important; line-height: 27px !important; padding-bottom: 7px !important",
-        ".title .monaco-icon-name-container > .label-name": "font-size: 10px !important",
-        ".title": "padding-left: 0px !important; height: 26px !important",
-        ".monaco-action-bar .actions-container": "height: 75% !important",
-        ".title.show-file-icons": "height: 26px !important",
         ".monaco-editor .scroll-decoration": "box-shadow: none;",
         ".monaco-icon-label:after": "font-size: 10px !important;"
-        // ".monaco-editor .cursor": "background: linear-gradient(to bottom, #ea6962, #e78a4e) !important; box-shadow: 0 0 15px 1px #ee0979, #ff6a00 0px 0px 34px 1px; color: #161616 !important",
+        // ".title": "padding-left: 0px !important; height: 24px !important",
+        // ".title.show-file-icons": "height: 24px !important",
     },
-    "workbench.colorTheme": "Gruvbox Material Dark",
-    "github.copilot.enable": {
-        "*": true,
-        "plaintext": false,
-        "markdown": true,
-        "scminput": false
+    // General
+    "editor.unfoldOnClickAfterEndOfLine": false,
+    "explorer.autoReveal": false,
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1,
+        "vscodevim.vim": 1
     },
-    "editor.suggest.insertMode": "insert",
-    "omnisharp.enableRoslynAnalyzers": true,
-    "workbench.tree.renderIndentGuides": "none",
-    "accessibility.dimUnfocused.enabled": true,
-    "workbench.editor.showTabs": false,
-    "clangd.checkUpdates": true,
-    "clangd.path": "/Users/jpcrs/Library/Application Support/Code/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/16.0.2/clangd_16.0.2/bin/clangd",
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.startupEditor": "newUntitledFile",
+    //Rust
+    "rust-analyzer.testExplorer": true,
+    // Editor Experience
+    "debug.showBreakpointsInOverviewRuler": true,
+    "editor.accessibilitySupport": "off",
+    "editor.cursorSurroundingLines": 15,
+    "editor.guides.indentation": false,
     "editor.inlayHints.enabled": "off",
+    "editor.inlineSuggest.enabled": true,
+    "editor.lineNumbers": "relative",
+    "editor.showFoldingControls": "never",
+    "editor.stickyTabStops": true,
+    "editor.stickyScroll.enabled": false,
+    "editor.suggest.insertMode": "insert",
+    "editor.suggestSelection": "first",
+    "notebook.breadcrumbs.showCodeCells": false,
+    "workbench.tree.renderIndentGuides": "none",
+    // Visual
+    "accessibility.dimUnfocused.enabled": true,
+    "breadcrumbs.enabled": false,
+    "editor.minimap.enabled": false,
+    "editor.scrollbar.horizontalScrollbarSize": 0,
+    "editor.scrollbar.verticalScrollbarSize": 4,
+    "window.commandCenter": false,
+    "window.density.editorTabHeight": "compact",
+    "window.menuBarVisibility": "compact",
+    "window.titleBarStyle": "native",
+    "workbench.editor.tabActionCloseVisibility": false,
+    "workbench.layoutControl.enabled": false,
+    //Zen Mode
+    "zenMode.fullScreen": false,
+    "zenMode.hideActivityBar": false,
+    "zenMode.hideLineNumbers": false,
+    "zenMode.hideStatusBar": false,
+    "zenMode.showTabs": "multiple",
+    //Theme
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.preferredDarkColorTheme": "Gruvbox Material Dark",
+    "workbench.preferredHighContrastColorTheme": "GitHub Light Default",
+    "workbench.colorTheme": "Gruvbox Material Dark",
 }

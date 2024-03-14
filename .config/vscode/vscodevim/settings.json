@@ -44,6 +44,88 @@
         },
         {
             "before": [
+                "<C-w>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinitionAside"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "L"
+            ],
+            "commands": [
+                "workbench.action.navigateToLastEditLocation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "n"
+            ],
+            "commands": [
+                "goToNextReference"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "N"
+            ],
+            "commands": [
+                "goToPreviousReference"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "R"
+            ],
+            "commands": [
+                "references-view.findReferences"
+            ]
+        },
+        {
+            "before": [
                 "<C-o>"
             ],
             "commands": [

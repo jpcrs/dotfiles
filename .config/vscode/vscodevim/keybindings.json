@@ -1,5 +1,5 @@
 [
-  // Which key
+  // Whichkey
   {
     "key": "space",
     "command": "whichkey.show",

@@ -1,11 +1,7 @@
 {
+  "$schema" : "https:\/\/schema.linearmouse.app\/0.10.0",
   "schemes" : [
     {
-      "pointer" : {
-        "speed" : 0.1126,
-        "acceleration" : 0,
-        "disableAcceleration" : true
-      },
       "if" : {
         "device" : {
           "vendorID" : "0x25a7",
@@ -21,27 +17,56 @@
         "distance" : {
           "vertical" : 3
         }
+      },
+      "pointer" : {
+        "acceleration" : 0,
+        "disableAcceleration" : true,
+        "speed" : 0.1126
       }
     },
     {
       "scrolling" : {
+        "acceleration" : {
+          "vertical" : 1
+        },
+        "speed" : {
+          "vertical" : 0
+        },
+        "distance" : {
+          "vertical" : 3
+        },
         "reverse" : {
           "vertical" : true
         }
       },
-      "pointer" : {
-        "disableAcceleration" : true,
-        "acceleration" : 0.9023
-      },
       "if" : {
         "device" : {
-          "productName" : "X2 V2 Mini",
           "productID" : "0xf508",
           "vendorID" : "0x3554",
+          "productName" : "X2 V2 Mini",
           "category" : "mouse"
+        }
+      },
+      "pointer" : {
+        "acceleration" : 0.9023,
+        "disableAcceleration" : true
+      }
+    },
+    {
+      "if" : {
+        "device" : {
+          "serialNumber" : "vial:f64c2b3c",
+          "category" : "mouse",
+          "productID" : "0x7",
+          "vendorID" : "0xfeed",
+          "productName" : "w-corne-choc(STM32)"
+        }
+      },
+      "scrolling" : {
+        "reverse" : {
+          "vertical" : true
         }
       }
     }
-  ],
-  "$schema" : "https:\/\/schema.linearmouse.app\/0.9.5"
+  ]
 }

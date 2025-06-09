@@ -1,0 +1,167 @@
+:root {
+    /* Fonts */
+    --font-primary: 'Unifont', Menlo, Monaco, 'Courier New', monospace;
+    --font-size-xxs: 9px;      /* For very small text like tab titles */
+    --font-size-xs: 10px;     /* For explorer tree, general UI text */
+    --font-size-sm: 11px;     /* For quick input list items */
+    --font-size-md: 12px;     /* For slightly larger icons/labels */
+
+    /* Colors */
+    /* --color-icon-primary: #83a598;
+    --color-text-accent: #8ec07c;
+    --color-border-widget: #4a4a4a;
+    --color-shadow-widget: rgba(0, 0, 0, 0.25); */
+
+    /* Spacing & Sizing */
+    --padding-xs: 3px;
+    --padding-sm: 5px;
+    --padding-md: 10px;
+    --border-radius-sm: 3px;
+    --border-radius-md: 5px;
+    --icon-size-sm: 10px;
+    --icon-size-md: 12px;
+    --icon-size-lg: 14px; 
+    /* For slightly larger icons if needed */
+}
+
+/* --- Quick Input Widget --- */
+.quick-input-widget {
+    border: 1px solid var(--color-border-widget) !important;
+    /* box-shadow: 0 2px 8px var(--color-shadow-widget) !important; */
+    border-radius: var(--border-radius-md);
+}
+
+.quick-input-header > .quick-input-and-message .monaco-inputbox {
+    border-radius: var(--border-radius-md) !important;
+}
+
+.quick-input-widget > .quick-input-titlebar {
+    display: none !important; 
+}
+
+.quick-input-widget > .quick-input-list > .monaco-list {
+    font-size: var(--font-size-sm) !important;
+    max-height: 55vh !important;
+    padding: var(--padding-xs) 0;
+}
+
+#quickInput_list > div > div.scrollbar.vertical {
+    display: none !important;
+    width: 0px !important;
+}
+
+.quick-input-widget > .quick-input-list .codicon {
+    font-size: var(--icon-size-sm) !important;
+    /* color: var(--color-icon-primary) !important; */
+    padding-right: var(--padding-sm);
+    vertical-align: middle;
+}
+
+.quick-input-widget > .quick-input-list .monaco-list-row[aria-label*=" +"] .label-description {
+    /* color: var(--color-text-accent) !important; */
+    font-weight: 500;
+}
+
+/* --- General UI Hiding & Tweaks --- */
+.monaco-grid-view > .monaco-sash {
+    display: none !important;
+}
+
+.monaco-editor .scroll-decoration {
+    box-shadow: none !important;
+}
+
+div.inline-tabs-placeholder {
+    display: none !important;
+}
+
+div.editor-actions {
+    display: none !important;
+}
+
+/* --- Icons & Labels --- */
+.monaco-icon-label:after {
+    font-size: var(--font-size-xs) !important;
+    opacity: 0.85;
+}
+
+.monaco-icon-label:before {
+    background-size: var(--icon-size-lg) !important;
+    height: var(--icon-size-lg);
+    width: var(--icon-size-lg);
+    vertical-align: middle;
+}
+
+a.action-label.codicon {
+    font-size: var(--icon-size-md) !important;
+    vertical-align: middle;
+}
+
+a.action-label.uri-icon {
+    height: var(--icon-size-md) !important;
+    width: var(--icon-size-md) !important;
+    vertical-align: middle;
+}
+
+/* --- Tabs --- */
+.tab > .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > a.label-name {
+    font-family: var(--font-primary) !important;
+    font-size: var(--font-size-xxs) !important;
+    letter-spacing: 0.3px;
+    opacity: 0.9;
+}
+.tab.active > .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > a.label-name {
+    opacity: 1;
+    font-weight: 500;
+}
+
+/* --- Explorer / Tree Views --- */
+.monaco-tl-contents > .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > a.label-name {
+    font-family: var(--font-primary) !important;
+    font-size: var(--font-size-xs) !important;
+}
+
+/* --- Panel Titles (Terminal, Output, etc.) --- */
+.composite.title.has-composite-bar {
+    padding-left: var(--padding-md) !important;
+}
+
+/* --- Terminal --- */
+span.codicon.codicon-terminal {
+    font-size: var(--icon-size-md) !important;
+    vertical-align: middle;
+}
+
+.action-label.single-terminal-tab {
+    margin-top: -3px !important;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-primary);
+}
+
+.monaco-pane-view .pane>.pane-header>.title {
+    font-family: var(--font-primary) !important;
+}
+
+/* --- Breadcrumbs (Optional, if you use them) --- */
+.monaco-breadcrumbs .monaco-breadcrumb-item {
+    font-size: var(--font-size-xs) !important;
+    font-family: var(--font-primary) !important;
+}
+.monaco-breadcrumbs .codicon {
+    font-size: var(--icon-size-sm) !important;
+}
+
+/* --- Status Bar (Optional, for consistency) --- */
+.statusbar-item {
+    font-size: var(--font-size-xs) !important;
+    font-family: var(--font-primary) !important;
+}
+
+.statusbar-item .codicon {
+    font-size: var(--icon-size-md) !important;
+    vertical-align: text-bottom;
+}
+
+#workbench\.parts\.sidebar > div > div > div:nth-child(1) > div > div {
+    justify-content: unset !important;
+}

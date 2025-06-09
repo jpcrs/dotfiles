@@ -4,17 +4,26 @@
     "vim.hlsearch": false,
     "vim.incsearch": true,
     "vim.leader": ",",
+    "vim.showMarksInGutter": true,
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "$HOME/.config/vscode/vscodevim/vsvim.vim",
-    "vim.normalModeKeyBindingsNonRecursive": [
+    "vim.visualModeKeyBindingsNonRecursive": [
         {
-            "before": [
-                " "
-            ],
+            "before": ["<C-o>"],
             "commands": [
-                "whichkey.show"
+                "workbench.action.navigateBack"
             ]
+        },
+        {
+            "before": ["<C-i>"],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        {
+            "before": [" "],
+            "commands": ["whichkey.show"]
         },
         {
             "before": [
@@ -30,16 +39,6 @@
             ],
             "commands": [
                 "redo"
-            ]
-        },
-        //Commands that moves the cursor and can't be defined in the vimrc file.
-        {
-            "before": [
-                "g",
-                "d"
-            ],
-            "commands": [
-                "editor.action.revealDefinition"
             ]
         },
         {
@@ -126,10 +125,2128 @@
         },
         {
             "before": [
-                "<C-o>"
+                "<C-i>"
             ],
             "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        // Activity Bar commands
+        {
+            "before": [
+                " ",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.focusActivityBar"
+            ]
+        },
+        //Explorer commands
+        {
+            "before": [
+                " ",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        // Side Bar Commands
+        {
+            "before": [
+                " ",
+                ";"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        // Jump to character commands
+        {
+            "before": [
+                " ",
+                "j"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "s"
+            ]
+        },
+        // Silence commands
+        {
+            "before": [
+                " ",
+                "S"
+            ],
+            "commands": [
+                "notifications.clearAll"
+            ]
+        },
+        //Jump to word commands
+        {
+            "before": [
+                " ",
+                "w"
+            ],
+            "commands": [
+                "vim.remap"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "/"
+            ]
+        },
+        // Buffer commands
+        {
+            "before": [
+                " ",
+                "b",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "j"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToRightGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeEditorsInGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.files.newUntitledFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.pinEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "P"
+            ],
+            "commands": [
+                "workbench.action.unpinEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "y"
+            ],
+            "commands": [
+                "ggVGy"
+            ]
+        },
+        // New Buffer Commands
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.splitEditorLeft",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "j"
+            ],
+            "commands": [
+                "workbench.action.splitEditorDown",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.splitEditorUp",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.splitEditorRight",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        // Copilot commands
+        {
+            "before": [
+                " ",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "github.copilot.acceptCursorPanelSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "d"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generateDocs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "e"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.explain"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "f"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.fix"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "g"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generate"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.openChat.copilot"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "p"
+            ],
+            "commands": [
+                "github.copilot.generate"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "t"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generateTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "v"
+            ],
+            "commands": [
+                "workbench.panel.chat.view.copilot.focus"
+            ]
+        },
+        // Debug commands
+        {
+            "before": [
+                " ",
+                "d",
+                "B"
+            ],
+            "commands": [
+                "workbench.action.tasks.build"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "C"
+            ],
+            "commands": [
+                "editor.debug.action.runToCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.debug.continue"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "i"
+            ],
+            "commands": [
+                "workbench.action.debug.stepInto"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "j"
+            ],
+            "commands": [
+                "debug.jumpToCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "h"
+            ],
+            "commands": [
+                "editor.debug.action.showDebugHover"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "O"
+            ],
+            "commands": [
+                "workbench.action.debug.stepOut"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.debug.stepOver"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.debug.pause"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "R"
+            ],
+            "commands": [
+                "workbench.action.debug.restart"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.debug.run"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.debug.start"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.debug.stop"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "v"
+            ],
+            "commands": [
+                "workbench.debug.action.toggleRepl"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "w"
+            ],
+            "commands": [
+                "workbench.debug.action.focusWatchView"
+            ]
+        },
+        // Breakpoints
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "b"
+            ],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "c"
+            ],
+            "commands": [
+                "editor.debug.action.conditionalBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "R"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.removeAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "D"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.disableAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "e"
+            ],
+            "commands": [
+                "debug.enableOrDisableBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "E"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.enableAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "n"
+            ],
+            "commands": [
+                "editor.debug.action.goToNextBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "p"
+            ],
+            "commands": [
+                "editor.debug.action.goToPreviousBreakpoint"
+            ]
+        },
+        // Files commands
+        {
+            "before": [
+                " ",
+                "f",
+                "e"
+            ],
+            "commands": [
+                "workbench.files.action.showActiveFileInExplorer"
+            ]
+        },
+        // Favorites
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "a"
+            ],
+            "commands": [
+                "favorites.add"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "d"
+            ],
+            "commands": [
+                "favorites.del"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "favorites.open"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "revealFileInOS"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.files.saveFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "n"
+            ],
+            "commands": [
+                "explorer.newFile"
+            ]
+        },
+        // Git commands
+        {
+            "before": [
+                " ",
+                "g",
+                "m"
+            ],
+            "commands": [
+                "magit.status"
+            ]
+        },
+        // Git Fuzzy
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "c"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Git fuzzy log current file"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Git fuzzy log"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "GitFuzzy"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "l"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Lazygit"
+        },
+        // Git Lens
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "b"
+            ],
+            "commands": [
+                "gitlens.toggleFileBlame"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "c"
+            ],
+            "commands": [
+                "gitlens.compareWorkingWith"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "d"
+            ],
+            "commands": [
+                "gitlens.diffWithPrevious"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "s"
+            ],
+            "commands": [
+                "gitlens.views.switchToAnotherBranch"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "w"
+            ],
+            "commands": [
+                "gitlens.gitCommands.worktree"
+            ]
+        },
+        // WebLinks
+        {
+            "before": [
+                " ",
+                "g",
+                "w",
+                "f"
+            ],
+            "commands": [
+                "gitweblinks.copyFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "w",
+                "s"
+            ],
+            "commands": [
+                "gitweblinks.copySelectionToChoice"
+            ]
+        },
+        // Go (Reference Only)
+        {
+            "before": [
+                " ",
+                "G",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "f"
+            ],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "R"
+            ],
+            "commands": [
+                "references-view.findReferences"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "n"
+            ],
+            "commands": [
+                "goToNextReference"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "N"
+            ],
+            "commands": [
+                "goToPreviousReference"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "L"
+            ],
+            "commands": [
+                "workbench.action.navigateToLastEditLocation"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "l"
+            ],
+            "commands": [
+                "<C-6>"
+            ]
+        },
+        // LSP commands
+        {
+            "before": [
+                " ",
+                "l",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "h"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "m"
+            ],
+            "commands": [
+                "editor.action.triggerParameterHints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        // Error
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "n"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "N"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "p"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "P"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "v"
+            ],
+            "commands": [
+                "workbench.panel.markers.view.focus"
+            ]
+        },
+        // Leetcode commands
+        {
+            "before": [
+                " ",
+                "L",
+                "h"
+            ],
+            "commands": [
+                "leetcode.showSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "l"
+            ],
+            "commands": [
+                "leetcode.switchDefaultLanguage"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "p"
+            ],
+            "commands": [
+                "leetcode.previewProblem"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "s"
+            ],
+            "commands": [
+                "leetcode.searchProblem"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "S"
+            ],
+            "commands": [
+                "leetcode.submitSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "t"
+            ],
+            "commands": [
+                "leetcode.testSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "v"
+            ],
+            "commands": [
+                "leetCodeExplorer.focus"
+            ]
+        },
+        // Major commands
+        // CSharp
+        {
+            "before": [
+                " ",
+                "M",
+                "c",
+                "s"
+            ],
+            "commands": [
+                "solutionExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "solutionExplorer.focus"
+            ]
+        },
+        // Docker
+        {
+            "before": [
+                " ",
+                "M",
+                "d",
+                "v"
+            ],
+            "commands": [
+                "dockerContainers.focus"
+            ]
+        },
+        // FSharp
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "fsi.SendFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "fsi.SendLine"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "fsi.SendSelection"
+            ]
+        },
+        // Kubernetes
+        {
+            "before": [
+                " ",
+                "M",
+                "k",
+                "v"
+            ],
+            "commands": [
+                "extension.vsKubernetesExplorer.focus"
+            ]
+        },
+        // Marks commands
+        {
+            "before": [
+                " ",
+                "m",
+                "c"
+            ],
+            "commands": [
+                "bookmarks.clear"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "C"
+            ],
+            "commands": [
+                "bookmarks.clearFromAllFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "l"
+            ],
+            "commands": [
+                "bookmarks.toggleLabeled"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "n"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "p"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "s"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "S"
+            ],
+            "commands": [
+                "bookmarks.listFromAllFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "t"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "v"
+            ],
+            "commands": [
+                "bookmarksExplorer.focus"
+            ]
+        },
+        // Notebook commands
+        {
+            "before": [
+                " ",
+                "n",
+                "a"
+            ],
+            "commands": [
+                "jupyter.notebookeditor.addcellbelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "c"
+            ],
+            "commands": [
+                "notebook.cell.clearOutputs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "C"
+            ],
+            "commands": [
+                "notebook.clearAllCellsOutputs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "d"
+            ],
+            "commands": [
+                "notebook.cell.delete"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "e"
+            ],
+            "commands": [
+                "notebook.cell.execute"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "E"
+            ],
+            "commands": [
+                "notebook.execute"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "j"
+            ],
+            "commands": [
+                "notebook.cell.executeAndSelectBelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "J"
+            ],
+            "commands": [
+                "notebook.cell.executeAndInsertBelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "l"
+            ],
+            "commands": [
+                "notebook.cell.changeLanguage"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "v"
+            ],
+            "commands": [
+                "polyglot-notebook-panel-values.focus"
+            ]
+        },
+        // Project commands
+        //Project Manager
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "a"
+            ],
+            "commands": [
+                "projectManager.addToWorkspace"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "f"
+            ],
+            "commands": [
+                "projectManager.filterProjectsByTag"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "l"
+            ],
+            "commands": [
+                "projectManager.listProjects"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "r"
+            ],
+            "commands": [
+                "projectManager.refreshAnyProjects"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "s"
+            ],
+            "commands": [
+                "projectManager.saveProject"
+            ]
+        },
+        // Workspace
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.addRootFolder"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.files.openFolderViaWorkspace"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeFolder"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.removeRootFolder"
+            ]
+        },
+        // Quit commands
+        {
+            "before": [
+                " ",
+                "q",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "Q"
+            ],
+            "commands": [
+                "workbench.action.closeAllEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "u"
+            ],
+            "commands": [
+                "workbench.action.reopenClosedEditor"
+            ]
+        },
+        // Search commands
+        {
+            "before": [
+                " ",
+                "s",
+                "c"
+            ],
+            "commands": [
+                "binocular.searchFileContent"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "C"
+            ],
+            "commands": [
+                "binocular.searchContentConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "d"
+            ],
+            "commands": [
+                "binocular.searchDirectoryConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "g"
+            ],
+            "commands": [
+                "binocular.searchGitFoldersConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "G"
+            ],
+            "commands": [
+                "binocular.searchGitFoldersConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "h"
+            ],
+            "commands": [
+                "binocular.searchFileHistory"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "n"
+            ],
+            "commands": [
+                "binocular.searchFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "N"
+            ],
+            "commands": [
+                "binocular.searchFileConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "v"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.switchWindow"
+            ]
+        },
+        // Tests commands
+        // Debug tests
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "a"
+            ],
+            "commands": [
+                "testing.debugAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "c"
+            ],
+            "commands": [
+                "testing.debugAtCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "f"
+            ],
+            "commands": [
+                "testing.debugCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "F"
+            ],
+            "commands": [
+                "testing.debugFailTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "l"
+            ],
+            "commands": [
+                "testing.debugLastRun"
+            ]
+        },
+        // Run tests
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "a"
+            ],
+            "commands": [
+                "testing.runAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "c"
+            ],
+            "commands": [
+                "testing.runAtCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "f"
+            ],
+            "commands": [
+                "testing.runCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "F"
+            ],
+            "commands": [
+                "testing.reRunFailTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "l"
+            ],
+            "commands": [
+                "testing.reRunLastRun"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "v"
+            ],
+            "commands": [
+                "workbench.view.testing.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "V"
+            ],
+            "commands": [
+                "workbench.panel.testResults.view.focus"
+            ]
+        },
+        // Text commands
+        {
+            "before": [
+                " ",
+                "t",
+                "d"
+            ],
+            "commands": [
+                "editor.action.copyLinesDownAction"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "f"
+            ],
+            "commands": [
+                "editor.action.format"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "i"
+            ],
+            "commands": [
+                "editor.action.organizeImports"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "k"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.replaceInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "s"
+            ],
+            "commands": [
+                "editor.action.sortLinesAscending"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "S"
+            ],
+            "commands": [
+                "editor.action.sortLinesDescending"
+            ]
+        },
+        // Fold
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "a"
+            ],
+            "commands": [
+                "editor.foldAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "h"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "u"
+            ],
+            "commands": [
+                "editor.unfoldAll"
+            ]
+        },
+        // View commands
+        {
+            "before": [
+                " ",
+                "v",
+                "E"
+            ],
+            "commands": [
+                "workbench.actions.view.problems"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "L"
+            ],
+            "commands": [
+                "leetCodeExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "m"
+            ],
+            "commands": [
+                "bookmarksExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "p"
+            ],
+            "commands": [
+                "projectsExplorerGit.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "v"
+            ],
+            "commands": [
+                "editor.action.smartSelect.expand"
+            ]
+        },
+        // Debug View
+        {
+            "before": [
+                " ",
+                "v",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.debug.action.toggleRepl"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "d",
+                "w"
+            ],
+            "commands": [
+                "workbench.debug.action.focusWatchView"
+            ]
+        },
+        // LSP View
+        {
+            "before": [
+                " ",
+                "v",
+                "l",
+                "e"
+            ],
+            "commands": [
+                "workbench.panel.markers.view.focus"
+            ]
+        },
+        // Toggle View
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.toggleActivityBarVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "e"
+            ],
+            "commands": [
+                "errorLens.toggle"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.toggleTabsVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.toggleStatusbarVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "z"
+            ],
+            "commands": [
+                "workbench.action.toggleZenMode"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-o>"],
+            "commands": [
                 "workbench.action.navigateBack"
+            ]
+        },
+        {
+            "before": ["<C-i>"],
+            "commands": [
+                "workbench.action.navigateForward"
+            ]
+        },
+        {
+            "before": [" "],
+            "commands": ["whichkey.show"]
+        },
+        {
+            "before": [
+                "u"
+            ],
+            "commands": [
+                "undo"
+            ]
+        },
+        {
+            "before": [
+                "U"
+            ],
+            "commands": [
+                "redo"
+            ]
+        },
+        //Commands that moves the cursor and can't be defined in the vimrc file.
+        // {
+        //     "before": [
+        //         "g",
+        //         "d"
+        //     ],
+        //     "commands": [
+        //         "editor.action.revealDefinition"
+        //     ]
+        // },
+        {
+            "before": [
+                "<C-w>",
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinitionAside"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "f"
+            ],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "L"
+            ],
+            "commands": [
+                "workbench.action.navigateToLastEditLocation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "n"
+            ],
+            "commands": [
+                "goToNextReference"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "N"
+            ],
+            "commands": [
+                "goToPreviousReference"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "R"
+            ],
+            "commands": [
+                "references-view.findReferences"
             ]
         },
         {
@@ -139,10 +2256,2009 @@
             "commands": [
                 "workbench.action.navigateForward"
             ]
+        },
+        // Activity Bar commands
+        {
+            "before": [
+                " ",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.focusActivityBar"
+            ]
+        },
+        //Explorer commands
+        {
+            "before": [
+                " ",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        // Side Bar Commands
+        {
+            "before": [
+                " ",
+                ";"
+            ],
+            "commands": [
+                "workbench.action.toggleSidebarVisibility"
+            ]
+        },
+        // Jump to character commands
+        {
+            "before": [
+                " ",
+                "j"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "s"
+            ]
+        },
+        // Silence commands
+        {
+            "before": [
+                " ",
+                "S"
+            ],
+            "commands": [
+                "notifications.clearAll"
+            ]
+        },
+        //Jump to word commands
+        {
+            "before": [
+                " ",
+                "w"
+            ],
+            "commands": [
+                "vim.remap"
+            ],
+            "after": [
+                "<leader>",
+                "<leader>",
+                "/"
+            ]
+        },
+        // Buffer commands
+        {
+            "before": [
+                " ",
+                "b",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "j"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.moveEditorToRightGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeEditorsInGroup"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.files.newUntitledFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.pinEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "P"
+            ],
+            "commands": [
+                "workbench.action.unpinEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "y"
+            ],
+            "commands": [
+                "ggVGy"
+            ]
+        },
+        // New Buffer Commands
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.splitEditorLeft",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "j"
+            ],
+            "commands": [
+                "workbench.action.splitEditorDown",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.splitEditorUp",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "b",
+                "N",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.splitEditorRight",
+                "workbench.action.files.newUntitledFile",
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        // Copilot commands
+        {
+            "before": [
+                " ",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "github.copilot.acceptCursorPanelSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "d"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generateDocs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "e"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.explain"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "f"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.fix"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "g"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generate"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "n"
+            ],
+            "commands": [
+                "workbench.action.openChat.copilot"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "p"
+            ],
+            "commands": [
+                "github.copilot.generate"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "t"
+            ],
+            "commands": [
+                "github.copilot.interactiveEditor.generateTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "c",
+                "v"
+            ],
+            "commands": [
+                "workbench.panel.chat.view.copilot.focus"
+            ]
+        },
+        // Debug commands
+        {
+            "before": [
+                " ",
+                "d",
+                "B"
+            ],
+            "commands": [
+                "workbench.action.tasks.build"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "C"
+            ],
+            "commands": [
+                "editor.debug.action.runToCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.debug.continue"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "i"
+            ],
+            "commands": [
+                "workbench.action.debug.stepInto"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "j"
+            ],
+            "commands": [
+                "debug.jumpToCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "h"
+            ],
+            "commands": [
+                "editor.debug.action.showDebugHover"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "O"
+            ],
+            "commands": [
+                "workbench.action.debug.stepOut"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "o"
+            ],
+            "commands": [
+                "workbench.action.debug.stepOver"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "p"
+            ],
+            "commands": [
+                "workbench.action.debug.pause"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "R"
+            ],
+            "commands": [
+                "workbench.action.debug.restart"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.debug.run"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.debug.start"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.debug.stop"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "v"
+            ],
+            "commands": [
+                "workbench.debug.action.toggleRepl"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "w"
+            ],
+            "commands": [
+                "workbench.debug.action.focusWatchView"
+            ]
+        },
+        // Breakpoints
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "b"
+            ],
+            "commands": [
+                "editor.debug.action.toggleBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "c"
+            ],
+            "commands": [
+                "editor.debug.action.conditionalBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "R"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.removeAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "D"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.disableAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "e"
+            ],
+            "commands": [
+                "debug.enableOrDisableBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "E"
+            ],
+            "commands": [
+                "workbench.debug.viewlet.action.enableAllBreakpoints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "n"
+            ],
+            "commands": [
+                "editor.debug.action.goToNextBreakpoint"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "d",
+                "b",
+                "p"
+            ],
+            "commands": [
+                "editor.debug.action.goToPreviousBreakpoint"
+            ]
+        },
+        // Files commands
+        {
+            "before": [
+                " ",
+                "f",
+                "e"
+            ],
+            "commands": [
+                "workbench.files.action.showActiveFileInExplorer"
+            ]
+        },
+        // Favorites
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "a"
+            ],
+            "commands": [
+                "favorites.add"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "d"
+            ],
+            "commands": [
+                "favorites.del"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "favorites.open"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "revealFileInOS"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.files.saveFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "f",
+                "n"
+            ],
+            "commands": [
+                "explorer.newFile"
+            ]
+        },
+        // Git commands
+        {
+            "before": [
+                " ",
+                "g",
+                "m"
+            ],
+            "commands": [
+                "magit.status"
+            ]
+        },
+        // Git Fuzzy
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "c"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Git fuzzy log current file"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Git fuzzy log"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "GitFuzzy"
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "l"
+            ],
+            "commands": [
+                "binocular.customCommands"
+            ],
+            "args": "Lazygit"
+        },
+        // Git Lens
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "b"
+            ],
+            "commands": [
+                "gitlens.toggleFileBlame"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "c"
+            ],
+            "commands": [
+                "gitlens.compareWorkingWith"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "d"
+            ],
+            "commands": [
+                "gitlens.diffWithPrevious"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "s"
+            ],
+            "commands": [
+                "gitlens.views.switchToAnotherBranch"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "L",
+                "w"
+            ],
+            "commands": [
+                "gitlens.gitCommands.worktree"
+            ]
+        },
+        // WebLinks
+        {
+            "before": [
+                " ",
+                "g",
+                "w",
+                "f"
+            ],
+            "commands": [
+                "gitweblinks.copyFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "g",
+                "w",
+                "s"
+            ],
+            "commands": [
+                "gitweblinks.copySelectionToChoice"
+            ]
+        },
+        // Go (Reference Only)
+        {
+            "before": [
+                " ",
+                "G",
+                "d"
+            ],
+            "commands": [
+                "editor.action.revealDefinition"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "f"
+            ],
+            "commands": [
+                "editor.action.revealDeclaration"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "i"
+            ],
+            "commands": [
+                "editor.action.goToImplementation"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "r"
+            ],
+            "commands": [
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "R"
+            ],
+            "commands": [
+                "references-view.findReferences"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "p"
+            ],
+            "commands": [
+                "editor.action.peekDefinition"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "n"
+            ],
+            "commands": [
+                "goToNextReference"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "N"
+            ],
+            "commands": [
+                "goToPreviousReference"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "L"
+            ],
+            "commands": [
+                "workbench.action.navigateToLastEditLocation"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "G",
+                "l"
+            ],
+            "commands": [
+                "<C-6>"
+            ]
+        },
+        // LSP commands
+        {
+            "before": [
+                " ",
+                "l",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "h"
+            ],
+            "commands": [
+                "editor.action.showDefinitionPreviewHover"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "m"
+            ],
+            "commands": [
+                "editor.action.triggerParameterHints"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        // Error
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "n"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "N"
+            ],
+            "commands": [
+                "editor.action.marker.nextInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "p"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "P"
+            ],
+            "commands": [
+                "editor.action.marker.prevInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "l",
+                "e",
+                "v"
+            ],
+            "commands": [
+                "workbench.panel.markers.view.focus"
+            ]
+        },
+        // Leetcode commands
+        {
+            "before": [
+                " ",
+                "L",
+                "h"
+            ],
+            "commands": [
+                "leetcode.showSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "l"
+            ],
+            "commands": [
+                "leetcode.switchDefaultLanguage"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "p"
+            ],
+            "commands": [
+                "leetcode.previewProblem"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "s"
+            ],
+            "commands": [
+                "leetcode.searchProblem"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "S"
+            ],
+            "commands": [
+                "leetcode.submitSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "t"
+            ],
+            "commands": [
+                "leetcode.testSolution"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "L",
+                "v"
+            ],
+            "commands": [
+                "leetCodeExplorer.focus"
+            ]
+        },
+        // Major commands
+        // CSharp
+        {
+            "before": [
+                " ",
+                "M",
+                "c",
+                "s"
+            ],
+            "commands": [
+                "solutionExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "c",
+                "c"
+            ],
+            "commands": [
+                "solutionExplorer.focus"
+            ]
+        },
+        // Docker
+        {
+            "before": [
+                " ",
+                "M",
+                "d",
+                "v"
+            ],
+            "commands": [
+                "dockerContainers.focus"
+            ]
+        },
+        // FSharp
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "f"
+            ],
+            "commands": [
+                "fsi.SendFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "l"
+            ],
+            "commands": [
+                "fsi.SendLine"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "M",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "fsi.SendSelection"
+            ]
+        },
+        // Kubernetes
+        {
+            "before": [
+                " ",
+                "M",
+                "k",
+                "v"
+            ],
+            "commands": [
+                "extension.vsKubernetesExplorer.focus"
+            ]
+        },
+        // Marks commands
+        {
+            "before": [
+                " ",
+                "m",
+                "c"
+            ],
+            "commands": [
+                "bookmarks.clear"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "C"
+            ],
+            "commands": [
+                "bookmarks.clearFromAllFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "l"
+            ],
+            "commands": [
+                "bookmarks.toggleLabeled"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "n"
+            ],
+            "commands": [
+                "bookmarks.jumpToNext"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "p"
+            ],
+            "commands": [
+                "bookmarks.jumpToPrevious"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "s"
+            ],
+            "commands": [
+                "bookmarks.list"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "S"
+            ],
+            "commands": [
+                "bookmarks.listFromAllFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "t"
+            ],
+            "commands": [
+                "bookmarks.toggle"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "m",
+                "v"
+            ],
+            "commands": [
+                "bookmarksExplorer.focus"
+            ]
+        },
+        // Notebook commands
+        {
+            "before": [
+                " ",
+                "n",
+                "a"
+            ],
+            "commands": [
+                "jupyter.notebookeditor.addcellbelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "c"
+            ],
+            "commands": [
+                "notebook.cell.clearOutputs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "C"
+            ],
+            "commands": [
+                "notebook.clearAllCellsOutputs"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "d"
+            ],
+            "commands": [
+                "notebook.cell.delete"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "e"
+            ],
+            "commands": [
+                "notebook.cell.execute"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "E"
+            ],
+            "commands": [
+                "notebook.execute"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "j"
+            ],
+            "commands": [
+                "notebook.cell.executeAndSelectBelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "J"
+            ],
+            "commands": [
+                "notebook.cell.executeAndInsertBelow"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "l"
+            ],
+            "commands": [
+                "notebook.cell.changeLanguage"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "n",
+                "v"
+            ],
+            "commands": [
+                "polyglot-notebook-panel-values.focus"
+            ]
+        },
+        // Project commands
+        //Project Manager
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "a"
+            ],
+            "commands": [
+                "projectManager.addToWorkspace"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "f"
+            ],
+            "commands": [
+                "projectManager.filterProjectsByTag"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "l"
+            ],
+            "commands": [
+                "projectManager.listProjects"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "r"
+            ],
+            "commands": [
+                "projectManager.refreshAnyProjects"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "m",
+                "s"
+            ],
+            "commands": [
+                "projectManager.saveProject"
+            ]
+        },
+        // Workspace
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.addRootFolder"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "c"
+            ],
+            "commands": [
+                "workbench.action.files.openFolderViaWorkspace"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeFolder"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "p",
+                "w",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.removeRootFolder"
+            ]
+        },
+        // Quit commands
+        {
+            "before": [
+                " ",
+                "q",
+                "q"
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "k"
+            ],
+            "commands": [
+                "workbench.action.closeOtherEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "Q"
+            ],
+            "commands": [
+                "workbench.action.closeAllEditors"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "q",
+                "u"
+            ],
+            "commands": [
+                "workbench.action.reopenClosedEditor"
+            ]
+        },
+        // Search commands
+        {
+            "before": [
+                " ",
+                "s",
+                "c"
+            ],
+            "commands": [
+                "binocular.searchFileContent"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "C"
+            ],
+            "commands": [
+                "binocular.searchContentConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "d"
+            ],
+            "commands": [
+                "binocular.searchDirectoryConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "g"
+            ],
+            "commands": [
+                "binocular.searchGitFoldersConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "G"
+            ],
+            "commands": [
+                "binocular.searchGitFoldersConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "h"
+            ],
+            "commands": [
+                "binocular.searchFileHistory"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "n"
+            ],
+            "commands": [
+                "binocular.searchFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "N"
+            ],
+            "commands": [
+                "binocular.searchFileConfiguredFolders"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "e"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "f"
+            ],
+            "commands": [
+                "workbench.action.quickOpen"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.openRecent"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.gotoSymbol"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "S"
+            ],
+            "commands": [
+                "workbench.action.showAllSymbols"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "v"
+            ],
+            "commands": [
+                "workbench.action.findInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "s",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.switchWindow"
+            ]
+        },
+        // Tests commands
+        // Debug tests
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "a"
+            ],
+            "commands": [
+                "testing.debugAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "c"
+            ],
+            "commands": [
+                "testing.debugAtCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "f"
+            ],
+            "commands": [
+                "testing.debugCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "F"
+            ],
+            "commands": [
+                "testing.debugFailTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "d",
+                "l"
+            ],
+            "commands": [
+                "testing.debugLastRun"
+            ]
+        },
+        // Run tests
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "a"
+            ],
+            "commands": [
+                "testing.runAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "c"
+            ],
+            "commands": [
+                "testing.runAtCursor"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "f"
+            ],
+            "commands": [
+                "testing.runCurrentFile"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "F"
+            ],
+            "commands": [
+                "testing.reRunFailTests"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "r",
+                "l"
+            ],
+            "commands": [
+                "testing.reRunLastRun"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "v"
+            ],
+            "commands": [
+                "workbench.view.testing.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "T",
+                "V"
+            ],
+            "commands": [
+                "workbench.panel.testResults.view.focus"
+            ]
+        },
+        // Text commands
+        {
+            "before": [
+                " ",
+                "t",
+                "d"
+            ],
+            "commands": [
+                "editor.action.copyLinesDownAction"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "f"
+            ],
+            "commands": [
+                "editor.action.format"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "i"
+            ],
+            "commands": [
+                "editor.action.organizeImports"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "k"
+            ],
+            "commands": [
+                "editor.action.commentLine"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "r"
+            ],
+            "commands": [
+                "workbench.action.replaceInFiles"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "s"
+            ],
+            "commands": [
+                "editor.action.sortLinesAscending"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "S"
+            ],
+            "commands": [
+                "editor.action.sortLinesDescending"
+            ]
+        },
+        // Fold
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "a"
+            ],
+            "commands": [
+                "editor.foldAll"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "h"
+            ],
+            "commands": [
+                "editor.toggleFold"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "t",
+                "F",
+                "u"
+            ],
+            "commands": [
+                "editor.unfoldAll"
+            ]
+        },
+        // View commands
+        {
+            "before": [
+                " ",
+                "v",
+                "E"
+            ],
+            "commands": [
+                "workbench.actions.view.problems"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "e"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "L"
+            ],
+            "commands": [
+                "leetCodeExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "m"
+            ],
+            "commands": [
+                "bookmarksExplorer.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "p"
+            ],
+            "commands": [
+                "projectsExplorerGit.focus"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "v"
+            ],
+            "commands": [
+                "editor.action.smartSelect.expand"
+            ]
+        },
+        // Debug View
+        {
+            "before": [
+                " ",
+                "v",
+                "d",
+                "r"
+            ],
+            "commands": [
+                "workbench.debug.action.toggleRepl"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "d",
+                "w"
+            ],
+            "commands": [
+                "workbench.debug.action.focusWatchView"
+            ]
+        },
+        // LSP View
+        {
+            "before": [
+                " ",
+                "v",
+                "l",
+                "e"
+            ],
+            "commands": [
+                "workbench.panel.markers.view.focus"
+            ]
+        },
+        // Toggle View
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "a"
+            ],
+            "commands": [
+                "workbench.action.toggleActivityBarVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "e"
+            ],
+            "commands": [
+                "errorLens.toggle"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "t"
+            ],
+            "commands": [
+                "workbench.action.toggleTabsVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.toggleStatusbarVisibility"
+            ]
+        },
+        {
+            "before": [
+                " ",
+                "v",
+                "t",
+                "z"
+            ],
+            "commands": [
+                "workbench.action.toggleZenMode"
+            ]
         }
     ],
     // Whichkey
     "whichkey.bindings": [
+        {
+            "key": "a",
+            "name": "Focus on Activity Bar",
+            "icon": "layout-activitybar-left",
+            "type": "command",
+            "command": "workbench.action.focusActivityBar"
+        },
         {
             "key": "e",
             "name": "Show tree/explorer view",
@@ -154,21 +4270,8 @@
             "key": ";",
             "name": "Toggle Side Bar",
             "icon": "layout-sidebar-left",
-            "type": "conditional",
-            "bindings": [
-                {
-                    "key": "",
-                    "name": "Show Sidebar",
-                    "type": "command",
-                    "command": "workbench.action.focusSideBar"
-                },
-                {
-                    "key": "when:sideBarVisible",
-                    "name": "Hide Sidebar",
-                    "type": "command",
-                    "command": "workbench.action.closeSidebar"
-                }
-            ],
+            "type": "command",
+            "command": "workbench.action.toggleSidebarVisibility"
         },
         {
             "key": "j",
@@ -390,6 +4493,12 @@
             "icon": "debug",
             "type": "bindings",
             "bindings": [
+                {
+                    "key": "B",
+                    "name": "Build",
+                    "type": "command",
+                    "command": "workbench.action.tasks.build"
+                },
                 {
                     "key": "C",
                     "name": "Continue to Cursor",
@@ -804,13 +4913,13 @@
                     "bindings": [
                         {
                             "key": "n",
-                            "name": "Next Error All Files",
+                            "name": "Next Error Current File",
                             "type": "command",
                             "command": "editor.action.marker.next"
                         },
                         {
                             "key": "N",
-                            "name": "Next Error Current File",
+                            "name": "Next Error All Files",
                             "type": "command",
                             "command": "editor.action.marker.nextInFiles"
                         },
@@ -983,18 +5092,6 @@
                     "command": "bookmarks.clearFromAllFiles"
                 },
                 {
-                    "key": "f",
-                    "name": "Find",
-                    "type": "command",
-                    "command": "bookmarks.list"
-                },
-                {
-                    "key": "F",
-                    "name": "Find All Files",
-                    "type": "command",
-                    "command": "bookmarks.listFromAllFiles"
-                },
-                {
                     "key": "l",
                     "name": "Labeled",
                     "type": "command",
@@ -1011,6 +5108,18 @@
                     "name": "Previous",
                     "type": "command",
                     "command": "bookmarks.jumpToPrevious"
+                },
+                {
+                    "key": "s",
+                    "name": "Search",
+                    "type": "command",
+                    "command": "bookmarks.list"
+                },
+                {
+                    "key": "S",
+                    "name": "Search All Files",
+                    "type": "command",
+                    "command": "bookmarks.listFromAllFiles"
                 },
                 {
                     "key": "t",
@@ -1100,12 +5209,6 @@
             "icon": "remote-explorer",
             "type": "bindings",
             "bindings": [
-                {
-                    "key": "b",
-                    "name": "Build",
-                    "type": "command",
-                    "command": "workbench.action.tasks.build"
-                },
                 {
                     "key": "m",
                     "name": "+Project Manager",
@@ -1307,7 +5410,7 @@
             ]
         },
         {
-            "key": "t",
+            "key": "T",
             "name": "+Tests",
             "icon": "beaker",
             "type": "bindings",
@@ -1401,7 +5504,7 @@
             ]
         },
         {
-            "key": "T",
+            "key": "t",
             "name": "+Text",
             "icon": "text-size",
             "type": "bindings",
@@ -1590,77 +5693,62 @@
         }
     ],
     // APC
-    "apc.electron": {
-        "frame": false, // Hide title bar
-        "titleBarStyle": "customButtonsOnHover", // Hide buttons on mac
-        "opacity": 0.99
+    "custom-ui-style.electron": {
+        "frame": false,
+        "roundedCorners": false,
     },
-    "apc.activityBar": {
-        "size": 36 // Size of icons in the activity bar
-    },
-    "apc.header": {
-        "fontSize": 10 // Fontsize on tabs
-    },
-    "apc.listRow": {
-        "height": 19, // Spacing in the explorer window
-        "fontSize": 12 // Font size in the explorer window
-    },
-    "apc.statusBar": {
-        "height": 19, // Status bar height
-        "fontSize": 11 // Status bar size
-    },
-    "apc.stylesheet": {
-        ".title-label > h2": "display:none;", // Hide title in the activity window
-        ".quick-input-widget": "border: solid !important; border-width: 0.5px !important; margin-top: 15%; box-shadow: 0px 0px 0px 0px !important;",
-        ".quick-input-widget > .quick-input-titlebar": "display: none",
-        ".quick-input-widget > .quick-input-list > .monaco-list": "font-size: 11px !important; max-height: 50vh !important;",
-        "#quickInput_list > div > div.scrollbar.vertical": "display: none !important; width: 0px !important;",
-        ".quick-input-widget > .quick-input-list .codicon": "font-size: 10px !important; color: #83a598 !important; padding-right: 5px;",
-        ".quick-input-widget > .quick-input-list .monaco-list-row[aria-label*=\" +\"] .label-description": "color: #8ec07c;",
-        ".monaco-grid-view > .monaco-sash": "display: none !important;",
-        ".monaco-editor .scroll-decoration": "box-shadow: none;",
-        ".monaco-icon-label:after": "font-size: 10px !important;"
-        // ".title": "padding-left: 0px !important; height: 24px !important",
-        // ".title.show-file-icons": "height: 24px !important",
-    },
-    // General
+    "custom-ui-style.external.imports":["file://${userHome}/.config/vscode/vscode-styles-insiders.css"],
+    //Rust
+    "lldb.suppressUpdateNotifications": true,
+    "rust-analyzer.testExplorer": true,
+    //General
     "editor.unfoldOnClickAfterEndOfLine": false,
     "explorer.autoReveal": false,
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1,
-        "vscodevim.vim": 1
+    "extensions.experimental.affinity": { 
+        "vscodevim.vim": 1,
+        "asvetliakov.vscode-neovim": 1, 
     },
     "security.workspace.trust.untrustedFiles": "open",
-    "workbench.startupEditor": "newUntitledFile",
-    //Rust
-    "rust-analyzer.testExplorer": true,
+    "update.mode": "manual",
+    "workbench.tips.enabled": false,
     // Editor Experience
     "debug.showBreakpointsInOverviewRuler": true,
     "editor.accessibilitySupport": "off",
+    "editor.autoClosingComments": "never",
+    "editor.autoClosingDelete": "never",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoClosingQuotes": "never",
     "editor.cursorSurroundingLines": 15,
+    "editor.fontFamily": "Unifont, Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.fontWeight": "normal",
     "editor.guides.indentation": false,
     "editor.inlayHints.enabled": "off",
     "editor.inlineSuggest.enabled": true,
     "editor.lineNumbers": "relative",
     "editor.showFoldingControls": "never",
-    "editor.stickyTabStops": true,
     "editor.stickyScroll.enabled": false,
+    "editor.stickyTabStops": true,
     "editor.suggest.insertMode": "insert",
     "editor.suggestSelection": "first",
     "notebook.breadcrumbs.showCodeCells": false,
     "workbench.tree.renderIndentGuides": "none",
+    // "editor.autoClosingBrackets": "never",
     // Visual
     "accessibility.dimUnfocused.enabled": true,
     "breadcrumbs.enabled": false,
+    "editor.lightbulb.enabled": "off",
     "editor.minimap.enabled": false,
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 4,
+    "errorLens.gutterIconsEnabled": true,
     "window.commandCenter": false,
     "window.density.editorTabHeight": "compact",
-    "window.menuBarVisibility": "compact",
     "window.titleBarStyle": "native",
+    "workbench.activityBar.location": "top",
     "workbench.editor.tabActionCloseVisibility": false,
     "workbench.layoutControl.enabled": false,
+    // "window.customTitleBarVisibility": "never",
     //Zen Mode
     "zenMode.fullScreen": false,
     "zenMode.hideActivityBar": false,
@@ -1668,8 +5756,29 @@
     "zenMode.hideStatusBar": false,
     "zenMode.showTabs": "multiple",
     //Theme
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.preferredDarkColorTheme": "Gruvbox Material Dark",
-    "workbench.preferredHighContrastColorTheme": "GitHub Light Default",
+    "gruvboxMaterial.darkCursor": "blue",
+    "gruvboxMaterial.italicComments": false,
     "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.iconTheme": "gruvbox-material-icon-theme",
+    //Terminal
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font",
+    "terminal.integrated.fontSize": 12,
+    //Copilot
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false
+    },
+    "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    //Ehhhh
+    "leetcode.defaultLanguage": "csharp",
+    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/leetcode/csharp/Problems",
+    //Others
+    "errorLens.enabled": true,
+    "errorLens.messageBackgroundMode": "message",
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.startupEditor": "none",
 }

@@ -1,0 +1,96 @@
+/* :root {
+    --titlebar-height: 19.75px;
+    --traffic-X: -100px;
+} */
+
+.quick-input-header > .quick-input-and-message .monaco-inputbox {
+    border-radius: 5px !important;
+}
+
+.quick-input-widget > .quick-input-titlebar {
+    display: none;
+}
+
+.quick-input-widget > .quick-input-list > .monaco-list {
+    font-size: 11px !important;
+    max-height: 50vh !important;
+}
+
+#quickInput_list > div > div.scrollbar.vertical {
+    display: none !important;
+    width: 0px !important;
+}
+
+.quick-input-widget > .quick-input-list .codicon {
+    font-size: 10px !important;
+    color: #83a598 !important;
+    padding-right: 5px;
+}
+
+.quick-input-widget > .quick-input-list .monaco-list-row[aria-label*=" +"] .label-description {
+    color: #8ec07c;
+}
+
+.monaco-grid-view > .monaco-sash {
+    display: none !important;
+}
+
+.monaco-editor .scroll-decoration {
+    box-shadow: none;
+}
+
+.monaco-icon-label:after {
+    font-size: 10px !important;
+}
+
+div.inline-tabs-placeholder {
+    display: none !important;
+}
+
+.composite.title.has-composite-bar {
+    padding-left: 10px !important;
+}
+
+div.editor-actions {
+    display: none !important;
+}
+
+a.action-label.codicon {
+    font-size: 12px !important;
+}
+
+a.action-label.uri-icon {
+    height: 12px !important;
+    width: 12px !important;
+}
+
+span.codicon.codicon-terminal {
+    font-size: 12px !important;
+}
+
+.action-label.single-terminal-tab {
+    margin-top: -3.5px !important;
+}
+
+.monaco-icon-label:before {
+    background-size: 14px !important;
+}
+
+.quick-input-widget {
+    border: 0.5px solid !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.tab > .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > a.label-name {
+    font-family: 'JetbrainsMono Nerd Font' !important;
+    font-size: 9px !important;
+}
+
+.monaco-tl-contents > .monaco-icon-label > .monaco-icon-label-container > .monaco-icon-name-container > a.label-name {
+    font-family: 'JetbrainsMono Nerd Font' !important;
+    font-size: 10px !important;
+}
+
+.monaco-workbench .part>.content {
+    font-size: 9px !important;
+}

@@ -5,6 +5,7 @@
     "vim.incsearch": true,
     "vim.leader": ",",
     "vim.showMarksInGutter": true,
+    "vim.smartRelativeLine": true,
     "vim.useSystemClipboard": true,
     "vim.vimrc.enable": true,
     "vim.vimrc.path": "$HOME/.config/vscode/vscodevim/vsvim.vim",
@@ -5742,10 +5743,13 @@
     "editor.scrollbar.horizontalScrollbarSize": 0,
     "editor.scrollbar.verticalScrollbarSize": 4,
     "errorLens.gutterIconsEnabled": true,
+    "gruvboxMaterial.darkCursor": "blue",
+    "gruvboxMaterial.darkWorkbench": "flat",
+    "gruvboxMaterial.italicComments": false,
     "window.commandCenter": false,
     "window.density.editorTabHeight": "compact",
     "window.titleBarStyle": "native",
-    "workbench.activityBar.location": "top",
+    "workbench.activityBar.location": "hidden",
     "workbench.editor.tabActionCloseVisibility": false,
     "workbench.layoutControl.enabled": false,
     // "window.customTitleBarVisibility": "never",
@@ -5755,30 +5759,24 @@
     "zenMode.hideLineNumbers": false,
     "zenMode.hideStatusBar": false,
     "zenMode.showTabs": "multiple",
-    //Theme
-    "gruvboxMaterial.darkCursor": "blue",
-    "gruvboxMaterial.italicComments": false,
     "workbench.colorTheme": "Gruvbox Material Dark",
     "workbench.iconTheme": "gruvbox-material-icon-theme",
     //Terminal
     "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.fontFamily": "JetbrainsMono Nerd Font",
     "terminal.integrated.fontSize": 12,
-    //Copilot
+    "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    //Others
+    "errorLens.enabled": false,
+    "errorLens.messageBackgroundMode": "message",
+    "git.openRepositoryInParentFolders": "never",
+    "workbench.startupEditor": "none",
     "github.copilot.enable": {
         "*": false,
         "plaintext": false,
         "markdown": false,
-        "scminput": false
+        "scminput": false,
+        "csharp": false
     },
-    "github.copilot.selectedCompletionModel": "gpt-4o-copilot",
-    "github.copilot.nextEditSuggestions.enabled": true,
-    //Ehhhh
-    "leetcode.defaultLanguage": "csharp",
-    "leetcode.workspaceFolder": "/Users/jpcrs/Projects/leetcode/csharp/Problems",
-    //Others
-    "errorLens.enabled": true,
-    "errorLens.messageBackgroundMode": "message",
-    "git.openRepositoryInParentFolders": "never",
-    "workbench.startupEditor": "none",
 }

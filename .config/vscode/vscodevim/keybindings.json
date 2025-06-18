@@ -1,5 +1,15 @@
 // Place your key bindings in this file to override the defaults
 [
+  {
+    "key": "shift+cmd+k",
+    "command": "-editor.action.deleteLines",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "space",
+    "command": "whichkey.show",
+    "when": "!editorFocus && !inDebugRepl && !inputFocus"
+  },
   // Better multicursor compatibility with vsvim
   {
     "key": "ctrl+x",
@@ -15,17 +25,6 @@
     "key": "shift+cmd+d",
     "command": "editor.action.selectHighlights",
     "when": "vim.active && editorFocus && vim.mode == 'Normal' || vim.mode == 'Visual' || vim.mode == 'VisualBlock' && !inDebugRepl"
-  },
-  // Suggest
-  {
-    "key": "cmd+r",
-    "command": "editor.action.inlineSuggest.trigger",
-    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
-  },
-  {
-    "key": "space",
-    "command": "whichkey.show",
-    "when": "!editorFocus && !inDebugRepl && !inputFocus"
   },
   // FileTree behavior
   {
@@ -233,7 +232,7 @@
     "key": "ctrl+m",
     "command": "workbench.action.toggleMaximizedPanel"
   },
-  //Jumplist
+  // Vim Jumplist
   {
     "key": "ctrl+d",
     "command": "runCommands",
@@ -258,8 +257,60 @@
     },
     "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
+  // Copilot
+  {
+    "key": "cmd+r",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "config.github.copilot.inlineSuggest.enable && editorTextFocus && !editorHasSelection && !inlineSuggestionsVisible"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "workbench.action.quickchat.toggle",
+    "when": "chatIsEnabled"
+  },
+  {
+    "key": "shift+alt+cmd+l",
+    "command": "-workbench.action.quickchat.toggle",
+    "when": "chatIsEnabled"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "chatEditor.action.navigateNext",
+    "when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+  },
+  {
+    "key": "alt+f5",
+    "command": "-chatEditor.action.navigateNext",
+    "when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "chatEditor.action.navigatePrevious",
+    "when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+  },
+  {
+    "key": "shift+alt+f5",
+    "command": "-chatEditor.action.navigatePrevious",
+    "when": "chatEdits.hasEditorModifications && chatIsEnabled && editorFocus || chatEdits.hasEditorModifications && chatIsEnabled && notebookCellListFocused"
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "inlineChat.start",
+    "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+  },
   {
     "key": "cmd+i",
-    "command": "composerMode.agent"
-  }
+    "command": "-inlineChat.start",
+    "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+  },
+  {
+    "key": "cmd+i",
+    "command": "workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
+  {
+    "key": "ctrl+cmd+i",
+    "command": "-workbench.panel.chat",
+    "when": "workbench.panel.chat.view.copilot.active"
+  },
 ]
